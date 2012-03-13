@@ -58,16 +58,15 @@ public class ProjectDataSource {
     public List<ProjectStructure> getAllProjects(long userId) {
         Messenger messenger = new Messenger(ProjectDataSource.class.getName());
         SQLiteDatabase database = dbHelper.getWritableDatabase();
+        messenger.error("user id " + userId);
 
         try {
             List<ProjectStructure> projects = new ArrayList<ProjectStructure>();
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, ("user_id = " + userId), null, null, null, null);
             cursor.moveToFirst();
-
             while (!cursor.isAfterLast()) {
                 ProjectStructure project = cursorToProject(cursor);
-
                 projects.add(project);
                 cursor.moveToNext();
             }

@@ -20,31 +20,21 @@ import java.util.Calendar;
 import java.util.List;
 
 public class Task extends Activity {
-    private long activityId;
-    private long projectId;
     private ActivityStructure activity;
     private final int PROJECTS = 0;
+
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.task);
         final TaskDataSource dataSource = new TaskDataSource(this);
 
         Bundle bundle = getIntent().getExtras();
-        final long userId = bundle.getLong("userId");
-        long pId = bundle.getLong("projectId");
-        if (pId == 0) {
-            ProjectDataSource source = new ProjectDataSource(this);
-            pId = source.getNAProject().getId();
-        }
-        final long projectId = pId;
+        final long userId = bundle.getLong("session");
+        final long projectId = getProjectID(bundle);
 
         final Spinner activityList = (Spinner) findViewById(R.id.activityList);
-        ActivityDataSource activityDataSource = new ActivityDataSource(this);
-        List<ActivityStructure> activities = activityDataSource.getAllActivities();
+        ArrayAdapter<ActivityStructure> adapter = activityListAdapter();
 
-        ArrayAdapter<ActivityStructure> adapter = new ArrayAdapter<ActivityStructure>(this,
-                android.R.layout.simple_spinner_item, activities);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         activityList.setAdapter(adapter);
         activityList.setOnItemSelectedListener(
                 new AdapterView.OnItemSelectedListener() {
@@ -63,6 +53,7 @@ public class Task extends Activity {
         final HourPicker hourPicker = (HourPicker) findViewById(R.id.hourPicker);
         final MinutePicker minutePicker = (MinutePicker) findViewById(R.id.minutePicker);
         final Messenger messenger = new Messenger(this);
+
         Button createTask = (Button) findViewById(R.id.createTask);
         createTask.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -85,12 +76,30 @@ public class Task extends Activity {
                         messenger.alert("Task was created " + task.getName());
                         Intent cross = new Intent(view.getContext(), Projects.class);
                         cross.putExtra("session",userId);
-                        startActivityForResult(cross,PROJECTS);
+                        startActivityForResult(cross, PROJECTS);
                     } else {
                         messenger.alert("Failed!");
                     }
                 }
             }
         });
+    }
+
+    private ArrayAdapter<ActivityStructure> activityListAdapter() {
+        ActivityDataSource activityDataSource = new ActivityDataSource(this);
+        List<ActivityStructure> activities = activityDataSource.getAllActivities();
+        ArrayAdapter<ActivityStructure> adapter = new ArrayAdapter<ActivityStructure>(this,
+                android.R.layout.simple_spinner_item, activities);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        return adapter;
+    }
+
+    private long getProjectID(Bundle bundle) {
+        long pId = bundle.getLong("projectId");
+        if (pId == 0) {
+            ProjectDataSource source = new ProjectDataSource(this);
+            pId = source.getNAProject().getId();
+        }
+        return pId;
     }
 }

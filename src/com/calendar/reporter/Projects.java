@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.Spinner;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
+import com.calendar.reporter.helper.Messenger;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class Projects extends ListActivity {
         dataSource = new ProjectDataSource(Projects.this);
         Bundle bundle = getIntent().getExtras();
         final long userId = bundle.getLong("session");
+
 
         Button projectButton = (Button) findViewById(R.id.createProject);
         Button taskButton = (Button) findViewById(R.id.createTask);
