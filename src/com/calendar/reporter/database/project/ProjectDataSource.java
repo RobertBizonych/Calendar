@@ -84,11 +84,11 @@ public class ProjectDataSource {
         }
     }
 
-    public ProjectStructure getNAProject() {
+    public ProjectStructure getNAProject(long userId) {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
-                    allColumns, ("name is 'N/A'"), null, null, null, null);
+                    allColumns, ("name is 'N/A' and user_id = " + userId), null, null, null, null);
             cursor.moveToFirst();
             ProjectStructure project = cursorToProject(cursor);
             cursor.close();

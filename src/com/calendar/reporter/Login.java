@@ -47,7 +47,7 @@ public class Login extends Activity {
                         if (user == null) {
                             messenger.alert("Invalid Username/Password");
                         } else {
-                            messenger.alert("Successfully Logged In  " + user.getId());
+                            messenger.alert("Successfully Logged In  " + user.getNickname());
                             Intent intent = new Intent(v.getContext(), Projects.class);
                             intent.putExtra("session", user.getId());
                             startActivityForResult(intent, PROJECT);

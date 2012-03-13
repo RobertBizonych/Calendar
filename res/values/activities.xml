@@ -1,8 +1,0 @@
-<resources>
-    <string-array name="activities">
-        <item>Self development</item>
-        <item>Working time</item>
-        <item>Extra time</item>
-        <item>Team time</item>
-    </string-array>
-</resources>

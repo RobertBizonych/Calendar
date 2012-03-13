@@ -96,9 +96,10 @@ public class Task extends Activity {
 
     private long getProjectID(Bundle bundle) {
         long pId = bundle.getLong("projectId");
+        long userId = bundle.getLong("session");
         if (pId == 0) {
             ProjectDataSource source = new ProjectDataSource(this);
-            pId = source.getNAProject().getId();
+            pId = source.getNAProject(userId).getId();
         }
         return pId;
     }
