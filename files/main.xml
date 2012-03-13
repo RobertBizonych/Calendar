@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+	<TextView
+		android:id="@+id/text_pick"
+		android:text="@string/current_pick"
+		android:textColor="#ffffff"
+		android:background="#666666"
+		android:layout_width="fill_parent"
+		android:layout_height="fill_parent"
+		android:gravity="center"
+		android:layout_weight="1">
+	</TextView>
+	
+	<LinearLayout
+		android:orientation="horizontal"
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content">
+			
+		<TextView
+			android:text="@string/color_red"
+			android:textColor="#660000"
+			android:background="#ff0000"
+			android:layout_width="fill_parent"
+			android:layout_height="20dp"
+			android:layout_weight="1"
+			android:gravity="center" />
+
+		<TextView
+			android:text="@string/color_green"
+			android:textColor="#006600"
+			android:background="#00ff00"
+			android:layout_width="fill_parent"
+			android:layout_height="20dp"
+			android:layout_weight="1"
+			android:gravity="center" />
+
+		<TextView
+			android:text="@string/color_blue"
+			android:textColor="#000066"
+			android:background="#0000ff"
+			android:layout_width="fill_parent"
+			android:layout_height="20dp"
+			android:layout_weight="1"
+			android:gravity="center" />
+
+		<TextView
+			android:text="@string/color_gray"
+			android:textColor="#cccccc"
+			android:background="#666666"
+			android:layout_width="fill_parent"
+			android:layout_height="20dp"
+			android:layout_weight="1"
+			android:gravity="center" />
+	
+	</LinearLayout>
+	
+	<RadioGroup
+		android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:orientation="horizontal"
+		android:background="#333333">
+		
+		<RadioButton
+			android:id="@+id/radio_red"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_marginLeft="24dp" />
+			
+		<RadioButton
+			android:id="@+id/radio_green"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_marginLeft="24dp" />
+
+		<RadioButton
+			android:id="@+id/radio_blue"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_marginLeft="24dp" />
+			
+		<RadioButton
+			android:id="@+id/radio_gray"
+			android:layout_width="fill_parent"
+			android:layout_height="wrap_content"
+			android:layout_weight="1"
+			android:layout_marginLeft="24dp"
+			android:checked="true" />
+
+	</RadioGroup>
+			
+</LinearLayout>

@@ -64,7 +64,6 @@ public class ProjectDataSource {
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, ("user_id = " + userId), null, null, null, null);
             cursor.moveToFirst();
-
             while (!cursor.isAfterLast()) {
                 ProjectStructure project = cursorToProject(cursor);
 
@@ -86,11 +85,34 @@ public class ProjectDataSource {
             database.close();
         }
     }
+
+//    public void editProject (long id) {
+//        SQLiteDatabase database = dbHelper.getWritableDatabase();
+//        try{
+//            database.update(ProjectStructure.TABLE_NAME)
+//        }
+//    }
+
     public ProjectStructure getNAProject() {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, ("name is 'N/A'"), null, null, null, null);
+            cursor.moveToFirst();
+            ProjectStructure project = cursorToProject(cursor);
+            cursor.close();
+            return project;
+        }
+        finally {
+            database.close();
+        }
+    }
+
+    public ProjectStructure getProject(long projectId) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try {
+            Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
+                    allColumns, ("_id = " + projectId), null, null, null, null);
             cursor.moveToFirst();
             ProjectStructure project = cursorToProject(cursor);
             cursor.close();

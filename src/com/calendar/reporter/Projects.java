@@ -10,6 +10,7 @@ import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
+import com.calendar.reporter.helper.Messenger;
 
 import java.util.List;
 
@@ -30,10 +31,6 @@ public class Projects extends ListActivity {
         Bundle bundle = getIntent().getExtras();
         final long userId = bundle.getLong("session");
 
-        Button projectButton = (Button) findViewById(R.id.createProject);
-        Button taskButton = (Button) findViewById(R.id.createTask);
-
-        List<ProjectStructure> values = dataSource.getAllProjects(userId);
 
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -41,48 +38,64 @@ public class Projects extends ListActivity {
                 ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
                 Intent cross = new Intent(view.getContext(), Tasks.class);
                 cross.putExtra("projectId", project.getId());
-                startActivityForResult(cross,TASKS);
+                startActivityForResult(cross, TASKS);
             }
         };
         AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
-            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public boolean onItemLongClick(AdapterView<?> adapterView, final View view, int i, long l) {
                 final ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
-                selectedItem = project.toString();
 
-                AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Do you want to remove " + selectedItem + "?");
-                builder.setCancelable(false);
-                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                if (!project.getName().equals("N/A")) {
+                    final CharSequence[] items = {"Edit", "Delete"};
+                    final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                    builder.setTitle("Choose the action:");
 
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        adapter.remove(project);
-                        dataSource.deleteProject(project.getId());
-                        adapter.notifyDataSetChanged();
+                    builder.setItems(items, new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int item) {
+                            switch (item) {
+                                case 0:
+                                    Intent cross = new Intent(view.getContext(), Project.class);
+                                    cross.putExtra("type", "edit");
+                                    cross.putExtra("session", userId);
+                                    cross.putExtra("projectId", project.getId());
+                                    startActivityForResult(cross, PROJECT);
+                                    break;
+                                case 1:
+                                    AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+                                    alertBuilder.setMessage("Do you want to remove " + project.getName() + "?");
+                                    alertBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            adapter.remove(project);
+                                            dataSource.deleteProject(project.getId());
+                                            adapter.notifyDataSetChanged();
 
-                        Toast.makeText(getApplicationContext(),selectedItem +
-                                " has been removed.",Toast.LENGTH_LONG).show();
-                    }
-                });
-                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                });
-
-                // Create and show the dialog
-                builder.show();
-
-                // Signal OK to avoid further processing of the long click
+                                            Toast.makeText(getApplicationContext(), project.getName() +
+                                                    " has been removed.", Toast.LENGTH_LONG).show();
+                                        }
+                                    });
+                                    alertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                        @Override
+                                        public void onClick(DialogInterface dialog, int which) {
+                                            dialog.cancel();
+                                        }
+                                    });
+                                    alertBuilder.show();
+                                    break;
+                            }
+                        }
+                    });
+                    builder.show();
+                }
                 return true;
-
             }
         };
-        adapter = new ArrayAdapter<ProjectStructure>(this,
-                android.R.layout.simple_list_item_1, values);
+        Button projectButton = (Button) findViewById(R.id.createProject);
+        Button taskButton = (Button) findViewById(R.id.createTask);
+        List<ProjectStructure> projects = dataSource.getAllProjects(userId);
+
+        adapter = new ArrayAdapter<ProjectStructure>(this, android.R.layout.simple_list_item_1, projects);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(onItemClickListener);
         getListView().setOnItemLongClickListener(onItemLongClickListener);
@@ -92,7 +105,7 @@ public class Projects extends ListActivity {
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), Project.class);
                 cross.putExtra("session", userId);
-                startActivityForResult(cross,PROJECT);
+                startActivityForResult(cross, PROJECT);
             }
         });
         taskButton.setOnClickListener(new View.OnClickListener() {
@@ -100,10 +113,8 @@ public class Projects extends ListActivity {
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), Task.class);
                 cross.putExtra("session", userId);
-                startActivityForResult(cross,PROJECT);
+                startActivityForResult(cross, PROJECT);
             }
         });
-
     }
-
 }

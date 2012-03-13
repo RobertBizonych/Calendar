@@ -18,14 +18,22 @@ public class Project extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project);
 
-        dataSource = new ProjectDataSource(this);
-
-        Button createButton = (Button) findViewById(R.id.createProject);
         Bundle bundle = getIntent().getExtras();
+        dataSource = new ProjectDataSource(this);
         final EditText projectName = (EditText) findViewById(R.id.projectName);
         final EditText projectDescription = (EditText) findViewById(R.id.projectDescription);
         final Messenger messenger = new Messenger(this, Register.class.getName());
         final long userId = bundle.getLong("session");
+        final long projectId = bundle.getLong("projectId");
+        String type = bundle.getString("type");
+        Button createButton = (Button) findViewById(R.id.createProject);
+
+        if (type.equals("edit")) {
+            createButton.setText("Update");
+            ProjectStructure project = dataSource.getProject(projectId);
+            projectName.setText(project.getName());
+            projectDescription.setText(project.getDescription());
+        }
 
         createButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -44,6 +52,7 @@ public class Project extends Activity {
                 }
             }
         });
+
     }
 
 

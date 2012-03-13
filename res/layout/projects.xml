@@ -29,14 +29,14 @@
         </Button>
     </LinearLayout>
 
-    <ScrollView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:visibility="visible">
+    <!--<ScrollView-->
+            <!--android:layout_width="fill_parent"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:visibility="visible">-->
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"
-                android:layout_height="fill_parent">
+                android:layout_height="wrap_content">
 
             <ListView
                       android:layout_width="fill_parent"
@@ -54,5 +54,5 @@
                       android:gravity="center"/>
         </LinearLayout>
 
-    </ScrollView>
+    <!--</ScrollView>-->
 </LinearLayout>
