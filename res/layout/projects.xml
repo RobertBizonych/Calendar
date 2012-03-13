@@ -34,14 +34,17 @@
             android:layout_height="wrap_content"
             android:visibility="visible">
         <LinearLayout
+                android:orientation="vertical"
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-            <ListView android:id="@android:id/list"
+            <ListView
                       android:layout_width="fill_parent"
-                      android:layout_height="wrap_content"
+                      android:layout_height="fill_parent"
                       android:layout_weight="1"
-                      android:drawSelectorOnTop="false"/>
+                      android:drawSelectorOnTop="false"
+                      android:id="@android:id/list"
+                    />
 
             <TextView android:id="@android:id/empty"
                       android:layout_width="fill_parent"

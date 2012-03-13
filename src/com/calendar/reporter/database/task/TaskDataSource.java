@@ -66,7 +66,7 @@ public class TaskDataSource {
     }
 
     private Date StringToDate(String stringDate) {
-        DateFormat formater = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+        DateFormat formater = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
         try {
             java.util.Date parsedUtilDate = formater.parse(stringDate);
             Date sqltDate= new Date(parsedUtilDate.getTime());

@@ -3,6 +3,7 @@ package com.calendar.reporter.database.task;
 import java.sql.Date;
 
 public class TaskStructure {
+    public static final String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
     public static final String TABLE_NAME = "tasks";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";

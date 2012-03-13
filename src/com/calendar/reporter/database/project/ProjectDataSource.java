@@ -64,7 +64,6 @@ public class ProjectDataSource {
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, ("user_id = " + userId), null, null, null, null);
             cursor.moveToFirst();
-            messenger.error("Cursor count = " + cursor.getCount());
 
             while (!cursor.isAfterLast()) {
                 ProjectStructure project = cursorToProject(cursor);
