@@ -77,7 +77,15 @@ public class ProjectDataSource {
             database.close();
         }
     }
-
+    public void deleteProject (long id) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        try{
+            database.delete(ProjectStructure.TABLE_NAME,ProjectStructure.COLUMN_ID + " = " + id,null);
+        }
+        finally {
+            database.close();
+        }
+    }
     public ProjectStructure getNAProject() {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {

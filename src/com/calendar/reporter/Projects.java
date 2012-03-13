@@ -1,13 +1,13 @@
 package com.calendar.reporter;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.Spinner;
+import android.widget.*;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
 
@@ -17,6 +17,9 @@ public class Projects extends ListActivity {
     private ProjectDataSource dataSource;
     private static final int PROJECT = 0;
     private static final int TASKS = 0;
+    private final Context context = this;
+    private String selectedItem;
+    private ArrayAdapter<ProjectStructure> adapter;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -41,10 +44,48 @@ public class Projects extends ListActivity {
                 startActivityForResult(cross,TASKS);
             }
         };
-        ArrayAdapter<ProjectStructure> adapter = new ArrayAdapter<ProjectStructure>(this,
+        AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
+            @Override
+            public boolean onItemLongClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
+                selectedItem = project.toString();
+
+                AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setMessage("Do you want to remove " + selectedItem + "?");
+                builder.setCancelable(false);
+                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        adapter.remove(project);
+                        dataSource.deleteProject(project.getId());
+                        adapter.notifyDataSetChanged();
+
+                        Toast.makeText(getApplicationContext(),selectedItem +
+                                " has been removed.",Toast.LENGTH_LONG).show();
+                    }
+                });
+                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+
+                // Create and show the dialog
+                builder.show();
+
+                // Signal OK to avoid further processing of the long click
+                return true;
+
+            }
+        };
+        adapter = new ArrayAdapter<ProjectStructure>(this,
                 android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
         getListView().setOnItemClickListener(onItemClickListener);
+        getListView().setOnItemLongClickListener(onItemLongClickListener);
 
         projectButton.setOnClickListener(new View.OnClickListener() {
             @Override
