@@ -37,12 +37,14 @@ public class Register extends Activity {
                 if (password.equals(confirm)) {
                     UserStructure user = dataSource.createUser(nickname, password, confirm);
                     messenger.alert(user.getNickname() + ",you are successfully registered!");
+
+                    Intent cross = new Intent(view.getContext(), Login.class);
+                    startActivityForResult(cross, LOGIN);
                 } else {
                     messenger.alert("Wrong password confirmation!");
+                    passField.setText("");
+                    confirmField.setText("");
                 }
-
-                Intent cross = new Intent(view.getContext(), Login.class);
-                startActivityForResult(cross, LOGIN);
             }
         });
     }

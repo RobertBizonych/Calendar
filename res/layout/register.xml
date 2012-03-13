@@ -18,7 +18,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Please, enter the description"/>
+            android:text="@string/enterPassword"/>
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -28,7 +28,7 @@
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
-            android:text="Please, confirm the description"/>
+            android:text="@string/confirmPassword"/>
     <EditText
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"

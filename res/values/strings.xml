@@ -12,4 +12,6 @@
     <string name="time">Time</string>
     <string name="activities">Activities</string>
     <string name="activityPrompt">Choose an activity</string>
+    <string name="confirmPassword">Confirm Password</string>
+    <string name="enterPassword">Enter Password</string>
 </resources>
