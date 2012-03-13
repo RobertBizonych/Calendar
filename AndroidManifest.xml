@@ -15,5 +15,6 @@
         <activity android:name=".Project"/>
         <activity android:name=".Task"/>
         <activity android:name=".Register"/>
+        <activity android:name=".Tasks"/>
     </application>
 </manifest> 

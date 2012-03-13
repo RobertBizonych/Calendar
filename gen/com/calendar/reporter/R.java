@@ -36,14 +36,17 @@ public final class R {
         public static final int projects=0x7f020002;
         public static final int register=0x7f020003;
         public static final int task=0x7f020004;
+        public static final int tasks=0x7f020005;
     }
     public static final class string {
         public static final int activities=0x7f04000a;
         public static final int activityPrompt=0x7f04000b;
         public static final int app_name=0x7f040000;
+        public static final int confirmPassword=0x7f04000c;
         public static final int createProject=0x7f040005;
         public static final int createTask=0x7f040006;
         public static final int description=0x7f040004;
+        public static final int enterPassword=0x7f04000d;
         public static final int login=0x7f040002;
         public static final int projectDescription=0x7f040008;
         public static final int projectName=0x7f040007;

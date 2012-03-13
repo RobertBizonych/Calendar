@@ -4,8 +4,10 @@ import android.app.ListActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.Spinner;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
 
@@ -14,6 +16,7 @@ import java.util.List;
 public class Projects extends ListActivity {
     private ProjectDataSource dataSource;
     private static final int PROJECT = 0;
+    private static final int TASKS = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -29,9 +32,19 @@ public class Projects extends ListActivity {
 
         List<ProjectStructure> values = dataSource.getAllProjects(userId);
 
+        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
+                Intent cross = new Intent(view.getContext(), Tasks.class);
+                cross.putExtra("projectId", project.getId());
+                startActivityForResult(cross,TASKS);
+            }
+        };
         ArrayAdapter<ProjectStructure> adapter = new ArrayAdapter<ProjectStructure>(this,
                 android.R.layout.simple_list_item_1, values);
         setListAdapter(adapter);
+        getListView().setOnItemClickListener(onItemClickListener);
 
         projectButton.setOnClickListener(new View.OnClickListener() {
             @Override
