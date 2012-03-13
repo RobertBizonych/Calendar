@@ -7,7 +7,7 @@ import com.calendar.reporter.helper.Messenger;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "reporter.db" ;
-    private static final int DATABASE_VERSION = 2;
+    private static final int DATABASE_VERSION = 3;
 
     private Messenger messenger;
 
@@ -31,9 +31,8 @@ public class DataBaseHelper extends SQLiteOpenHelper {
 
         database.execSQL("INSERT INTO `users` (`name`,`password`) VALUES ('1','1');");
         database.execSQL("INSERT INTO `projects` (`name`,`description`,`user_id`) VALUES ('1 project','description','1');");
-        database.execSQL("INSERT INTO `projects` (`name`,`description`,`user_id`) VALUES ('2 project','description','1');");
         database.execSQL("INSERT INTO `projects` (`name`,`description`,`user_id`) VALUES ('N/A','description','1');");
-
+        database.execSQL("INSERT INTO `tasks` (`name`,`description`,`time`,`date`,`project_id`,`activity_id`) VALUES ('Drink Cola','description','10','2010-01-13', '1', '1');");
     }
 
     @Override

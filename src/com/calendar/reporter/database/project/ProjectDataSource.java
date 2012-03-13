@@ -56,12 +56,10 @@ public class ProjectDataSource {
     }
 
     public List<ProjectStructure> getAllProjects(long userId) {
-        Messenger messenger = new Messenger(ProjectDataSource.class.getName());
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        messenger.error("user id " + userId);
-
+        List<ProjectStructure> projects = null;
         try {
-            List<ProjectStructure> projects = new ArrayList<ProjectStructure>();
+            projects = new ArrayList<ProjectStructure>();
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, ("user_id = " + userId), null, null, null, null);
             cursor.moveToFirst();
@@ -71,10 +69,10 @@ public class ProjectDataSource {
                 cursor.moveToNext();
             }
             cursor.close();
-            return projects;
         } finally {
             database.close();
         }
+        return projects;
     }
 
     public ProjectStructure getNAProject() {

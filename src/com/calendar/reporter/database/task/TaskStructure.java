@@ -1,9 +1,10 @@
 package com.calendar.reporter.database.task;
 
 import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 public class TaskStructure {
-    public static final String DATE_FORMAT = "yyyy-MM-dd hh:mm:ss";
+    public static final String DATE_FORMAT = "yyyy-MM-dd";
     public static final String TABLE_NAME = "tasks";
     public static final String COLUMN_ID = "_id";
     public static final String COLUMN_NAME = "name";
@@ -76,5 +77,12 @@ public class TaskStructure {
 
     public void setActivityID(long activityID) {
         this.activityID = activityID;
+    }
+    @Override
+    public String toString(){
+        SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
+        String dateNow = formatter.format(date.getTime());
+
+        return name + "/" + dateNow;
     }
 }

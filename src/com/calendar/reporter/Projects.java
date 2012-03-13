@@ -7,15 +7,11 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.Spinner;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
-import com.calendar.reporter.helper.Messenger;
-
 import java.util.List;
 
 public class Projects extends ListActivity {
-    private ProjectDataSource dataSource;
     private static final int PROJECT = 0;
     private static final int TASKS = 0;
 
@@ -24,16 +20,14 @@ public class Projects extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.projects);
 
-        dataSource = new ProjectDataSource(Projects.this);
+        ProjectDataSource dataSource = new ProjectDataSource(Projects.this);
         Bundle bundle = getIntent().getExtras();
         final long userId = bundle.getLong("session");
-
 
         Button projectButton = (Button) findViewById(R.id.createProject);
         Button taskButton = (Button) findViewById(R.id.createTask);
 
         List<ProjectStructure> values = dataSource.getAllProjects(userId);
-
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {

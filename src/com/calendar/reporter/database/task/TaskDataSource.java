@@ -5,11 +5,14 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.calendar.reporter.database.DataBaseHelper;
+import com.calendar.reporter.database.project.ProjectStructure;
 
 import java.sql.Date;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 
 public class TaskDataSource {
@@ -76,4 +79,23 @@ public class TaskDataSource {
         }
     }
 
+    public List<TaskStructure> getAllTasks(long projectId) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        List<TaskStructure> projects = null;
+        try {
+            projects = new ArrayList<TaskStructure>();
+            Cursor cursor = database.query(TaskStructure.TABLE_NAME,
+                    allColumns, ("project_id = " + projectId), null, null, null, null);
+            cursor.moveToFirst();
+            while (!cursor.isAfterLast()) {
+                TaskStructure task = cursorToTask(cursor);
+                projects.add(task);
+                cursor.moveToNext();
+            }
+            cursor.close();
+        } finally {
+            database.close();
+        }
+        return projects;
+    }
 }
