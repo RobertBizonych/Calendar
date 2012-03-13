@@ -7,7 +7,7 @@ import com.calendar.reporter.helper.Messenger;
 
 public class DataBaseHelper extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "reporter.db" ;
-    private static final int DATABASE_VERSION = 4;
+    private static final int DATABASE_VERSION = 5;
 
     private Messenger messenger;
 
