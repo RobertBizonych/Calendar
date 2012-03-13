@@ -14,4 +14,6 @@
     <string name="activityPrompt">Choose an activity</string>
     <string name="confirmPassword">Confirm Password</string>
     <string name="enterPassword">Enter Password</string>
+    <string name="back">⇐</string>
+    <string name="next">⇒</string>
 </resources>
