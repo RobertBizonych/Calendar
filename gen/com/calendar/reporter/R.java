@@ -11,10 +11,13 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
+        public static final int activityList=0x7f04000c;
         public static final int confirm=0x7f04000a;
         public static final int createProject=0x7f040006;
         public static final int createTask=0x7f040007;
+        public static final int hourPicker=0x7f04000d;
         public static final int loginButton=0x7f040002;
+        public static final int minutePicker=0x7f04000e;
         public static final int name=0x7f040008;
         public static final int pass=0x7f040009;
         public static final int passwordField=0x7f040001;
@@ -29,6 +32,7 @@ public final class R {
         public static final int project=0x7f020001;
         public static final int projects=0x7f020002;
         public static final int register=0x7f020003;
+        public static final int task=0x7f020004;
     }
     public static final class string {
         public static final int activities=0x7f03000a;
