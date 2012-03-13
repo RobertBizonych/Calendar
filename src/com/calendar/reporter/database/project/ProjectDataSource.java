@@ -75,6 +75,15 @@ public class ProjectDataSource {
         return projects;
     }
 
+    public void deleteProject(long id) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        try {
+            database.delete(ProjectStructure.TABLE_NAME, ProjectStructure.COLUMN_ID + " = " + id, null);
+        } finally {
+            database.close();
+        }
+    }
+
     public ProjectStructure getNAProject() {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
@@ -84,9 +93,36 @@ public class ProjectDataSource {
             ProjectStructure project = cursorToProject(cursor);
             cursor.close();
             return project;
-        }
-        finally {
+        } finally {
             database.close();
         }
+    }
+
+    public ProjectStructure getProject(long projectId) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try {
+            Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
+                    allColumns, ("_id = " + projectId), null, null, null, null);
+            cursor.moveToFirst();
+            ProjectStructure project = cursorToProject(cursor);
+            cursor.close();
+            return project;
+        } finally {
+            database.close();
+        }
+    }
+
+    public int updateProject(String nameProject, String descriptionProject, long projectId) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(ProjectStructure.COLUMN_NAME, nameProject);
+            values.put(ProjectStructure.COLUMN_DESCRIPTION, descriptionProject);
+            String whereClause = ("_id = " + projectId);
+            return database.update(ProjectStructure.TABLE_NAME, values, whereClause, null);
+        } finally {
+            database.close();
+        }
+
     }
 }

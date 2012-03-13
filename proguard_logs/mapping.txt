@@ -1,0 +1,210 @@
+com.calendar.reporter.Login -> com.calendar.reporter.Login:
+    void onCreate(android.os.Bundle) -> onCreate
+com.calendar.reporter.Login$1 -> com.calendar.reporter.i:
+    com.calendar.reporter.Login this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Login$2 -> com.calendar.reporter.j:
+    android.widget.EditText val$userName -> a
+    android.widget.EditText val$userPassword -> b
+    com.calendar.reporter.helper.Messenger val$messenger -> c
+    com.calendar.reporter.Login this$0 -> d
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Project -> com.calendar.reporter.Project:
+    com.calendar.reporter.database.project.ProjectDataSource dataSource -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    com.calendar.reporter.database.project.ProjectDataSource access$000(com.calendar.reporter.Project) -> a
+com.calendar.reporter.Project$1 -> com.calendar.reporter.d:
+    android.widget.EditText val$projectName -> a
+    android.widget.EditText val$projectDescription -> b
+    long val$userId -> c
+    com.calendar.reporter.helper.Messenger val$messenger -> d
+    com.calendar.reporter.Project this$0 -> e
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Projects -> com.calendar.reporter.Projects:
+    com.calendar.reporter.database.project.ProjectDataSource dataSource -> a
+    android.content.Context context -> b
+    java.lang.String selectedItem -> c
+    android.widget.ArrayAdapter adapter -> d
+    void onCreate(android.os.Bundle) -> onCreate
+    java.lang.String access$002(com.calendar.reporter.Projects,java.lang.String) -> a
+    android.content.Context access$100(com.calendar.reporter.Projects) -> a
+    java.lang.String access$000(com.calendar.reporter.Projects) -> b
+    android.widget.ArrayAdapter access$200(com.calendar.reporter.Projects) -> c
+com.calendar.reporter.Projects$1 -> com.calendar.reporter.e:
+    com.calendar.reporter.Projects this$0 -> a
+    void onItemClick(android.widget.AdapterView,android.view.View,int,long) -> onItemClick
+com.calendar.reporter.Projects$2 -> com.calendar.reporter.f:
+    com.calendar.reporter.Projects this$0 -> a
+    boolean onItemLongClick(android.widget.AdapterView,android.view.View,int,long) -> onItemLongClick
+com.calendar.reporter.Projects$2$1 -> com.calendar.reporter.g:
+    com.calendar.reporter.database.project.ProjectStructure val$project -> a
+    com.calendar.reporter.Projects$2 this$1 -> b
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.calendar.reporter.Projects$2$2 -> com.calendar.reporter.h:
+    com.calendar.reporter.Projects$2 this$1 -> a
+    void onClick(android.content.DialogInterface,int) -> onClick
+com.calendar.reporter.Projects$3 -> com.calendar.reporter.b:
+    long val$userId -> a
+    com.calendar.reporter.Projects this$0 -> b
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Projects$4 -> com.calendar.reporter.c:
+    long val$userId -> a
+    com.calendar.reporter.Projects this$0 -> b
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Register -> com.calendar.reporter.Register:
+    com.calendar.reporter.database.user.UserDataSource dataSource -> a
+    void onCreate(android.os.Bundle) -> onCreate
+    com.calendar.reporter.database.user.UserDataSource access$000(com.calendar.reporter.Register) -> a
+com.calendar.reporter.Register$1 -> com.calendar.reporter.a:
+    com.calendar.reporter.helper.Messenger val$messenger -> a
+    com.calendar.reporter.Register this$0 -> b
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Task -> com.calendar.reporter.Task:
+    com.calendar.reporter.database.activity.ActivityStructure activity -> a
+    int PROJECTS -> b
+    void onCreate(android.os.Bundle) -> onCreate
+    com.calendar.reporter.database.activity.ActivityStructure access$002(com.calendar.reporter.Task,com.calendar.reporter.database.activity.ActivityStructure) -> a
+    com.calendar.reporter.database.activity.ActivityStructure access$000(com.calendar.reporter.Task) -> a
+com.calendar.reporter.Task$1 -> com.calendar.reporter.k:
+    com.calendar.reporter.Task this$0 -> a
+    void onItemSelected(android.widget.AdapterView,android.view.View,int,long) -> onItemSelected
+    void onNothingSelected(android.widget.AdapterView) -> onNothingSelected
+com.calendar.reporter.Task$2 -> com.calendar.reporter.l:
+    android.widget.EditText val$projectName -> a
+    android.widget.EditText val$projectDescription -> b
+    com.calendar.reporter.helper.HourPicker val$hourPicker -> c
+    com.calendar.reporter.helper.MinutePicker val$minutePicker -> d
+    com.calendar.reporter.database.task.TaskDataSource val$dataSource -> e
+    long val$projectId -> f
+    com.calendar.reporter.helper.Messenger val$messenger -> g
+    long val$userId -> h
+    com.calendar.reporter.Task this$0 -> i
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Tasks -> com.calendar.reporter.Tasks:
+    void onCreate(android.os.Bundle) -> onCreate
+com.calendar.reporter.database.DataBaseHelper -> com.calendar.reporter.a.a:
+    com.calendar.reporter.helper.Messenger messenger -> a
+    void onCreate(android.database.sqlite.SQLiteDatabase) -> onCreate
+    void onUpgrade(android.database.sqlite.SQLiteDatabase,int,int) -> onUpgrade
+com.calendar.reporter.database.activity.ActivityDataSource -> com.calendar.reporter.a.c.b:
+    com.calendar.reporter.database.DataBaseHelper dbHelper -> a
+    java.lang.String[] allColumns -> b
+    java.util.List getAllActivities() -> a
+com.calendar.reporter.database.activity.ActivityStructure -> com.calendar.reporter.a.c.a:
+    long id -> a
+    java.lang.String name -> b
+    void setName(java.lang.String) -> a
+    long getId() -> a
+    void setId(long) -> a
+    java.lang.String toString() -> toString
+com.calendar.reporter.database.project.ProjectDataSource -> com.calendar.reporter.a.b.b:
+    com.calendar.reporter.database.DataBaseHelper dbHelper -> a
+    java.lang.String[] allColumns -> b
+    com.calendar.reporter.database.project.ProjectStructure createProject(java.lang.String,java.lang.String,long) -> a
+    com.calendar.reporter.database.project.ProjectStructure cursorToProject(android.database.Cursor) -> a
+    java.util.List getAllProjects(long) -> a
+    com.calendar.reporter.database.project.ProjectStructure getNAProject() -> a
+com.calendar.reporter.database.project.ProjectStructure -> com.calendar.reporter.a.b.a:
+    long id -> a
+    long userId -> b
+    java.lang.String name -> c
+    java.lang.String description -> d
+    long getId() -> a
+    void setId(long) -> a
+    java.lang.String getName() -> b
+    void setName(java.lang.String) -> a
+    void setDescription(java.lang.String) -> b
+    void setUserId(long) -> b
+    long getUserId() -> c
+    java.lang.String toString() -> toString
+com.calendar.reporter.database.task.TaskDataSource -> com.calendar.reporter.a.d.b:
+    com.calendar.reporter.database.DataBaseHelper dbHelper -> a
+    java.lang.String[] allColumns -> b
+    com.calendar.reporter.database.task.TaskStructure createTask(java.lang.String,java.lang.String,java.lang.String,int,long,long) -> a
+    java.sql.Date StringToDate(java.lang.String) -> a
+com.calendar.reporter.database.task.TaskStructure -> com.calendar.reporter.a.d.a:
+    long id -> a
+    java.lang.String name -> b
+    java.lang.String description -> c
+    int time -> d
+    java.sql.Date date -> e
+    long projectID -> f
+    long activityID -> g
+    void setId(long) -> a
+    java.lang.String getName() -> a
+    void setName(java.lang.String) -> a
+    void setDescription(java.lang.String) -> b
+    void setTime(int) -> a
+    void setDate(java.sql.Date) -> a
+    void setProjectID(long) -> b
+    void setActivityID(long) -> c
+com.calendar.reporter.database.user.UserDataSource -> com.calendar.reporter.a.a.b:
+    com.calendar.reporter.database.DataBaseHelper dbHelper -> a
+    java.lang.String[] allColumns -> b
+    com.calendar.reporter.database.user.UserStructure createUser(java.lang.String,java.lang.String,java.lang.String) -> a
+    com.calendar.reporter.database.user.UserStructure cursorToUser(android.database.Cursor) -> a
+    com.calendar.reporter.database.user.UserStructure Login(java.lang.String,java.lang.String) -> a
+com.calendar.reporter.database.user.UserStructure -> com.calendar.reporter.a.a.a:
+    long id -> a
+    java.lang.String nickname -> b
+    java.lang.String password -> c
+    long getId() -> a
+    void setId(long) -> a
+    java.lang.String getNickname() -> b
+    void setNickname(java.lang.String) -> a
+    void setPassword(java.lang.String) -> b
+    java.lang.String toString() -> toString
+com.calendar.reporter.helper.HourPicker -> com.calendar.reporter.helper.HourPicker:
+com.calendar.reporter.helper.Messenger -> com.calendar.reporter.helper.c:
+    android.app.Activity activity -> a
+    java.lang.String className -> b
+    void alert(java.lang.String) -> a
+    void debug(java.lang.String) -> b
+com.calendar.reporter.helper.MinutePicker -> com.calendar.reporter.helper.MinutePicker:
+com.calendar.reporter.helper.NumberPicker -> com.calendar.reporter.helper.NumberPicker:
+    long REPEAT_DELAY -> b
+    int ELEMENT_HEIGHT -> c
+    int ELEMENT_WIDTH -> d
+    int minimum -> e
+    int maximum -> f
+    java.lang.Integer value -> a
+    android.widget.Button decrement -> g
+    android.widget.Button increment -> h
+    android.widget.EditText valueText -> i
+    android.os.Handler repeatUpdateHandler -> j
+    boolean autoIncrement -> k
+    boolean autoDecrement -> l
+    void increment() -> a
+    void decrement() -> b
+    boolean access$000(com.calendar.reporter.helper.NumberPicker) -> a
+    android.os.Handler access$100(com.calendar.reporter.helper.NumberPicker) -> b
+    boolean access$200(com.calendar.reporter.helper.NumberPicker) -> c
+    boolean access$002(com.calendar.reporter.helper.NumberPicker,boolean) -> a
+    boolean access$202(com.calendar.reporter.helper.NumberPicker,boolean) -> b
+com.calendar.reporter.helper.NumberPicker$1 -> com.calendar.reporter.helper.h:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.helper.NumberPicker$2 -> com.calendar.reporter.helper.i:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    boolean onLongClick(android.view.View) -> onLongClick
+com.calendar.reporter.helper.NumberPicker$3 -> com.calendar.reporter.helper.d:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+com.calendar.reporter.helper.NumberPicker$4 -> com.calendar.reporter.helper.e:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    boolean onKey(android.view.View,int,android.view.KeyEvent) -> onKey
+com.calendar.reporter.helper.NumberPicker$5 -> com.calendar.reporter.helper.f:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    void onFocusChange(android.view.View,boolean) -> onFocusChange
+com.calendar.reporter.helper.NumberPicker$6 -> com.calendar.reporter.helper.g:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.helper.NumberPicker$7 -> com.calendar.reporter.helper.b:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    boolean onLongClick(android.view.View) -> onLongClick
+com.calendar.reporter.helper.NumberPicker$8 -> com.calendar.reporter.helper.a:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    boolean onTouch(android.view.View,android.view.MotionEvent) -> onTouch
+com.calendar.reporter.helper.NumberPicker$RepetetiveUpdater -> com.calendar.reporter.helper.j:
+    com.calendar.reporter.helper.NumberPicker this$0 -> a
+    void run() -> run
