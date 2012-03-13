@@ -14,9 +14,6 @@ public class Project extends Activity {
     private ProjectDataSource dataSource;
     private static final int PROJECTS = 0;
 
-    public Project() {
-    }
-
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.project);
