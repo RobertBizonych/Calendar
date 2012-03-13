@@ -1,4 +1,15 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Calendar</string>
+    <string name="app_name">Reporter</string>
+    <string name="register">Register</string>
+    <string name="login">Login</string>
+    <string name="username">Username</string>
+    <string name="description">Password</string>
+    <string name="createProject">Create Project</string>
+    <string name="createTask">Create Task</string>
+    <string name="projectName">Project name</string>
+    <string name="projectDescription">Project description</string>
+    <string name="time">Time</string>
+    <string name="activities">Activities</string>
+    <string name="activityPrompt">Choose an activity</string>
 </resources>
