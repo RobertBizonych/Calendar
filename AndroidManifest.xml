@@ -16,5 +16,7 @@
         <activity android:name=".Task"/>
         <activity android:name=".Register"/>
         <activity android:name=".Tasks"/>
+        <activity android:name=".Tabs"/>
+        <activity android:name=".TasksGeneral"/>
     </application>
 </manifest> 

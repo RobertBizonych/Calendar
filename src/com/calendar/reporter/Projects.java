@@ -5,6 +5,7 @@ import android.app.ListActivity;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.*;
@@ -14,7 +15,7 @@ import java.util.List;
 
 public class Projects extends ListActivity {
     private static final int PROJECT = 0;
-    private static final int TASKS = 0;
+    private static final int TABS = 0;
     private final Context context = this;
     private String selectedItem;
     private ArrayAdapter<ProjectStructure> adapter;
@@ -32,9 +33,15 @@ public class Projects extends ListActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
-                Intent cross = new Intent(view.getContext(), Tasks.class);
+                Intent cross = new Intent(view.getContext(), Tabs.class);
                 cross.putExtra("projectId", project.getId());
-                startActivityForResult(cross, TASKS);
+                cross.putExtra("session", userId);
+
+                SharedPreferences settings = getSharedPreferences(Login.PREFS_NAME, 0);
+                SharedPreferences.Editor editor = settings.edit();
+                editor.putLong("projectId", project.getId());
+                editor.commit();
+                startActivityForResult(cross, TABS);
             }
         };
         AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {

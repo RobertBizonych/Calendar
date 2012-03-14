@@ -30,13 +30,14 @@ public final class R {
         public static final int usernameField=0x7f040000;
     }
     public static final class layout {
-        public static final int login=0x7f020000;
-        public static final int main=0x7f020001;
+        public static final int general=0x7f020000;
+        public static final int login=0x7f020001;
         public static final int project=0x7f020002;
         public static final int projects=0x7f020003;
         public static final int register=0x7f020004;
-        public static final int task=0x7f020005;
-        public static final int tasks=0x7f020006;
+        public static final int tabs=0x7f020005;
+        public static final int task=0x7f020006;
+        public static final int tasks=0x7f020007;
     }
     public static final class string {
         public static final int activities=0x7f03000a;
