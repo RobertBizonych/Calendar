@@ -8,7 +8,6 @@ import android.widget.*;
 import com.calendar.reporter.database.activity.ActivityDataSource;
 import com.calendar.reporter.database.activity.ActivityStructure;
 import com.calendar.reporter.database.project.ProjectDataSource;
-import com.calendar.reporter.database.project.ProjectStructure;
 import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
 import com.calendar.reporter.helper.HourPicker;
@@ -22,6 +21,7 @@ import java.util.List;
 public class Task extends Activity {
     private ActivityStructure activity;
     private final int PROJECTS = 0;
+    private static final int TASKS = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,53 +36,91 @@ public class Task extends Activity {
         ArrayAdapter<ActivityStructure> adapter = activityListAdapter();
 
         activityList.setAdapter(adapter);
-        activityList.setOnItemSelectedListener(
-                new AdapterView.OnItemSelectedListener() {
-                    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                        ActivityStructure act = (ActivityStructure) parent.getItemAtPosition(position);
-                        activity = act;
-                    }
+        activityList.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                ActivityStructure act = (ActivityStructure) parent.getItemAtPosition(position);
+                activity = act;
+            }
 
-                    public void onNothingSelected(AdapterView<?> parent) {
-                    }
-                }
+            public void onNothingSelected(AdapterView<?> parent) {
+            }
+        }
         );
 
-        final EditText projectName = (EditText) findViewById(R.id.projectName);
-        final EditText projectDescription = (EditText) findViewById(R.id.projectDescription);
+        final EditText taskName = (EditText) findViewById(R.id.taskName);
+        final EditText taskDescription = (EditText) findViewById(R.id.taskDescription);
         final HourPicker hourPicker = (HourPicker) findViewById(R.id.hourPicker);
         final MinutePicker minutePicker = (MinutePicker) findViewById(R.id.minutePicker);
         final Messenger messenger = new Messenger(this);
-
+        final String type = bundle.getString("type");
+        final long taskId = bundle.getLong("taskId");
         Button createTask = (Button) findViewById(R.id.createTask);
-        createTask.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String nameProject = projectName.getText().toString();
-                String descriptionProject = projectDescription.getText().toString();
 
-                int pickHour = hourPicker.getValue();
-                int pickMinute = minutePicker.getValue();
-                int time = pickHour * 60 + pickMinute;
+        if (type != null && type.equals("edit")) {
+            createTask.setText("Update");
+            final TaskStructure task = dataSource.getTask(taskId);
+            taskName.setText(task.getName());
+            taskDescription.setText(task.getDescription());
+            createTask.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String nameTask = taskName.getText().toString();
+                    String descriptionTask = taskDescription.getText().toString();
 
-                Calendar currentDate = Calendar.getInstance();
-                SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
-                String dateNow = formatter.format(currentDate.getTime());
+                    int pickHour = hourPicker.getValue();
+                    int pickMinute = minutePicker.getValue();
+                    int time = pickHour * 60 + pickMinute;
 
-                if (!nameProject.equals("") && !descriptionProject.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
+                    Calendar currentDate = Calendar.getInstance();
+                    SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
+                    String dateNow = formatter.format(currentDate.getTime());
 
-                    TaskStructure task = dataSource.createTask(nameProject, descriptionProject, dateNow, time, activity.getId(), projectId);
-                    if (task != null) {
-                        messenger.alert("Task was created " + task.getName());
-                        Intent cross = new Intent(view.getContext(), Projects.class);
-                        cross.putExtra("session",userId);
-                        startActivityForResult(cross, PROJECTS);
-                    } else {
-                        messenger.alert("Failed!");
+                    if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
+                        int status = dataSource.updateTask(nameTask, descriptionTask, taskId);
+                        if (status == 1) {
+                            messenger.alert("Task " + task.getName() + " was updated");
+                            crossTask(view, userId, projectId);
+                        } else {
+                            messenger.alert("Failed to update!");
+                        }
+
                     }
                 }
-            }
-        });
+            });
+        } else {
+            createTask.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    String nameTask = taskName.getText().toString();
+                    String descriptionTask = taskDescription.getText().toString();
+
+                    int pickHour = hourPicker.getValue();
+                    int pickMinute = minutePicker.getValue();
+                    int time = pickHour * 60 + pickMinute;
+
+                    Calendar currentDate = Calendar.getInstance();
+                    SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
+                    String dateNow = formatter.format(currentDate.getTime());
+
+                    if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
+                        TaskStructure task = dataSource.createTask(nameTask, descriptionTask, dateNow, time, activity.getId(), projectId);
+                        if (task != null) {
+                            messenger.alert("Task " + task.getName() + " is successfully created");
+                            crossTask(view, userId, projectId);
+                        } else {
+                            messenger.alert("Failed to create task!");
+                        }
+                    }
+                }
+            });
+        }
+    }
+
+    private void crossTask(View view, long userId, long projectId) {
+        Intent cross = new Intent(view.getContext(), Tasks.class);
+        cross.putExtra("session", userId);
+        cross.putExtra("projectId", projectId);
+        startActivityForResult(cross, TASKS);
     }
 
     private ArrayAdapter<ActivityStructure> activityListAdapter() {

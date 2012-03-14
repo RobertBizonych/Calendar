@@ -6,17 +6,15 @@ com.calendar.reporter.Project:
 com.calendar.reporter.Projects:
     private static final int PROJECT
     private static final int TASKS
+    private java.lang.String selectedItem
 com.calendar.reporter.R
-com.calendar.reporter.R$array
 com.calendar.reporter.R$attr
 com.calendar.reporter.R$id
 com.calendar.reporter.R$layout
 com.calendar.reporter.R$string
 com.calendar.reporter.Register:
+    private com.calendar.reporter.database.user.UserDataSource dataSource
     private static final int LOGIN
-com.calendar.reporter.Task:
-    private long activityId
-    private long projectId
 com.calendar.reporter.database.DataBaseHelper:
     private static final java.lang.String DATABASE_NAME
     private static final int DATABASE_VERSION
@@ -31,7 +29,6 @@ com.calendar.reporter.database.project.ProjectStructure:
     public static final java.lang.String COLUMN_NAME
     public static final java.lang.String COLUMN_DESCRIPTION
     public static final java.lang.String USER_ID
-    36:36:public java.lang.String getDescription()
 com.calendar.reporter.database.task.TaskStructure:
     public static final java.lang.String DATE_FORMAT
     public static final java.lang.String TABLE_NAME
@@ -42,12 +39,12 @@ com.calendar.reporter.database.task.TaskStructure:
     public static final java.lang.String COLUMN_DATE
     public static final java.lang.String PROJECT_ID
     public static final java.lang.String ACTIVITY_ID
-    26:26:public long getId()
-    42:42:public java.lang.String getDescription()
-    50:50:public int getTime()
-    58:58:public java.sql.Date getDate()
-    66:66:public long getProjectID()
-    74:74:public long getActivityID()
+    27:27:public long getId()
+    43:43:public java.lang.String getDescription()
+    51:51:public int getTime()
+    59:59:public java.sql.Date getDate()
+    67:67:public long getProjectID()
+    75:75:public long getActivityID()
 com.calendar.reporter.database.user.UserStructure:
     public static final java.lang.String TABLE_NAME
     public static final java.lang.String COLUMN_ID
