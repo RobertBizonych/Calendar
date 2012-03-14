@@ -14,9 +14,6 @@ public class Tabs extends TabActivity {
         TabHost tabHost = getTabHost();
         TabHost.TabSpec spec;
         Intent intent;
-        Bundle bundle = getIntent().getExtras();
-        long userId = bundle.getLong("session");
-        long projectId = bundle.getLong("projectId");
 
         intent = new Intent().setClass(this, Tasks.class);
 

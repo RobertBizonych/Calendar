@@ -10,11 +10,11 @@ import android.widget.EditText;
 import com.calendar.reporter.database.user.UserDataSource;
 import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;
+import com.calendar.reporter.helper.Session;
 
 public class Login extends Activity {
     static final private int REGISTER = 0;
     static final private int PROJECT = 0;
-    public static final String PREFS_NAME = "MyPrefsFile";
     /**
      * Called when the activity is first created.
      */
@@ -50,10 +50,10 @@ public class Login extends Activity {
                         } else {
                             messenger.alert("Successfully Logged In  " + user.getNickname());
 
-                            SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-                            SharedPreferences.Editor editor = settings.edit();
-                            editor.putLong("session", user.getId());
-                            editor.commit();
+                            SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+                            Session session = new Session(settings);
+                            session.setUserId(user.getId());
+
 
                             Intent intent = new Intent(v.getContext(), Projects.class);
                             intent.putExtra("session", user.getId());

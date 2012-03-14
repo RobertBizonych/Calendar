@@ -2,7 +2,9 @@ package com.calendar.reporter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.activity.ActivityDataSource;
@@ -13,6 +15,8 @@ import com.calendar.reporter.database.task.TaskStructure;
 import com.calendar.reporter.helper.HourPicker;
 import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.MinutePicker;
+import com.calendar.reporter.helper.Session;
+import org.apache.http.impl.client.RoutedRequest;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,8 +33,8 @@ public class Task extends Activity {
         final TaskDataSource dataSource = new TaskDataSource(this);
 
         Bundle bundle = getIntent().getExtras();
-        final long userId = bundle.getLong("session");
-        final long projectId = getProjectID(bundle);
+        SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+        final Session session = new Session(settings);
 
         final Spinner activityList = (Spinner) findViewById(R.id.activityList);
         ArrayAdapter<ActivityStructure> adapter = activityListAdapter();
@@ -53,14 +57,19 @@ public class Task extends Activity {
         final MinutePicker minutePicker = (MinutePicker) findViewById(R.id.minutePicker);
         final Messenger messenger = new Messenger(this);
         final String type = bundle.getString("type");
-        final long taskId = bundle.getLong("taskId");
         Button createTask = (Button) findViewById(R.id.createTask);
 
         if (type != null && type.equals("edit")) {
             createTask.setText("Update");
+            final long taskId = bundle.getLong("taskId");
             final TaskStructure task = dataSource.getTask(taskId);
+
             taskName.setText(task.getName());
             taskDescription.setText(task.getDescription());
+            int time = task.getTime();
+
+            hourPicker.setValue(time / 60);
+            minutePicker.setValue(time % 60);
             createTask.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -71,15 +80,12 @@ public class Task extends Activity {
                     int pickMinute = minutePicker.getValue();
                     int time = pickHour * 60 + pickMinute;
 
-                    Calendar currentDate = Calendar.getInstance();
-                    SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
-                    String dateNow = formatter.format(currentDate.getTime());
-
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        int status = dataSource.updateTask(nameTask, descriptionTask, taskId);
+                        int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
                         if (status == 1) {
                             messenger.alert("Task " + task.getName() + " was updated");
-                            crossTask(view, userId, projectId);
+                            Intent cross = new Intent(view.getContext(), Tasks.class);
+                            startActivityForResult(cross, TASKS);
                         } else {
                             messenger.alert("Failed to update!");
                         }
@@ -103,10 +109,12 @@ public class Task extends Activity {
                     String dateNow = formatter.format(currentDate.getTime());
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        TaskStructure task = dataSource.createTask(nameTask, descriptionTask, dateNow, time, activity.getId(), projectId);
+                        TaskStructure task = dataSource.createTask(nameTask, descriptionTask, dateNow, time, 
+                                activity.getId(), session.getProjectId());
                         if (task != null) {
                             messenger.alert("Task " + task.getName() + " is successfully created");
-                            crossTask(view, userId, projectId);
+                            Intent cross = new Intent(view.getContext(), Tasks.class);
+                            startActivityForResult(cross, TASKS);
                         } else {
                             messenger.alert("Failed to create task!");
                         }
@@ -116,12 +124,7 @@ public class Task extends Activity {
         }
     }
 
-    private void crossTask(View view, long userId, long projectId) {
-        Intent cross = new Intent(view.getContext(), Tasks.class);
-        cross.putExtra("session", userId);
-        cross.putExtra("projectId", projectId);
-        startActivityForResult(cross, TASKS);
-    }
+
 
     private ArrayAdapter<ActivityStructure> activityListAdapter() {
         ActivityDataSource activityDataSource = new ActivityDataSource(this);
@@ -132,12 +135,13 @@ public class Task extends Activity {
         return adapter;
     }
 
-    private long getProjectID(Bundle bundle) {
-        long pId = bundle.getLong("projectId");
-        long userId = bundle.getLong("session");
-        if (pId == 0) {
+    private long getProjectID() {
+        SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+        Session session = new Session(settings);
+        long pId = session.getProjectId();
+        if (session.getProjectId() == 0) {
             ProjectDataSource source = new ProjectDataSource(this);
-            pId = source.getNAProject(userId).getId();
+            pId = source.getNAProject(session.getUserId()).getId();
         }
         return pId;
     }

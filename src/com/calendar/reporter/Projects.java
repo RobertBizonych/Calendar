@@ -7,10 +7,13 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
+import com.calendar.reporter.helper.Session;
+
 import java.util.List;
 
 public class Projects extends ListActivity {
@@ -25,21 +28,20 @@ public class Projects extends ListActivity {
         setContentView(R.layout.projects);
 
         final ProjectDataSource dataSource = new ProjectDataSource(Projects.this);
-        Bundle bundle = getIntent().getExtras();
-        final long userId = bundle.getLong("session");
+        SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+        final Session session = new Session(settings);
 
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
-                Intent cross = new Intent(view.getContext(), Tabs.class);
-                cross.putExtra("projectId", project.getId());
-                cross.putExtra("session", userId);
 
-                SharedPreferences settings = getSharedPreferences(Login.PREFS_NAME, 0);
-                SharedPreferences.Editor editor = settings.edit();
-                editor.putLong("projectId", project.getId());
-                editor.commit();
+                SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+                final Session session = new Session(settings);
+                session.setProjectId(project.getId());
+                session.setUserId(session.getUserId());
+
+                Intent cross = new Intent(view.getContext(), Tabs.class);
                 startActivityForResult(cross, TABS);
             }
         };
@@ -59,8 +61,6 @@ public class Projects extends ListActivity {
                                 case 0:
                                     Intent cross = new Intent(view.getContext(), Project.class);
                                     cross.putExtra("type", "edit");
-                                    cross.putExtra("session", userId);
-                                    cross.putExtra("projectId", project.getId());
                                     startActivityForResult(cross, PROJECT);
                                     break;
                                 case 1:
@@ -95,7 +95,7 @@ public class Projects extends ListActivity {
         };
         Button projectButton = (Button) findViewById(R.id.createProject);
         Button taskButton = (Button) findViewById(R.id.createTask);
-        List<ProjectStructure> projects = dataSource.getAllProjects(userId);
+        List<ProjectStructure> projects = dataSource.getAllProjects(session.getUserId());
 
         adapter = new ArrayAdapter<ProjectStructure>(this, android.R.layout.simple_list_item_1, projects);
         setListAdapter(adapter);
@@ -106,7 +106,6 @@ public class Projects extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), Project.class);
-                cross.putExtra("session", userId);
                 startActivityForResult(cross, PROJECT);
             }
         });
@@ -114,9 +113,11 @@ public class Projects extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), Task.class);
-                cross.putExtra("session", userId);
+                cross.putExtra("type", "create");
                 startActivityForResult(cross, PROJECT);
             }
         });
+
     }
+
 }

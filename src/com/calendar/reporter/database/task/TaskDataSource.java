@@ -115,12 +115,13 @@ public class TaskDataSource {
         }
     }
 
-    public int updateTask(String nameTask, String descriptionTask, long taskId) {
+    public int updateTask(String nameTask, String descriptionTask, int time, long taskId) {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try {
             ContentValues values = new ContentValues();
             values.put(TaskStructure.COLUMN_NAME, nameTask);
             values.put(TaskStructure.COLUMN_DESCRIPTION,descriptionTask);
+            values.put(TaskStructure.COLUMN_TIME,time);
             String whereClause = ("_id = " + taskId);
             return database.update(TaskStructure.TABLE_NAME,values,whereClause,null);
         }
