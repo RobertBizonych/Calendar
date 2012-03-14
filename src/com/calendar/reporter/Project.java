@@ -46,9 +46,7 @@ public class Project extends Activity {
                         } else {
                             message = project.getName() + " is failed while update";
                         }
-                        Intent cross = new Intent(view.getContext(), Projects.class);
-                        cross.putExtra("session", userId);
-                        startActivityForResult(cross, PROJECTS);
+                        crossProject(view, userId);
                     } else {
                         message = "Fields can not be empty";
                     }
@@ -72,9 +70,7 @@ public class Project extends Activity {
                             message = "Failed while create";
                         }
 
-                        Intent cross = new Intent(view.getContext(), Projects.class);
-                        cross.putExtra("session", userId);
-                        startActivityForResult(cross, PROJECTS);
+                        crossProject(view, userId);
                     } else {
                         message = "Fields can not be empty";
                     }
@@ -83,6 +79,12 @@ public class Project extends Activity {
             });
 
         }
+    }
+
+    private void crossProject(View view, long userId) {
+        Intent cross = new Intent(view.getContext(), Projects.class);
+        cross.putExtra("session", userId);
+        startActivityForResult(cross, PROJECTS);
     }
 
 

@@ -11,22 +11,24 @@ public final class R {
     public static final class attr {
     }
     public static final class id {
-        public static final int activityList=0x7f04000c;
+        public static final int activityList=0x7f04000e;
         public static final int confirm=0x7f04000a;
         public static final int createProject=0x7f040006;
         public static final int createTask=0x7f040007;
-        public static final int futureMonth=0x7f040010;
-        public static final int hourPicker=0x7f04000d;
+        public static final int futureMonth=0x7f040012;
+        public static final int hourPicker=0x7f04000f;
         public static final int loginButton=0x7f040002;
-        public static final int minutePicker=0x7f04000e;
+        public static final int minutePicker=0x7f040010;
         public static final int name=0x7f040008;
         public static final int pass=0x7f040009;
         public static final int passwordField=0x7f040001;
-        public static final int pastMonth=0x7f04000f;
+        public static final int pastMonth=0x7f040011;
         public static final int projectDescription=0x7f040005;
         public static final int projectName=0x7f040004;
         public static final int registerButton=0x7f040003;
         public static final int rgr=0x7f04000b;
+        public static final int taskDescription=0x7f04000d;
+        public static final int taskName=0x7f04000c;
         public static final int usernameField=0x7f040000;
     }
     public static final class layout {
@@ -53,6 +55,8 @@ public final class R {
         public static final int projectDescription=0x7f030008;
         public static final int projectName=0x7f030007;
         public static final int register=0x7f030001;
+        public static final int taskDescription=0x7f030011;
+        public static final int taskName=0x7f030010;
         public static final int time=0x7f030009;
         public static final int username=0x7f030003;
     }

@@ -16,7 +16,6 @@ public class Projects extends ListActivity {
     private static final int PROJECT = 0;
     private static final int TASKS = 0;
     private final Context context = this;
-    private String selectedItem;
     private ArrayAdapter<ProjectStructure> adapter;
 
     @Override

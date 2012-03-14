@@ -16,4 +16,6 @@
     <string name="enterPassword">Enter Password</string>
     <string name="back">⇐</string>
     <string name="next">⇒</string>
+    <string name="taskName">Task name</string>
+    <string name="taskDescription">Task description</string>
 </resources>

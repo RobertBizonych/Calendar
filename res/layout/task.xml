@@ -18,24 +18,24 @@
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/projectName"
+                    android:text="@string/taskName"
                     android:textSize="25dp"/>
             <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:id="@+id/projectName"/>
+                    android:id="@+id/taskName"/>
             <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="center"
-                    android:text="@string/projectDescription"
+                    android:text="@string/taskDescription"
                     android:textSize="25dp"/>
             <EditText
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="top"
                     android:lines="5"
-                    android:id="@+id/projectDescription"
+                    android:id="@+id/taskDescription"
                     android:singleLine="false"/>
             <TextView
                     android:layout_width="fill_parent"

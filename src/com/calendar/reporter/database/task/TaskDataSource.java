@@ -98,4 +98,34 @@ public class TaskDataSource {
         }
         return projects;
     }
+
+
+
+    public TaskStructure getTask(long taskId) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try {
+            Cursor cursor = database.query(TaskStructure.TABLE_NAME,
+                    allColumns, ("_id = " + taskId), null, null, null, null);
+            cursor.moveToFirst();
+            TaskStructure task = cursorToTask(cursor);
+            cursor.close();
+            return task;
+        } finally {
+            database.close();
+        }
+    }
+
+    public int updateTask(String nameTask, String descriptionTask, long taskId) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try {
+            ContentValues values = new ContentValues();
+            values.put(TaskStructure.COLUMN_NAME, nameTask);
+            values.put(TaskStructure.COLUMN_DESCRIPTION,descriptionTask);
+            String whereClause = ("_id = " + taskId);
+            return database.update(TaskStructure.TABLE_NAME,values,whereClause,null);
+        }
+        finally {
+            database.close();
+        }
+    }
 }
