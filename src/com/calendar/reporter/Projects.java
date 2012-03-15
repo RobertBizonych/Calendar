@@ -24,6 +24,7 @@ public class Projects extends ListActivity {
     private static final int TABS = 0;
     private final Context context = this;
     private ArrayAdapter<ProjectStructure> adapter;
+    private static final int LOGIN = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -117,6 +118,7 @@ public class Projects extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), Project.class);
+                cross.putExtra("type","create");
                 startActivityForResult(cross, PROJECT);
             }
         });
@@ -130,5 +132,12 @@ public class Projects extends ListActivity {
         });
 
     }
-
+    public boolean onKeyDown(int keyCode, KeyEvent event){
+        if(keyCode == KeyEvent.KEYCODE_BACK){
+            Intent cross = new Intent(getApplicationContext(), Login.class);
+            startActivityForResult(cross, LOGIN);
+            return true;
+        }
+        return super.onKeyDown(keyCode, event);
+    }
 }

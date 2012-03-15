@@ -24,8 +24,7 @@ import java.util.List;
 
 public class Task extends Activity {
     private ActivityStructure activity;
-    private final int PROJECTS = 0;
-    private static final int TASKS = 0;
+    public static final int TABS = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -85,8 +84,8 @@ public class Task extends Activity {
                         int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
                         if (status == 1) {
                             messenger.alert("Task " + task.getName() + " was updated");
-                            Intent cross = new Intent(view.getContext(), Tasks.class);
-                            startActivityForResult(cross, TASKS);
+                            Intent cross = new Intent(view.getContext(), Tabs.class);
+                            startActivityForResult(cross, TABS);
                         } else {
                             messenger.alert("Failed to update!");
                         }
@@ -96,6 +95,8 @@ public class Task extends Activity {
             });
         } else {
             createTask.setOnClickListener(new View.OnClickListener() {
+                public static final int TABS = 0;
+
                 @Override
                 public void onClick(View view) {
                     String nameTask = taskName.getText().toString();
@@ -114,11 +115,14 @@ public class Task extends Activity {
                                 activity.getId(), session.getProjectId());
                         if (task != null) {
                             messenger.alert("Task " + task.getName() + " is successfully created");
-                            Intent cross = new Intent(view.getContext(), Tasks.class);
-                            startActivityForResult(cross, TASKS);
+                            Intent cross = new Intent(view.getContext(), Tabs.class);
+                            startActivityForResult(cross, TABS);
                         } else {
                             messenger.alert("Failed to create task!");
                         }
+                    }
+                    else {
+                        messenger.alert("Fields can not be empty!");
                     }
                 }
             });
