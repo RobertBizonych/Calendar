@@ -11,10 +11,12 @@ import java.util.Calendar;
 public class Session {
     private long projectId = 0;
     private long userId = 0;
+    private int tabID;
     private String date;
-    private String lowerDateText;
-    private String upperDateText;
     public static final String PREFS_NAME = "MyPrefsFile";
+    public static final int RELEVANT = 0;
+    public static final int GENERAL = 1;
+
     private SharedPreferences.Editor editor;
     private SharedPreferences settings;
     private String defaultDate;
@@ -47,24 +49,48 @@ public class Session {
         editor.commit();
     }
 
-    public void setDate(String date) {
-        editor.putString("date", date);
+    public void setDate(String date, int type) {
+        switch(type){
+            case 0:
+                editor.putString("relevantDate", date);
+                break;
+            case 1:
+                editor.putString("generalDate", date);
+                break;
+        }
         editor.commit();
     }
-    public String getDate(){
-        this.date = settings.getString("date", defaultDate);
+    public String getDate(int type){
+        switch(type){
+               case 0:
+                   this.date = settings.getString("relevantDate", defaultDate);
+                   break;
+               case 1:
+                   this.date = settings.getString("generalDate", defaultDate);
+                   break;
+        }
         return date;
     }
 
     public void resetDate() {
-        setDate(defaultDate);
-        Messenger messenger = new Messenger(Session.class.getName());
-        messenger.error("Date is " + defaultDate);
+        setDate(defaultDate, RELEVANT);
+        setDate(defaultDate, GENERAL);
     }
 
     public void reset(){
         setUserId(0);
         setProjectId(0);
+        setTabID(0);
         resetDate();
+    }
+
+    public int getTabID() {
+        this.tabID = settings.getInt("tabID", 0);
+        return tabID;
+    }
+
+    public void setTabID(int tabID) {
+        editor.putInt("tabID", tabID);
+        editor.commit();
     }
 }

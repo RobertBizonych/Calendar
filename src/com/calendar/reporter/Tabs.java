@@ -3,7 +3,6 @@ package com.calendar.reporter;
 import android.app.TabActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.TabHost;
@@ -26,11 +25,9 @@ public class Tabs extends TabActivity {
         spec = tabHost.newTabSpec("general").setIndicator("General",null).setContent(intent);
         tabHost.addTab(spec);
 
-        tabHost.setCurrentTab(0);
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
         Session session = new Session(settings);
-
-        Log.e("Tabs getDate", session.getDate());
+        tabHost.setCurrentTab(session.getTabID());
 
     }
 }

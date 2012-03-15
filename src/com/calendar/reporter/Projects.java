@@ -51,7 +51,8 @@ public class Projects extends ListActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
 
 
-                Intent cross = new Intent(view.getContext(), Tabs.class);
+                Intent cross = new Intent(view.getContext(
+), Tabs.class);
                 cross.putExtra("date",sdf.format(cal.getTime()));
                 startActivityForResult(cross, TABS);
             }
@@ -105,9 +106,7 @@ public class Projects extends ListActivity {
             }
         };
         Button projectButton = (Button) findViewById(R.id.createProject);
-        projectButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         Button taskButton = (Button) findViewById(R.id.createTask);
-        taskButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         List<ProjectStructure> projects = dataSource.getAllProjects(session.getUserId());
 
         adapter = new ArrayAdapter<ProjectStructure>(this, android.R.layout.simple_list_item_1, projects);

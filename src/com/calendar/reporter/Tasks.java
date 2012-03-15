@@ -6,7 +6,6 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.KeyEvent;
@@ -14,19 +13,17 @@ import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
+import com.calendar.reporter.helper.DateListing;
 import com.calendar.reporter.helper.LocalDate;
-import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.Session;
 
 import java.util.Calendar;
 import java.util.List;
 
 public class Tasks extends ListActivity {
-    private ArrayAdapter<TaskStructure> adapter;
     private static final int TASK = 0;
     private static final int PROJECTS = 0;
     private static final int TABS = 0;
-    private Session session;
     private final Context context = this;
 
     public void onCreate(Bundle savedInstanceState) {
@@ -34,23 +31,27 @@ public class Tasks extends ListActivity {
         setContentView(R.layout.tasks);
 
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
-        session = new Session(settings);
-        Log.e("Tasks getDate", session.getDate());
+        Session session = new Session(settings);
 
-        LocalDate localDate = new LocalDate(session.getDate());
+        LocalDate localDate = new LocalDate(session.getDate(Session.RELEVANT));
 
-
-        TextView lowerText = (TextView) findViewById(R.id.lowerText);
+        TextView lowerText = (TextView) findViewById(R.id.lowerTextRelevant);
         lowerText.setText(localDate.getDayName());
 
-        TextView upperText = (TextView) findViewById(R.id.upperText);
+        TextView upperText = (TextView) findViewById(R.id.upperTextRelevant);
         upperText.setText(localDate.getMonthName());
 
         final TaskDataSource dataSource = new TaskDataSource(this);
-        List<TaskStructure> tasks = dataSource.getAllTasks(session.getProjectId(), session.getDate());
+        List<TaskStructure> tasks = dataSource.getAllTasks(session.getProjectId(), session.getDate(Session.RELEVANT));
         final ArrayAdapter<TaskStructure> adapter = new ArrayAdapter<TaskStructure>(this,
                 android.R.layout.simple_list_item_1, tasks);
         setListAdapter(adapter);
+
+        DateListing dateListing = new DateListing(this, session, Session.RELEVANT);
+        dateListing.upperRightBehavior(R.id.upperRightRelevant);
+        dateListing.upperLeftBehavior(R.id.upperLeftRelevant);
+        dateListing.lowerRightBehavior(R.id.lowerRightRelevant);
+        dateListing.lowerLeftBehavior(R.id.lowerLeftRelevant);
 
         AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
@@ -105,11 +106,6 @@ public class Tasks extends ListActivity {
             }
         };
         getListView().setOnItemLongClickListener(onItemLongClickListener);
-
-        upperLeftBehavior();
-        upperRightBehavior();
-        lowerRightBehavior();
-        lowerLeftBehavior();
     }
 
     @Override
@@ -122,60 +118,5 @@ public class Tasks extends ListActivity {
         return super.onKeyDown(keyCode, event);
     }
 
-    private void lowerLeftBehavior() {
-        Button lowerLeftButton = (Button) findViewById(R.id.lowerLeft);
-        lowerLeftButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
-        lowerLeftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                incrementDay(view, -1, Calendar.DATE);
-            }
-        });
-    }
-
-    private void lowerRightBehavior() {
-        Button lowerRightButton = (Button) findViewById(R.id.lowerRight);
-        lowerRightButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
-        lowerRightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                incrementDay(view, 1, Calendar.DATE);
-            }
-        });
-    }
-
-    private void upperLeftBehavior() {
-        Button upperLeftButton = (Button) findViewById(R.id.upperLeft);
-        upperLeftButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
-        upperLeftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                incrementDay(view, -1, Calendar.MONTH);
-            }
-        });
-    }
-
-    private void upperRightBehavior() {
-        Button upperRightButton = (Button) findViewById(R.id.upperRight);
-        upperRightButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
-        upperRightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                incrementDay(view, 1, Calendar.MONTH);
-            }
-        });
-    }
-
-    private void incrementDay(View view, int step, int type) {
-        Messenger messenger = new Messenger(Tasks.class.getName());
-        LocalDate localDate = new LocalDate(session.getDate());
-        String date = localDate.increment(step, type);
-
-        session.setDate(date);
-        messenger.error("session.getDate() " + session.getDate());
-
-        Intent cross = new Intent(view.getContext(), Tabs.class);
-        startActivityForResult(cross, TABS);
-    }
 
 }

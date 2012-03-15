@@ -4,7 +4,7 @@
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:visibility="visible"
-        android:background="#ffffff">
+        >
     <LinearLayout
             xmlns:android="http://schemas.android.com/apk/res/android"
             android:layout_width="fill_parent"
@@ -16,7 +16,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/projectName"
-                android:textColor="#000000"
                 android:textSize="23dp"/>
 
         <EditText
@@ -28,7 +27,6 @@
                 android:layout_height="wrap_content"
                 android:gravity="center"
                 android:text="@string/projectDescription"
-                android:textColor="#000000"
                 android:textSize="23dp"/>
         <EditText
                 android:layout_width="fill_parent"
@@ -43,6 +41,6 @@
                 android:gravity="center"
                 android:text="@string/createProject"
                 android:id="@+id/createProject"
-                android:textColor="#ffffff"/>
+                android:textSize="23dp"/>
     </LinearLayout>
 </ScrollView>

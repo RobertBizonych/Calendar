@@ -31,8 +31,6 @@ public class Login extends Activity {
         
         Button registerButton = (Button) findViewById(R.id.registerButton);
         Button loginButton = (Button) findViewById(R.id.loginButton);
-        registerButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
-        loginButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
 
         final EditText userName = (EditText) findViewById(R.id.usernameField);
         final EditText userPassword = (EditText) findViewById(R.id.passwordField);
