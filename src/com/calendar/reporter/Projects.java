@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
@@ -26,7 +27,6 @@ public class Projects extends ListActivity {
     private static final int TABS = 0;
     private final Context context = this;
     private ArrayAdapter<ProjectStructure> adapter;
-    private static final int LOGIN = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -37,9 +37,6 @@ public class Projects extends ListActivity {
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
         final Session session = new Session(settings);
         session.resetDate();
-        LocalDate localDate = new LocalDate(session.getDate());
-        session.setLowerDateText(localDate.getDayName());
-        session.setUpperDateText(localDate.getMonthName());
 
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override

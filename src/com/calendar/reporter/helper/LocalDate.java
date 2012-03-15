@@ -1,5 +1,7 @@
 package com.calendar.reporter.helper;
 
+import android.util.Log;
+
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -8,34 +10,45 @@ import java.util.Calendar;
 public class LocalDate {
     private String currentDate;
     private Calendar calendar;
+    private SimpleDateFormat dateFormat;
 
-    public LocalDate(String currentDate){
+    public LocalDate(String currentDate) {
         this.currentDate = currentDate;
         this.calendar = Calendar.getInstance();
+        this.dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+        changeTime();
     }
 
-    public String increment(int step,int dateType) {
-        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-        calendar = Calendar.getInstance();
+    public String increment(int step, int dateType) {
+        calendar.add(dateType, step);
+        return this.toString();
+    }
+
+
+    public String getDayName() {
+        String dayNames[] = new DateFormatSymbols().getWeekdays();
+        int dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK);
+        int dayOfMonth = calendar.get(Calendar.DAY_OF_MONTH);
+        return dayNames[dayOfWeek] + " " + dayOfMonth;
+    }
+
+    public String getMonthName() {
+        String monthNames[] = new DateFormatSymbols().getMonths();
+        int month = calendar.get(Calendar.MONTH);
+        return monthNames[month];
+    }
+
+    private void changeTime() {
         try {
             calendar.setTime(dateFormat.parse(currentDate));
         } catch (ParseException e) {
             throw new Error("Error while parsing " + e.getMessage());
         }
-        calendar.add(dateType, step);
+    }
+
+    @Override
+    public String toString(){
         return dateFormat.format(calendar.getTime());
     }
-
-    public String getDayName(){
-        String dayNames[] = new DateFormatSymbols().getWeekdays();
-        int dayWeek = calendar.get(Calendar.DAY_OF_WEEK);
-        return  dayNames[dayWeek] + " " + dayWeek;
-    }
-    public String getMonthName(){
-        String monthNames[] = new DateFormatSymbols().getMonths();
-        int month = calendar.get(Calendar.MONTH);
-        return monthNames[(month-1)];
-    }
-
 
 }

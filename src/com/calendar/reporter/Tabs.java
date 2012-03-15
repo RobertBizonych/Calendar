@@ -5,7 +5,9 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Resources;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TabHost;
+import com.calendar.reporter.helper.Session;
 
 public class Tabs extends TabActivity {
     public void onCreate(Bundle savedInstanceState) {
@@ -25,5 +27,10 @@ public class Tabs extends TabActivity {
         tabHost.addTab(spec);
 
         tabHost.setCurrentTab(0);
+        SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+        Session session = new Session(settings);
+
+        Log.e("Tabs getDate", session.getDate());
+
     }
 }

@@ -22,7 +22,6 @@ public class Session {
     public Session(SharedPreferences settings){
         this.settings = settings;
         this.editor = settings.edit();
-
         Calendar cal = Calendar.getInstance();
         SimpleDateFormat sdf = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
         this.defaultDate = sdf.format(cal.getTime());
@@ -63,23 +62,9 @@ public class Session {
         messenger.error("Date is " + defaultDate);
     }
 
-    public String getLowerDateText() {
-        this.lowerDateText = settings.getString("lowerDate", "Date");
-        return lowerDateText;
-    }
-
-    public void setLowerDateText(String lowerDateText) {
-        editor.putString("lowerDate", lowerDateText);
-        editor.commit();
-    }
-
-    public String getUpperDateText() {
-        this.upperDateText = settings.getString("upperDate", "Date");
-        return upperDateText;
-    }
-
-    public void setUpperDateText(String upperDateText) {
-        editor.putString("upperDate", upperDateText);
-        editor.commit();
+    public void reset(){
+        setUserId(0);
+        setProjectId(0);
+        resetDate();
     }
 }

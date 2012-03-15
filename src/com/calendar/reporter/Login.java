@@ -25,11 +25,14 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
+        final Session session = new Session(settings);
+        session.reset();
+        
         Button registerButton = (Button) findViewById(R.id.registerButton);
         Button loginButton = (Button) findViewById(R.id.loginButton);
         registerButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         loginButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
-        //registerButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
 
         final EditText userName = (EditText) findViewById(R.id.usernameField);
         final EditText userPassword = (EditText) findViewById(R.id.passwordField);
@@ -55,10 +58,7 @@ public class Login extends Activity {
                         } else {
                             messenger.alert("Successfully Logged In  " + user.getNickname());
 
-                            SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
-                            Session session = new Session(settings);
                             session.setUserId(user.getId());
-
                             Intent intent = new Intent(v.getContext(), Projects.class);
                             intent.putExtra("session", user.getId());
                             startActivityForResult(intent, PROJECT);

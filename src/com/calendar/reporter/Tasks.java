@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.LightingColorFilter;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
@@ -34,30 +35,23 @@ public class Tasks extends ListActivity {
 
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
         session = new Session(settings);
+        Log.e("Tasks getDate", session.getDate());
+
+        LocalDate localDate = new LocalDate(session.getDate());
+
 
         TextView lowerText = (TextView) findViewById(R.id.lowerText);
-        lowerText.setText(session.getLowerDateText());
+        lowerText.setText(localDate.getDayName());
 
         TextView upperText = (TextView) findViewById(R.id.upperText);
-        upperText.setText(session.getUpperDateText());
+        upperText.setText(localDate.getMonthName());
 
         final TaskDataSource dataSource = new TaskDataSource(this);
         List<TaskStructure> tasks = dataSource.getAllTasks(session.getProjectId(), session.getDate());
         final ArrayAdapter<TaskStructure> adapter = new ArrayAdapter<TaskStructure>(this,
                 android.R.layout.simple_list_item_1, tasks);
         setListAdapter(adapter);
-//        AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
-//            
-//            @Override
-//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-//                TaskStructure task = (TaskStructure) adapterView.getItemAtPosition(i);
-//                Intent cross = new Intent(view.getContext(), Task.class);
 
-//                cross.putExtra("type", "edit");
-//                startActivityForResult(cross, TASK);
-//            }
-//        };
-//        getListView().setOnItemClickListener(onItemLongClickListener);
         AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int i, long l) {
@@ -177,8 +171,6 @@ public class Tasks extends ListActivity {
         LocalDate localDate = new LocalDate(session.getDate());
         String date = localDate.increment(step, type);
 
-        session.setLowerDateText(localDate.getDayName());
-        session.setUpperDateText(localDate.getMonthName());
         session.setDate(date);
         messenger.error("session.getDate() " + session.getDate());
 
