@@ -6,6 +6,7 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -107,7 +108,9 @@ public class Projects extends ListActivity {
             }
         };
         Button projectButton = (Button) findViewById(R.id.createProject);
+        projectButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         Button taskButton = (Button) findViewById(R.id.createTask);
+        taskButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         List<ProjectStructure> projects = dataSource.getAllProjects(session.getUserId());
 
         adapter = new ArrayAdapter<ProjectStructure>(this, android.R.layout.simple_list_item_1, projects);

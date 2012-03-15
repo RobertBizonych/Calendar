@@ -2,6 +2,7 @@ package com.calendar.reporter;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -24,8 +25,8 @@ public class Register extends Activity {
         final ProjectDataSource source = new ProjectDataSource(this);
 
         Button registerButton = (Button) findViewById(R.id.rgr);
+        registerButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         final Messenger messenger = new Messenger(this, Register.class.getName());
-
 
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -37,23 +38,28 @@ public class Register extends Activity {
                 String password = passField.getText().toString();
                 String confirm = confirmField.getText().toString();
                 String message = "";
+                UserStructure userStructure = new UserStructure();
+                if (!password.equals("") && !nickname.equals("") && !confirm.equals("") && !nickname.equals(userStructure.getNickname())) {
+                    if (password.equals(confirm)) {
+                        UserStructure user = dataSource.createUser(nickname, password, confirm);
+                        ProjectStructure project = source.createProject("N/A", "description", user.getId());
 
-                if (password.equals(confirm)) {
-                    UserStructure user = dataSource.createUser(nickname, password, confirm);
-                    ProjectStructure project = source.createProject("N/A", "description", user.getId());
-                    if (user != null && project != null) {
-                        message = user.getNickname() + ",you are successfully registered!";
+                        if (user != null && project != null) {
+                            message = user.getNickname() + ", you are successfully registered!";
+                        } else {
+                            message = "Failed to register!";
+                        }
+                        messenger.alert(message);
+
+                        Intent cross = new Intent(view.getContext(), Login.class);
+                        startActivityForResult(cross, LOGIN);
                     } else {
-                        message = "Failed to register!";
+                        messenger.alert("Wrong password confirmation!");
+                        passField.setText("");
+                        confirmField.setText("");
                     }
-                    messenger.alert(message);
-
-                    Intent cross = new Intent(view.getContext(), Login.class);
-                    startActivityForResult(cross, LOGIN);
                 } else {
-                    messenger.alert("Wrong password confirmation!");
-                    passField.setText("");
-                    confirmField.setText("");
+                    messenger.alert("Fields can not be empty!");
                 }
             }
         });

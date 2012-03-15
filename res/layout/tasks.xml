@@ -4,7 +4,8 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:background="#ffffff">
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -18,7 +19,7 @@
                 android:textSize="25dp"
                 android:text="@string/back"
                 android:id="@+id/upperLeft"
-                >
+                android:textColor="#ffffff">
         </Button>
         <TextView
                 android:layout_width="wrap_content"
@@ -27,14 +28,16 @@
                 android:text="Data"
                 android:id="@+id/upperText"
                 android:gravity="center"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textColor="#000000"/>
         <Button
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
                 android:layout_weight="1"
                 android:text="@string/next"
-                android:id="@+id/upperRight">
+                android:id="@+id/upperRight"
+                android:textColor="#ffffff">
         </Button>
     </LinearLayout>
 
@@ -48,15 +51,16 @@
                 android:layout_height="fill_parent"
                 android:layout_weight="1"
                 android:drawSelectorOnTop="false"
-                android:id="@android:id/list"
-                />
+                android:id="@android:id/list"/>
 
-        <TextView android:id="@android:id/empty"
-                  android:layout_width="fill_parent"
-                  android:layout_height="wrap_content"
-                  android:textSize="25dp"
-                  android:text="No data"
-                  android:gravity="center"/>
+        <TextView
+                android:id="@android:id/empty"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:textSize="25dp"
+                android:text="No data"
+                android:gravity="center"
+                android:textColor="#000000"/>
     </LinearLayout>
 
     <LinearLayout
@@ -70,7 +74,8 @@
                 android:layout_weight="1"
                 android:textSize="25dp"
                 android:text="@string/back"
-                android:id="@+id/lowerLeft">
+                android:id="@+id/lowerLeft"
+                android:textColor="#ffffff">
         </Button>
         <TextView
                 android:layout_width="wrap_content"
@@ -79,14 +84,16 @@
                 android:text="Data"
                 android:id="@+id/lowerText"
                 android:gravity="center"
-                android:textSize="25dp"/>
+                android:textSize="25dp"
+                android:textColor="#000000"/>
         <Button
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
                 android:textSize="25dp"
                 android:text="@string/next"
                 android:layout_weight="1"
-                android:id="@+id/lowerRight">
+                android:id="@+id/lowerRight"
+                android:textColor="#ffffff">
         </Button>
     </LinearLayout>
 </LinearLayout>

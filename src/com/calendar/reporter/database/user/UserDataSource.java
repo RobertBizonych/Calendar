@@ -29,7 +29,7 @@ public class UserDataSource{
                 long insertId = database.insert(UserStructure.TABLE_NAME, null, values);
 
                 if (insertId < 0) {
-                    Log.w(UserDataSource.class.getName(), "Error occured while inserting new value in the table!");
+                    Log.w(UserDataSource.class.getName(), "Error occurred while inserting new value in the table!");
                     return null;
                 } else {
                     Cursor cursor = database.query(UserStructure.TABLE_NAME,

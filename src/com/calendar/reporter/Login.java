@@ -3,6 +3,8 @@ package com.calendar.reporter;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.*;
+import android.graphics.LightingColorFilter;
+import android.graphics.PorterDuff;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -18,18 +20,16 @@ public class Login extends Activity {
     static final private int REGISTER = 0;
     static final private int PROJECT = 0;
 
-    /**
-     * Called when the activity is first created.
-     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-
-
         Button registerButton = (Button) findViewById(R.id.registerButton);
         Button loginButton = (Button) findViewById(R.id.loginButton);
+        registerButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
+        loginButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
+        //registerButton.getBackground().setColorFilter(0xFFFF0000, PorterDuff.Mode.MULTIPLY);
 
         final EditText userName = (EditText) findViewById(R.id.usernameField);
         final EditText userPassword = (EditText) findViewById(R.id.passwordField);
@@ -58,7 +58,6 @@ public class Login extends Activity {
                             SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
                             Session session = new Session(settings);
                             session.setUserId(user.getId());
-
 
                             Intent intent = new Intent(v.getContext(), Projects.class);
                             intent.putExtra("session", user.getId());

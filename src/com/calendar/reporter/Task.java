@@ -3,6 +3,7 @@ package com.calendar.reporter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -59,6 +60,7 @@ public class Task extends Activity {
         final long taskId = bundle.getLong("taskId");
 
         Button createTask = (Button) findViewById(R.id.createTask);
+        createTask.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
 
         if (type != null && type.equals("edit")) {
             createTask.setText("Update");

@@ -59,6 +59,8 @@ public class Session {
 
     public void resetDate() {
         setDate(defaultDate);
+        Messenger messenger = new Messenger(Session.class.getName());
+        messenger.error("Date is " + defaultDate);
     }
 
     public String getLowerDateText() {

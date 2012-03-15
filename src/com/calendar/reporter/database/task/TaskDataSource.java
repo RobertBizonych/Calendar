@@ -132,4 +132,13 @@ public class TaskDataSource {
             database.close();
         }
     }
+
+    public void deleteTask(long id) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        try {
+            database.delete(TaskStructure.TABLE_NAME, TaskStructure.COLUMN_ID + " = " + id, null);
+        } finally {
+            database.close();
+        }
+    }
 }

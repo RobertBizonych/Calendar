@@ -1,8 +1,12 @@
 package com.calendar.reporter;
 
+import android.app.AlertDialog;
 import android.app.ListActivity;
+import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -22,6 +26,7 @@ public class Tasks extends ListActivity {
     private static final int PROJECTS = 0;
     private static final int TABS = 0;
     private Session session;
+    private final Context context = this;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,23 +41,76 @@ public class Tasks extends ListActivity {
         TextView upperText = (TextView) findViewById(R.id.upperText);
         upperText.setText(session.getUpperDateText());
 
-        TaskDataSource dataSource = new TaskDataSource(this);
+        final TaskDataSource dataSource = new TaskDataSource(this);
         List<TaskStructure> tasks = dataSource.getAllTasks(session.getProjectId(), session.getDate());
-        ArrayAdapter<TaskStructure> adapter = new ArrayAdapter<TaskStructure>(this,
+        final ArrayAdapter<TaskStructure> adapter = new ArrayAdapter<TaskStructure>(this,
                 android.R.layout.simple_list_item_1, tasks);
         setListAdapter(adapter);
-        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+//        AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
+//            
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                TaskStructure task = (TaskStructure) adapterView.getItemAtPosition(i);
+//                Intent cross = new Intent(view.getContext(), Task.class);
+
+//                cross.putExtra("type", "edit");
+//                startActivityForResult(cross, TASK);
+//            }
+//        };
+//        getListView().setOnItemClickListener(onItemLongClickListener);
+        AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                TaskStructure task = (TaskStructure) adapterView.getItemAtPosition(i);
-                Intent cross = new Intent(view.getContext(), Task.class);
-                cross.putExtra("taskId", task.getId());
-                cross.putExtra("type", "edit");
-                startActivityForResult(cross, TASK);
+            public boolean onItemLongClick(AdapterView<?> adapterView, final View view, final int i, long l) {
+                final TaskStructure task = (TaskStructure) adapterView.getItemAtPosition(i);
+                final CharSequence[] items = {"Create new task", "Edit","Delete"};
+                final AlertDialog.Builder builder = new AlertDialog.Builder(context);
+                builder.setTitle("Choose the action:");
+                
+                builder.setItems(items, new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialogInterface, int item) {
+                        switch (item) {
+                            case 0:
+                                Intent cross = new Intent(view.getContext(), Task.class);
+                                cross.putExtra("type", "create new task");
+                                startActivityForResult(cross,TASK);
+                                break;
+                            case 1:
+                                Intent cross1 = new Intent(view.getContext(), Task.class);
+                                cross1.putExtra("type", "edit");
+                                cross1.putExtra("taskId", task.getId());
+                                startActivityForResult(cross1, TASK);
+                                break;
+                            case 2:
+                                AlertDialog.Builder alertBuilder = new AlertDialog.Builder(context);
+                                alertBuilder.setMessage("Do you want to remove " + task.getName() + "?");
+                                alertBuilder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        adapter.remove(task);
+                                        dataSource.deleteTask(task.getId());
+                                        adapter.notifyDataSetChanged();
+
+                                        Toast.makeText(getApplicationContext(), task.getName() +
+                                                " has been removed.", Toast.LENGTH_LONG).show();
+                                    }
+                                });
+                                alertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        dialog.cancel();
+                                    }
+                                });
+                                alertBuilder.show();
+                                break;
+                        }
+                    }
+                });
+                builder.show();
+                return true;
             }
         };
-        getListView().setOnItemClickListener(onItemClickListener);
-
+        getListView().setOnItemLongClickListener(onItemLongClickListener);
 
         upperLeftBehavior();
         upperRightBehavior();
@@ -72,6 +130,7 @@ public class Tasks extends ListActivity {
 
     private void lowerLeftBehavior() {
         Button lowerLeftButton = (Button) findViewById(R.id.lowerLeft);
+        lowerLeftButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         lowerLeftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -82,6 +141,7 @@ public class Tasks extends ListActivity {
 
     private void lowerRightBehavior() {
         Button lowerRightButton = (Button) findViewById(R.id.lowerRight);
+        lowerRightButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         lowerRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -92,6 +152,7 @@ public class Tasks extends ListActivity {
 
     private void upperLeftBehavior() {
         Button upperLeftButton = (Button) findViewById(R.id.upperLeft);
+        upperLeftButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         upperLeftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -102,6 +163,7 @@ public class Tasks extends ListActivity {
 
     private void upperRightBehavior() {
         Button upperRightButton = (Button) findViewById(R.id.upperRight);
+        upperRightButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         upperRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
