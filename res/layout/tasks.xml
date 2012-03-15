@@ -5,7 +5,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        android:background="#ffffff">
+        >
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -19,7 +19,7 @@
                 android:textSize="25dp"
                 android:text="@string/back"
                 android:id="@+id/upperLeft"
-                android:textColor="#ffffff">
+                >
         </Button>
         <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
                 android:id="@+id/upperText"
                 android:gravity="center"
                 android:textSize="25dp"
-                android:textColor="#000000"/>
+                />
         <Button
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_weight="1"
                 android:text="@string/next"
                 android:id="@+id/upperRight"
-                android:textColor="#ffffff">
+                >
         </Button>
     </LinearLayout>
 
@@ -60,7 +60,7 @@
                 android:textSize="25dp"
                 android:text="No data"
                 android:gravity="center"
-                android:textColor="#000000"/>
+                />
     </LinearLayout>
 
     <LinearLayout
@@ -75,7 +75,7 @@
                 android:textSize="25dp"
                 android:text="@string/back"
                 android:id="@+id/lowerLeft"
-                android:textColor="#ffffff">
+                >
         </Button>
         <TextView
                 android:layout_width="wrap_content"
@@ -85,7 +85,7 @@
                 android:id="@+id/lowerText"
                 android:gravity="center"
                 android:textSize="25dp"
-                android:textColor="#000000"/>
+                />
         <Button
                 android:layout_width="20dp"
                 android:layout_height="wrap_content"
@@ -93,7 +93,7 @@
                 android:text="@string/next"
                 android:layout_weight="1"
                 android:id="@+id/lowerRight"
-                android:textColor="#ffffff">
+                >
         </Button>
     </LinearLayout>
 </LinearLayout>

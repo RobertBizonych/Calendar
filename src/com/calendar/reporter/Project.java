@@ -31,7 +31,6 @@ public class Project extends Activity {
         final Messenger messenger = new Messenger(this, Register.class.getName());
         final String type = bundle.getString("type");
         Button createButton = (Button) findViewById(R.id.createProject);
-        createButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
 
         if (type != null && type.equals("edit")) {
             createButton.setText("Update");

@@ -25,7 +25,6 @@ public class Register extends Activity {
         final ProjectDataSource source = new ProjectDataSource(this);
 
         Button registerButton = (Button) findViewById(R.id.rgr);
-        registerButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         final Messenger messenger = new Messenger(this, Register.class.getName());
 
         registerButton.setOnClickListener(new View.OnClickListener() {

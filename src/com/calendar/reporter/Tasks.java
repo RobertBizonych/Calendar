@@ -130,7 +130,6 @@ public class Tasks extends ListActivity {
 
     private void lowerLeftBehavior() {
         Button lowerLeftButton = (Button) findViewById(R.id.lowerLeft);
-        lowerLeftButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         lowerLeftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -141,7 +140,6 @@ public class Tasks extends ListActivity {
 
     private void lowerRightBehavior() {
         Button lowerRightButton = (Button) findViewById(R.id.lowerRight);
-        lowerRightButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         lowerRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -152,7 +150,6 @@ public class Tasks extends ListActivity {
 
     private void upperLeftBehavior() {
         Button upperLeftButton = (Button) findViewById(R.id.upperLeft);
-        upperLeftButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         upperLeftButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -163,7 +160,6 @@ public class Tasks extends ListActivity {
 
     private void upperRightBehavior() {
         Button upperRightButton = (Button) findViewById(R.id.upperRight);
-        upperRightButton.getBackground().setColorFilter(new LightingColorFilter(0xFF000000, 0xFF000000));
         upperRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
