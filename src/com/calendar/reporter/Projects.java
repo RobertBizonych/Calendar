@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.project.ProjectDataSource;
@@ -134,8 +135,9 @@ public class Projects extends ListActivity {
     }
     public boolean onKeyDown(int keyCode, KeyEvent event){
         if(keyCode == KeyEvent.KEYCODE_BACK){
-            Intent cross = new Intent(getApplicationContext(), Login.class);
-            startActivityForResult(cross, LOGIN);
+            Intent intent = new Intent(this, Login.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
             return true;
         }
         return super.onKeyDown(keyCode, event);
