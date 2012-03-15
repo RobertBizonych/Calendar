@@ -7,13 +7,16 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
+import com.calendar.reporter.database.task.TaskStructure;
 import com.calendar.reporter.helper.Session;
+import com.calendar.reporter.helper.LocalDate;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.List;
 
 public class Projects extends ListActivity {
@@ -30,6 +33,10 @@ public class Projects extends ListActivity {
         final ProjectDataSource dataSource = new ProjectDataSource(Projects.this);
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
         final Session session = new Session(settings);
+        session.resetDate();
+        LocalDate localDate = new LocalDate(session.getDate());
+        session.setLowerDateText(localDate.getDayName());
+        session.setUpperDateText(localDate.getMonthName());
 
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -40,8 +47,12 @@ public class Projects extends ListActivity {
                 final Session session = new Session(settings);
                 session.setProjectId(project.getId());
                 session.setUserId(session.getUserId());
+                Calendar cal = Calendar.getInstance();
+                SimpleDateFormat sdf = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
+
 
                 Intent cross = new Intent(view.getContext(), Tabs.class);
+                cross.putExtra("date",sdf.format(cal.getTime()));
                 startActivityForResult(cross, TABS);
             }
         };

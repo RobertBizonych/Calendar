@@ -57,11 +57,12 @@ public class Task extends Activity {
         final MinutePicker minutePicker = (MinutePicker) findViewById(R.id.minutePicker);
         final Messenger messenger = new Messenger(this);
         final String type = bundle.getString("type");
+        final long taskId = bundle.getLong("taskId");
+
         Button createTask = (Button) findViewById(R.id.createTask);
 
         if (type != null && type.equals("edit")) {
             createTask.setText("Update");
-            final long taskId = bundle.getLong("taskId");
             final TaskStructure task = dataSource.getTask(taskId);
 
             taskName.setText(task.getName());

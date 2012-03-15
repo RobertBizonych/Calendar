@@ -17,7 +17,7 @@
                 android:layout_weight="1"
                 android:textSize="25dp"
                 android:text="@string/back"
-                android:id="@+id/pastMonth"
+                android:id="@+id/upperLeft"
                 >
         </Button>
         <TextView
@@ -25,6 +25,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Data"
+                android:id="@+id/upperText"
                 android:gravity="center"
                 android:textSize="25dp"/>
         <Button
@@ -33,7 +34,7 @@
                 android:textSize="25dp"
                 android:layout_weight="1"
                 android:text="@string/next"
-                android:id="@+id/futureMonth">
+                android:id="@+id/upperRight">
         </Button>
     </LinearLayout>
 
@@ -69,13 +70,14 @@
                 android:layout_weight="1"
                 android:textSize="25dp"
                 android:text="@string/back"
-                android:id="@+id/pastMonth">
+                android:id="@+id/lowerLeft">
         </Button>
         <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Data"
+                android:id="@+id/lowerText"
                 android:gravity="center"
                 android:textSize="25dp"/>
         <Button
@@ -84,7 +86,7 @@
                 android:textSize="25dp"
                 android:text="@string/next"
                 android:layout_weight="1"
-                android:id="@+id/futureMonth">
+                android:id="@+id/lowerRight">
         </Button>
     </LinearLayout>
 </LinearLayout>

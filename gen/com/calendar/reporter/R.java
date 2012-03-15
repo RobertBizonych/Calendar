@@ -15,20 +15,24 @@ public final class R {
         public static final int confirm=0x7f04000a;
         public static final int createProject=0x7f040006;
         public static final int createTask=0x7f040007;
-        public static final int futureMonth=0x7f040012;
         public static final int hourPicker=0x7f04000f;
         public static final int loginButton=0x7f040002;
+        public static final int lowerLeft=0x7f040014;
+        public static final int lowerRight=0x7f040016;
+        public static final int lowerText=0x7f040015;
         public static final int minutePicker=0x7f040010;
         public static final int name=0x7f040008;
         public static final int pass=0x7f040009;
         public static final int passwordField=0x7f040001;
-        public static final int pastMonth=0x7f040011;
         public static final int projectDescription=0x7f040005;
         public static final int projectName=0x7f040004;
         public static final int registerButton=0x7f040003;
         public static final int rgr=0x7f04000b;
         public static final int taskDescription=0x7f04000d;
         public static final int taskName=0x7f04000c;
+        public static final int upperLeft=0x7f040011;
+        public static final int upperRight=0x7f040013;
+        public static final int upperText=0x7f040012;
         public static final int usernameField=0x7f040000;
     }
     public static final class layout {
