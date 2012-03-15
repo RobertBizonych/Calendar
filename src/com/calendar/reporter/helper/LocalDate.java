@@ -14,7 +14,7 @@ public class LocalDate {
         this.calendar = Calendar.getInstance();
     }
 
-    public String incrementByDay(int step) {
+    public String increment(int step,int dateType) {
         SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
         calendar = Calendar.getInstance();
         try {
@@ -22,7 +22,7 @@ public class LocalDate {
         } catch (ParseException e) {
             throw new Error("Error while parsing " + e.getMessage());
         }
-        calendar.add(Calendar.DATE, step);
+        calendar.add(dateType, step);
         return dateFormat.format(calendar.getTime());
     }
 

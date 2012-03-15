@@ -1,4 +1,5 @@
 package com.calendar.reporter;
+
 import android.app.ListActivity;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -12,6 +13,7 @@ import com.calendar.reporter.helper.LocalDate;
 import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.Session;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class Tasks extends ListActivity {
@@ -45,8 +47,8 @@ public class Tasks extends ListActivity {
                 TaskStructure task = (TaskStructure) adapterView.getItemAtPosition(i);
                 Intent cross = new Intent(view.getContext(), Task.class);
                 cross.putExtra("taskId", task.getId());
-                cross.putExtra("type","edit");
-                startActivityForResult(cross,TASK);
+                cross.putExtra("type", "edit");
+                startActivityForResult(cross, TASK);
             }
         };
         getListView().setOnItemClickListener(onItemClickListener);
@@ -59,8 +61,8 @@ public class Tasks extends ListActivity {
     }
 
     @Override
-    public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent cross = new Intent(getApplicationContext(), Projects.class);
             startActivityForResult(cross, PROJECTS);
             return true;
@@ -72,7 +74,9 @@ public class Tasks extends ListActivity {
         Button lowerLeftButton = (Button) findViewById(R.id.lowerLeft);
         lowerLeftButton.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) { incrementDay(view,-1); }
+            public void onClick(View view) {
+                incrementDay(view, -1, Calendar.DATE);
+            }
         });
     }
 
@@ -81,15 +85,35 @@ public class Tasks extends ListActivity {
         lowerRightButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                incrementDay(view, 1);
+                incrementDay(view, 1, Calendar.DATE);
             }
         });
     }
 
-    private void incrementDay(View view, int step) {
+    private void upperLeftBehavior() {
+        Button upperLeftButton = (Button) findViewById(R.id.upperLeft);
+        upperLeftButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                incrementDay(view, -1, Calendar.MONTH);
+            }
+        });
+    }
+
+    private void upperRightBehavior() {
+        Button upperRightButton = (Button) findViewById(R.id.upperRight);
+        upperRightButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                incrementDay(view, 1, Calendar.MONTH);
+            }
+        });
+    }
+
+    private void incrementDay(View view, int step, int type) {
         Messenger messenger = new Messenger(Tasks.class.getName());
         LocalDate localDate = new LocalDate(session.getDate());
-        String date = localDate.incrementByDay(step);
+        String date = localDate.increment(step, type);
 
         session.setLowerDateText(localDate.getDayName());
         session.setUpperDateText(localDate.getMonthName());
@@ -99,25 +123,5 @@ public class Tasks extends ListActivity {
         Intent cross = new Intent(view.getContext(), Tabs.class);
         startActivityForResult(cross, TABS);
     }
-
-    private void upperLeftBehavior(){
-        Button upperLeftButton = (Button) findViewById(R.id.upperLeft);
-        upperLeftButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-    }
-
-    private void upperRightBehavior(){
-        Button upperRightButton = (Button) findViewById(R.id.upperRight);
-        upperRightButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-            }
-        });
-    }
-
-
 
 }
