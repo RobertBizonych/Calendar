@@ -10,36 +10,40 @@ package com.calendar.reporter;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int darkGrey=0x7f030000;
+    }
     public static final class id {
-        public static final int activityList=0x7f040014;
-        public static final int confirm=0x7f040010;
-        public static final int createProject=0x7f04000c;
-        public static final int createTask=0x7f04000d;
-        public static final int hourPicker=0x7f040015;
-        public static final int loginButton=0x7f040008;
-        public static final int lowerLeftGeneral=0x7f040003;
-        public static final int lowerLeftRelevant=0x7f04001a;
-        public static final int lowerRightGeneral=0x7f040005;
-        public static final int lowerRightRelevant=0x7f04001c;
-        public static final int lowerTextGeneral=0x7f040004;
-        public static final int lowerTextRelevant=0x7f04001b;
-        public static final int minutePicker=0x7f040016;
-        public static final int name=0x7f04000e;
-        public static final int pass=0x7f04000f;
-        public static final int passwordField=0x7f040007;
-        public static final int projectDescription=0x7f04000b;
-        public static final int projectName=0x7f04000a;
-        public static final int registerButton=0x7f040009;
-        public static final int rgr=0x7f040011;
-        public static final int taskDescription=0x7f040013;
-        public static final int taskName=0x7f040012;
-        public static final int upperLeftGeneral=0x7f040000;
-        public static final int upperLeftRelevant=0x7f040017;
-        public static final int upperRightGeneral=0x7f040002;
-        public static final int upperRightRelevant=0x7f040019;
-        public static final int upperTextGeneral=0x7f040001;
-        public static final int upperTextRelevant=0x7f040018;
-        public static final int usernameField=0x7f040006;
+        public static final int activityList=0x7f050015;
+        public static final int confirm=0x7f050011;
+        public static final int createProject=0x7f05000d;
+        public static final int createTask=0x7f05000e;
+        public static final int hourPicker=0x7f050016;
+        public static final int loginButton=0x7f050009;
+        public static final int lowerLeftGeneral=0x7f050004;
+        public static final int lowerLeftRelevant=0x7f05001b;
+        public static final int lowerRightGeneral=0x7f050006;
+        public static final int lowerRightRelevant=0x7f05001d;
+        public static final int lowerTextGeneral=0x7f050005;
+        public static final int lowerTextRelevant=0x7f05001c;
+        public static final int minutePicker=0x7f050017;
+        public static final int name=0x7f05000f;
+        public static final int pass=0x7f050010;
+        public static final int passwordField=0x7f050008;
+        public static final int projectDescription=0x7f05000c;
+        public static final int projectName=0x7f05000b;
+        public static final int registerButton=0x7f05000a;
+        public static final int rgr=0x7f050012;
+        public static final int tableGeneral=0x7f050003;
+        public static final int taskDescription=0x7f050014;
+        public static final int taskName=0x7f050013;
+        public static final int upperLeftGeneral=0x7f050000;
+        public static final int upperLeftRelevant=0x7f050018;
+        public static final int upperRightGeneral=0x7f050002;
+        public static final int upperRightRelevant=0x7f05001a;
+        public static final int upperTextGeneral=0x7f050001;
+        public static final int upperTextRelevant=0x7f050019;
+        public static final int usernameField=0x7f050007;
     }
     public static final class layout {
         public static final int general=0x7f020000;
@@ -52,23 +56,23 @@ public final class R {
         public static final int tasks=0x7f020007;
     }
     public static final class string {
-        public static final int activities=0x7f03000a;
-        public static final int activityPrompt=0x7f03000b;
-        public static final int app_name=0x7f030000;
-        public static final int back=0x7f03000e;
-        public static final int confirmPassword=0x7f03000c;
-        public static final int createProject=0x7f030005;
-        public static final int createTask=0x7f030006;
-        public static final int description=0x7f030004;
-        public static final int enterPassword=0x7f03000d;
-        public static final int login=0x7f030002;
-        public static final int next=0x7f03000f;
-        public static final int projectDescription=0x7f030008;
-        public static final int projectName=0x7f030007;
-        public static final int register=0x7f030001;
-        public static final int taskDescription=0x7f030011;
-        public static final int taskName=0x7f030010;
-        public static final int time=0x7f030009;
-        public static final int username=0x7f030003;
+        public static final int activities=0x7f04000a;
+        public static final int activityPrompt=0x7f04000b;
+        public static final int app_name=0x7f040000;
+        public static final int back=0x7f04000e;
+        public static final int confirmPassword=0x7f04000c;
+        public static final int createProject=0x7f040005;
+        public static final int createTask=0x7f040006;
+        public static final int description=0x7f040004;
+        public static final int enterPassword=0x7f04000d;
+        public static final int login=0x7f040002;
+        public static final int next=0x7f04000f;
+        public static final int projectDescription=0x7f040008;
+        public static final int projectName=0x7f040007;
+        public static final int register=0x7f040001;
+        public static final int taskDescription=0x7f040011;
+        public static final int taskName=0x7f040010;
+        public static final int time=0x7f040009;
+        public static final int username=0x7f040003;
     }
 }
