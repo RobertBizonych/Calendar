@@ -5,6 +5,7 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.calendar.reporter.database.DataBaseHelper;
+import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;
 
 import java.util.ArrayList;
@@ -124,5 +125,19 @@ public class ProjectDataSource {
             database.close();
         }
 
+    }
+
+    public boolean projectExist(String nameProject) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try{
+            String whereSequence = "name = '" + nameProject + "'";
+            Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
+                    allColumns, whereSequence, null, null, null, null);
+            cursor.moveToFirst();
+            ProjectStructure project = cursorToProject(cursor);
+            return project != null;
+        }finally {
+            database.close();
+        }
     }
 }

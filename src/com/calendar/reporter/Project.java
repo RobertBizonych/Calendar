@@ -43,16 +43,20 @@ public class Project extends Activity {
                     String nameProject = projectName.getText().toString();
                     String descriptionProject = projectDescription.getText().toString();
                     String message = "";
-                    if (!nameProject.equals("") && !descriptionProject.equals("")) {
-                        int status = dataSource.updateProject(nameProject, descriptionProject, session.getProjectId());
-                        if (status == 1) {
-                            message = project.getName() + " is successfully updated";
-                        } else {
-                            message = project.getName() + " is failed while update";
-                        }
-                        crossProject(view, session.getUserId());
+                    if (dataSource.projectExist(nameProject)) {
+                        message = "You can`t this name '" + nameProject + "' . Already exist!";
                     } else {
-                        message = "Fields can not be empty";
+                        if (!nameProject.equals("") && !descriptionProject.equals("")) {
+                            int status = dataSource.updateProject(nameProject, descriptionProject, session.getProjectId());
+                            if (status == 1) {
+                                message = project.getName() + " is successfully updated";
+                            } else {
+                                message = project.getName() + " is failed while update";
+                            }
+                            crossProject(view, session.getUserId());
+                        } else {
+                            message = "Fields can not be empty";
+                        }
                     }
                     messenger.alert(message);
                 }
@@ -65,18 +69,22 @@ public class Project extends Activity {
                     String nameProject = projectName.getText().toString();
                     String descriptionProject = projectDescription.getText().toString();
                     String message = "";
-
-                    if (!nameProject.equals("") && !descriptionProject.equals("")) {
-                        ProjectStructure project = dataSource.createProject(nameProject, descriptionProject, session.getUserId());
-                        if (project != null) {
-                            message = project.getName() + " is successfully created";
-                        } else {
-                            message = "Failed while create";
-                        }
-
-                        crossProject(view, session.getUserId());
+                    if (dataSource.projectExist(nameProject)) {
+                        message = "This name '" + nameProject + "' reserved!";
                     } else {
-                        message = "Fields can not be empty";
+
+                        if (!nameProject.equals("") && !descriptionProject.equals("")) {
+                            ProjectStructure project = dataSource.createProject(nameProject, descriptionProject, session.getUserId());
+                            if (project != null) {
+                                message = project.getName() + " is successfully created";
+                            } else {
+                                message = "Failed while create";
+                            }
+
+                            crossProject(view, session.getUserId());
+                        } else {
+                            message = "Fields can not be empty";
+                        }
                     }
                     messenger.alert(message);
                 }
@@ -90,8 +98,9 @@ public class Project extends Activity {
         cross.putExtra("session", userId);
         startActivityForResult(cross, PROJECTS);
     }
-    public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent cross = new Intent(getApplicationContext(), Projects.class);
             startActivityForResult(cross, PROJECTS);
             return true;

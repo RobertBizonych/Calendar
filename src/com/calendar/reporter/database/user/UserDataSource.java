@@ -78,7 +78,7 @@ public class UserDataSource{
     public boolean userExists(String nickname) {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
         try{
-            String whereSequence = "name = " + nickname;
+            String whereSequence = "name = '" + nickname + "'";
             Cursor cursor = database.query(UserStructure.TABLE_NAME,
                     allColumns, whereSequence, null, null, null, null);
             cursor.moveToFirst();
@@ -87,6 +87,5 @@ public class UserDataSource{
         }finally {
             database.close();
         }
-
     }
 }
