@@ -52,8 +52,8 @@ public class Projects extends ListActivity {
 
 
                 Intent cross = new Intent(view.getContext(
-), Tabs.class);
-                cross.putExtra("date",sdf.format(cal.getTime()));
+                ), Tabs.class);
+                cross.putExtra("date", sdf.format(cal.getTime()));
                 startActivityForResult(cross, TABS);
             }
         };
@@ -118,7 +118,7 @@ public class Projects extends ListActivity {
             @Override
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), Project.class);
-                cross.putExtra("type","create");
+                cross.putExtra("type", "create");
                 startActivityForResult(cross, PROJECT);
             }
         });
@@ -132,8 +132,9 @@ public class Projects extends ListActivity {
         });
 
     }
-    public boolean onKeyDown(int keyCode, KeyEvent event){
-        if(keyCode == KeyEvent.KEYCODE_BACK){
+
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
             Intent intent = new Intent(this, Login.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             startActivity(intent);

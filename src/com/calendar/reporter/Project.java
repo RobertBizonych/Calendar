@@ -43,20 +43,16 @@ public class Project extends Activity {
                     String nameProject = projectName.getText().toString();
                     String descriptionProject = projectDescription.getText().toString();
                     String message = "";
-                    if (dataSource.projectExist(nameProject)) {
-                        message = "You can`t this name '" + nameProject + "' . Already exist!";
-                    } else {
-                        if (!nameProject.equals("") && !descriptionProject.equals("")) {
-                            int status = dataSource.updateProject(nameProject, descriptionProject, session.getProjectId());
-                            if (status == 1) {
-                                message = project.getName() + " is successfully updated";
-                            } else {
-                                message = project.getName() + " is failed while update";
-                            }
-                            crossProject(view, session.getUserId());
+                    if (!nameProject.equals("") && !descriptionProject.equals("")) {
+                        int status = dataSource.updateProject(nameProject, descriptionProject, session.getProjectId());
+                        if (status == 1) {
+                            message = project.getName() + " is successfully updated";
                         } else {
-                            message = "Fields can not be empty";
+                            message = project.getName() + " is failed while update";
                         }
+                        crossProject(view, session.getUserId());
+                    } else {
+                        message = "Fields can not be empty";
                     }
                     messenger.alert(message);
                 }
@@ -70,9 +66,8 @@ public class Project extends Activity {
                     String descriptionProject = projectDescription.getText().toString();
                     String message = "";
                     if (dataSource.projectExist(nameProject)) {
-                        message = "This name '" + nameProject + "' reserved!";
+                        message = "This name '" + nameProject + "' is reserved!";
                     } else {
-
                         if (!nameProject.equals("") && !descriptionProject.equals("")) {
                             ProjectStructure project = dataSource.createProject(nameProject, descriptionProject, session.getUserId());
                             if (project != null) {

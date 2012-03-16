@@ -4,7 +4,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import com.calendar.reporter.database.DataBaseHelper;
+import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;
 
@@ -20,9 +22,11 @@ public class ProjectDataSource {
             ProjectStructure.COLUMN_DESCRIPTION,
             ProjectStructure.USER_ID
     };
+    private Context context;
 
     public ProjectDataSource(Context context) {
-        dbHelper = new DataBaseHelper(context);
+        this.dbHelper = new DataBaseHelper(context);
+        this.context = context;
     }
 
     public ProjectStructure createProject(String name, String description, long userId) {
@@ -78,11 +82,14 @@ public class ProjectDataSource {
 
     public void deleteProject(long id) {
         SQLiteDatabase database = dbHelper.getWritableDatabase();
-        try {
-            database.delete(ProjectStructure.TABLE_NAME, ProjectStructure.COLUMN_ID + " = " + id, null);
-        } finally {
-            database.close();
-        }
+            int status = database.delete(ProjectStructure.TABLE_NAME, ProjectStructure.COLUMN_ID + " = " + id, null);
+            if(status == 1){
+                database.close();
+                TaskDataSource taskDataSource = new TaskDataSource(context);
+                taskDataSource.deleteTasks(id);
+            }else{
+                Log.e(ProjectStructure.class.getName(), "Can`t delete project id: " + id);
+            }
     }
 
     public ProjectStructure getNAProject(long userId) {

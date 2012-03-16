@@ -5,6 +5,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
+import android.util.Log;
 import com.calendar.reporter.database.DataBaseHelper;
 import com.calendar.reporter.database.activity.ActivityDataSource;
 import com.calendar.reporter.database.activity.ActivityStructure;
@@ -202,6 +203,18 @@ public class TaskDataSource {
             }
 
             return task != null;
+        } finally {
+            database.close();
+        }
+    }
+
+    public void deleteTasks(long projectId) {
+        SQLiteDatabase database = dbHelper.getWritableDatabase();
+        try {
+            int status = database.delete(TaskStructure.TABLE_NAME, "project_id = " + projectId, null);
+            if(status != 1){
+                Log.e(ProjectStructure.class.getName(), "Can`t delete tasks for project id: " + projectId);
+            }
         } finally {
             database.close();
         }

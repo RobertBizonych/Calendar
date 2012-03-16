@@ -74,12 +74,9 @@ public class Task extends Activity {
 
                     int pickHour = hourPicker.getValue();
                     int pickMinute = minutePicker.getValue();
-                    int time = pickHour * 60 + pickMinute;
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        if (dataSource.taskExists(nameTask, session)) {
-                            messenger.alert("The task with name '" + taskName + "' already reserved!");
-                        } else {
+                            int time = pickHour * 60 + pickMinute;
                             int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
                             if (status == 1) {
                                 messenger.alert("Task " + task.getName() + " was updated");
@@ -88,8 +85,6 @@ public class Task extends Activity {
                             } else {
                                 messenger.alert("Failed to update!");
                             }
-                        }
-
                     }
                 }
             });
@@ -104,11 +99,11 @@ public class Task extends Activity {
 
                     int pickHour = hourPicker.getValue();
                     int pickMinute = minutePicker.getValue();
-                    int time = pickHour * 60 + pickMinute;
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
+                        int time = pickHour * 60 + pickMinute;
                         if (dataSource.taskExists(nameTask, session)) {
-                            messenger.alert("The task with name '" + nameTask + "' already exist!");
+                            messenger.alert("The task with name '" + nameTask + "' is reserved!");
                         } else {
                            TaskStructure task = dataSource.createTask(nameTask, descriptionTask, session.getDate(Session.RELEVANT), time,
                                     activity.getId(), session.getProjectId());
