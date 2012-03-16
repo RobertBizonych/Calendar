@@ -46,7 +46,7 @@ public class TasksGeneral extends Activity {
 
 
         TaskDataSource taskDataSource = new TaskDataSource(this);
-        HashMap<String, String> generalInfo = taskDataSource.getGeneralInfo(session.getProjectId());
+        HashMap<String, String> generalInfo = taskDataSource.getGeneralInfo(session.getProjectId(),session.getDate(Session.GENERAL));
         buidlTable(tableLayout, generalInfo);
 
     }

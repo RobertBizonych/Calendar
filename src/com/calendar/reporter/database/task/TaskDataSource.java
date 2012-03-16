@@ -137,7 +137,7 @@ public class TaskDataSource {
         }
     }
 
-    public HashMap<String, String> getGeneralInfo(long projectId) {
+    public HashMap<String, String> getGeneralInfo(long projectId, String date) {
         ActivityDataSource activityDataSource = new ActivityDataSource(context);
         List<ActivityStructure> activities = activityDataSource.getAllActivities();
         SQLiteDatabase database = dbHelper.getReadableDatabase();
@@ -146,7 +146,8 @@ public class TaskDataSource {
         try {
             for (ActivityStructure activity : activities) {
                 tasks = new ArrayList<TaskStructure>();
-                String whereSequence = ("project_id = " + projectId) + " and " + ("activity_id = " + activity.getId());
+                String whereSequence = ("project_id = " + projectId) + " and " + ("activity_id = " + activity.getId()) +
+                        " and " + ("date = date('" + date + "')");
                 Cursor cursor = database.query(TaskStructure.TABLE_NAME,
                         allColumns, whereSequence, null, null, null, null);
                 cursor.moveToFirst();
@@ -172,7 +173,7 @@ public class TaskDataSource {
         if(summary == 0){
             return "none";
         }else{
-            return ("" + summary / 60) + " / " + ("" + summary % 60);
+            return TaskStructure.timeToString(summary);
         }
     }
 

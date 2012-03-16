@@ -78,11 +78,13 @@ public class TaskStructure {
     public void setActivityID(long activityID) {
         this.activityID = activityID;
     }
-    @Override
-    public String toString(){
-        SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
-        String dateNow = formatter.format(date.getTime());
 
-        return name + "/" + dateNow;
+    public static String timeToString(int time) {
+        return ("" + time / 60) + " hours | " + ("" + time % 60) + " minutes";
+    }
+
+    @Override
+    public String toString() {
+        return name + " / " + TaskStructure.timeToString(time);
     }
 }
