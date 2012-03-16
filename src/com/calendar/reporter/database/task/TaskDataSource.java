@@ -11,6 +11,7 @@ import com.calendar.reporter.database.activity.ActivityStructure;
 import com.calendar.reporter.database.project.ProjectStructure;
 import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;
+import com.calendar.reporter.helper.Session;
 
 import java.sql.Date;
 import java.text.DateFormat;
@@ -187,20 +188,21 @@ public class TaskDataSource {
         }
     }
 
-    public boolean taskExists(String name) {
+    public boolean taskExists(String name, Session session) {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
-        try{
-            String whereSequence = "name = '" + name + "'";
+        try {
+            String whereSequence = ("name = '" + name + "'") + " and " + ("project_id = " + session.getProjectId())
+                    + " and " + ("date = date('" + session.getDate(Session.RELEVANT) + "')");
             Cursor cursor = database.query(TaskStructure.TABLE_NAME,
                     allColumns, whereSequence, null, null, null, null);
 
             TaskStructure task = null;
-            if(cursor.moveToFirst()){
+            if (cursor.moveToFirst()) {
                 task = cursorToTask(cursor);
             }
 
             return task != null;
-        }finally {
+        } finally {
             database.close();
         }
     }

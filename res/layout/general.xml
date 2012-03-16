@@ -104,7 +104,7 @@
                     android:id="@+id/lowerTextGeneral"
                     android:gravity="center"
                     android:textSize="25dp"
-                    android:textColor="#000000"/>
+                    android:background="#000000"/>
             <Button
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"

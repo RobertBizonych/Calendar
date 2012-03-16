@@ -3,9 +3,7 @@ package com.calendar.reporter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.LightingColorFilter;
 import android.os.Bundle;
-import android.view.KeyEvent;
 import android.view.View;
 import android.widget.*;
 import com.calendar.reporter.database.activity.ActivityDataSource;
@@ -17,10 +15,7 @@ import com.calendar.reporter.helper.HourPicker;
 import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.MinutePicker;
 import com.calendar.reporter.helper.Session;
-import org.apache.http.impl.client.RoutedRequest;
 
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
 import java.util.List;
 
 public class Task extends Activity {
@@ -82,7 +77,7 @@ public class Task extends Activity {
                     int time = pickHour * 60 + pickMinute;
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        if (dataSource.taskExists(nameTask)) {
+                        if (dataSource.taskExists(nameTask, session)) {
                             messenger.alert("The task with name '" + taskName + "' already reserved!");
                         } else {
                             int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
@@ -111,15 +106,11 @@ public class Task extends Activity {
                     int pickMinute = minutePicker.getValue();
                     int time = pickHour * 60 + pickMinute;
 
-                    Calendar currentDate = Calendar.getInstance();
-                    SimpleDateFormat formatter = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
-                    String dateNow = formatter.format(currentDate.getTime());
-
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        if (dataSource.taskExists(nameTask)) {
+                        if (dataSource.taskExists(nameTask, session)) {
                             messenger.alert("The task with name '" + nameTask + "' already exist!");
                         } else {
-                           TaskStructure task = dataSource.createTask(nameTask, descriptionTask, dateNow, time,
+                           TaskStructure task = dataSource.createTask(nameTask, descriptionTask, session.getDate(Session.RELEVANT), time,
                                     activity.getId(), session.getProjectId());
                             if (task != null) {
                                 messenger.alert("Task " + task.getName() + " is successfully created");

@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.os.Message;
 import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
@@ -15,6 +16,7 @@ import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
 import com.calendar.reporter.helper.DateListing;
 import com.calendar.reporter.helper.LocalDate;
+import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.Session;
 
 import java.util.Calendar;
@@ -40,6 +42,16 @@ public class Tasks extends ListActivity {
 
         TextView upperText = (TextView) findViewById(R.id.upperTextRelevant);
         upperText.setText(localDate.getMonthName());
+
+        TextView launchText = (TextView) findViewById(android.R.id.empty);
+        launchText.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cross = new Intent(view.getContext(), Task.class);
+                cross.putExtra("type", "create new task");
+                startActivityForResult(cross,TASK);
+            }
+        });
 
         final TaskDataSource dataSource = new TaskDataSource(this);
         List<TaskStructure> tasks = dataSource.getAllTasks(session.getProjectId(), session.getDate(Session.RELEVANT));
