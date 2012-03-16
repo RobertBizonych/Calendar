@@ -82,13 +82,17 @@ public class Task extends Activity {
                     int time = pickHour * 60 + pickMinute;
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
-                        if (status == 1) {
-                            messenger.alert("Task " + task.getName() + " was updated");
-                            Intent cross = new Intent(view.getContext(), Tabs.class);
-                            startActivityForResult(cross, TABS);
+                        if (dataSource.taskExists(nameTask)) {
+                            messenger.alert("The task with name '" + taskName + "' already reserved!");
                         } else {
-                            messenger.alert("Failed to update!");
+                            int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
+                            if (status == 1) {
+                                messenger.alert("Task " + task.getName() + " was updated");
+                                Intent cross = new Intent(view.getContext(), Tabs.class);
+                                startActivityForResult(cross, TABS);
+                            } else {
+                                messenger.alert("Failed to update!");
+                            }
                         }
 
                     }
@@ -112,24 +116,26 @@ public class Task extends Activity {
                     String dateNow = formatter.format(currentDate.getTime());
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                        TaskStructure task = dataSource.createTask(nameTask, descriptionTask, dateNow, time, 
-                                activity.getId(), session.getProjectId());
-                        if (task != null) {
-                            messenger.alert("Task " + task.getName() + " is successfully created");
-                            Intent cross = new Intent(view.getContext(), Tabs.class);
-                            startActivityForResult(cross, TABS);
+                        if (dataSource.taskExists(nameTask)) {
+                            messenger.alert("The task with name '" + nameTask + "' already exist!");
                         } else {
-                            messenger.alert("Failed to create task!");
+                           TaskStructure task = dataSource.createTask(nameTask, descriptionTask, dateNow, time,
+                                    activity.getId(), session.getProjectId());
+                            if (task != null) {
+                                messenger.alert("Task " + task.getName() + " is successfully created");
+                                Intent cross = new Intent(view.getContext(), Tabs.class);
+                                startActivityForResult(cross, TABS);
+                            } else {
+                                messenger.alert("Failed to create task!");
+                            }
                         }
-                    }
-                    else {
+                    } else {
                         messenger.alert("Fields can not be empty!");
                     }
                 }
             });
         }
     }
-
 
 
     private ArrayAdapter<ActivityStructure> activityListAdapter() {

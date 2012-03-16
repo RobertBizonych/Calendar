@@ -81,8 +81,11 @@ public class UserDataSource{
             String whereSequence = "name = '" + nickname + "'";
             Cursor cursor = database.query(UserStructure.TABLE_NAME,
                     allColumns, whereSequence, null, null, null, null);
-            cursor.moveToFirst();
-            UserStructure user = cursorToUser(cursor);
+
+            UserStructure user = null;
+            if(cursor.moveToFirst()){
+                user = cursorToUser(cursor);
+            }
             return user != null;
         }finally {
             database.close();

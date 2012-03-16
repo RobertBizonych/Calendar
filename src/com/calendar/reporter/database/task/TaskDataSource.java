@@ -9,6 +9,7 @@ import com.calendar.reporter.database.DataBaseHelper;
 import com.calendar.reporter.database.activity.ActivityDataSource;
 import com.calendar.reporter.database.activity.ActivityStructure;
 import com.calendar.reporter.database.project.ProjectStructure;
+import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;
 
 import java.sql.Date;
@@ -182,6 +183,24 @@ public class TaskDataSource {
         try {
             database.delete(TaskStructure.TABLE_NAME, TaskStructure.COLUMN_ID + " = " + id, null);
         } finally {
+            database.close();
+        }
+    }
+
+    public boolean taskExists(String name) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try{
+            String whereSequence = "name = '" + name + "'";
+            Cursor cursor = database.query(TaskStructure.TABLE_NAME,
+                    allColumns, whereSequence, null, null, null, null);
+
+            TaskStructure task = null;
+            if(cursor.moveToFirst()){
+                task = cursorToTask(cursor);
+            }
+
+            return task != null;
+        }finally {
             database.close();
         }
     }

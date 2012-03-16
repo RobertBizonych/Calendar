@@ -133,8 +133,11 @@ public class ProjectDataSource {
             String whereSequence = "name = '" + nameProject + "'";
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, whereSequence, null, null, null, null);
-            cursor.moveToFirst();
-            ProjectStructure project = cursorToProject(cursor);
+
+            ProjectStructure project = null;
+            if(cursor.moveToFirst()){
+                project = cursorToProject(cursor);
+            }
             return project != null;
         }finally {
             database.close();
