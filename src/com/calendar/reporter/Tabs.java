@@ -21,7 +21,7 @@ public class Tabs extends TabActivity {
         spec = tabHost.newTabSpec("relevant").setIndicator("Relevant",null).setContent(intent);
         tabHost.addTab(spec);
 
-        intent = new Intent().setClass(this, TasksGeneral.class);
+        intent = new Intent().setClass(this, TasksGeneral.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         spec = tabHost.newTabSpec("general").setIndicator("General",null).setContent(intent);
         tabHost.addTab(spec);
 

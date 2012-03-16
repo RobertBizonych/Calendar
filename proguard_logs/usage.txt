@@ -6,9 +6,9 @@ com.calendar.reporter.Project:
 com.calendar.reporter.Projects:
     private static final int PROJECT
     private static final int TABS
-    private static final int LOGIN
 com.calendar.reporter.R
 com.calendar.reporter.R$attr
+com.calendar.reporter.R$color
 com.calendar.reporter.R$id
 com.calendar.reporter.R$layout
 com.calendar.reporter.R$string
@@ -17,23 +17,23 @@ com.calendar.reporter.Register:
     private static final int LOGIN
 com.calendar.reporter.Task:
     public static final int TABS
-    143:150:private long getProjectID()
+    137:144:private long getProjectID()
 com.calendar.reporter.Task$3:
     public static final int TABS
 com.calendar.reporter.Tasks:
-    private android.widget.ArrayAdapter adapter
     private static final int TASK
     private static final int PROJECTS
+    private static final int TABS
 com.calendar.reporter.database.DataBaseHelper:
     private static final java.lang.String DATABASE_NAME
     private static final int DATABASE_VERSION
+    private static final java.lang.String POPULATOR
 com.calendar.reporter.database.activity.ActivityStructure:
     public static final java.lang.String TABLE_NAME
     public static final java.lang.String COLUMN_ID
     public static final java.lang.String COLUMN_NAME
-    12:12:public java.lang.String getName()
 com.calendar.reporter.database.project.ProjectDataSource:
-    88:97:public com.calendar.reporter.database.project.ProjectStructure getNAProject(long)
+    96:105:public com.calendar.reporter.database.project.ProjectStructure getNAProject(long)
 com.calendar.reporter.database.project.ProjectStructure:
     public static final java.lang.String TABLE_NAME
     public static final java.lang.String COLUMN_ID
@@ -59,8 +59,12 @@ com.calendar.reporter.database.user.UserStructure:
     public static final java.lang.String COLUMN_NAME
     public static final java.lang.String COLUMN_PASS
     35:35:public java.lang.String getPassword()
+com.calendar.reporter.helper.DateListing:
+    private static final int TABS
 com.calendar.reporter.helper.Messenger:
     28:29:public void info(java.lang.String)
     32:33:public void error(java.lang.String)
 com.calendar.reporter.helper.Session:
     public static final java.lang.String PREFS_NAME
+    public static final int RELEVANT
+    public static final int GENERAL
