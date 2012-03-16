@@ -73,6 +73,7 @@ public class Projects extends ListActivity {
                                 case 0:
                                     Intent cross = new Intent(view.getContext(), Project.class);
                                     cross.putExtra("type", "edit");
+                                    session.setProjectId(project.getId());
                                     startActivityForResult(cross, PROJECT);
                                     break;
                                 case 1:

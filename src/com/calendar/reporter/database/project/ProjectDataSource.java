@@ -108,11 +108,13 @@ public class ProjectDataSource {
 
     public ProjectStructure getProject(long projectId) {
         SQLiteDatabase database = dbHelper.getReadableDatabase();
+        ProjectStructure project = null;
         try {
             Cursor cursor = database.query(ProjectStructure.TABLE_NAME,
                     allColumns, ("_id = " + projectId), null, null, null, null);
-            cursor.moveToFirst();
-            ProjectStructure project = cursorToProject(cursor);
+            if(cursor.moveToFirst()){
+                project = cursorToProject(cursor);
+            }
             cursor.close();
             return project;
         } finally {
