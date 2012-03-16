@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import com.calendar.reporter.database.DataBaseHelper;
+import com.calendar.reporter.database.task.TaskStructure;
 
 
 public class UserDataSource{
@@ -72,5 +73,20 @@ public class UserDataSource{
         } finally {
             database.close();
         }
+    }
+
+    public boolean userExists(String nickname) {
+        SQLiteDatabase database = dbHelper.getReadableDatabase();
+        try{
+            String whereSequence = "name = " + nickname;
+            Cursor cursor = database.query(UserStructure.TABLE_NAME,
+                    allColumns, whereSequence, null, null, null, null);
+            cursor.moveToFirst();
+            UserStructure user = cursorToUser(cursor);
+            return user != null;
+        }finally {
+            database.close();
+        }
+
     }
 }

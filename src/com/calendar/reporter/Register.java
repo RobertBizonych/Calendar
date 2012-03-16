@@ -40,23 +40,27 @@ public class Register extends Activity {
                 UserStructure userStructure = new UserStructure();
                 if (!password.equals("") && !nickname.equals("") && !confirm.equals("") && !nickname.equals(userStructure.getNickname())) {
                     if (password.equals(confirm)) {
-                        UserStructure user = dataSource.createUser(nickname, password, confirm);
-                        ProjectStructure project = source.createProject("N/A", "description", user.getId());
-
-                        if (user != null && project != null) {
-                            message = user.getNickname() + ", you are successfully registered!";
+                        if (dataSource.userExists(nickname)) {
+                            messenger.alert("User with nickname '" + nickname + "' already exist!" );
                         } else {
-                            message = "Failed to register!";
-                        }
-                        messenger.alert(message);
+                            UserStructure user = dataSource.createUser(nickname, password, confirm);
+                            ProjectStructure project = source.createProject("N/A", "description", user.getId());
 
-                        Intent cross = new Intent(view.getContext(), Login.class);
-                        startActivityForResult(cross, LOGIN);
+                            if (user != null && project != null) {
+                                message = user.getNickname() + ", you are successfully registered!";
+                            } else {
+                                message = "Failed to register!";
+                            }
+                            messenger.alert(message);
+
+                            Intent cross = new Intent(view.getContext(), Login.class);
+                            startActivityForResult(cross, LOGIN);
+                        }
                     } else {
                         messenger.alert("Wrong password confirmation!");
-                        passField.setText("");
-                        confirmField.setText("");
                     }
+                    passField.setText("");
+                    confirmField.setText("");
                 } else {
                     messenger.alert("Fields can not be empty!");
                 }
