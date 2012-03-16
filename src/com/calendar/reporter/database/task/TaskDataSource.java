@@ -167,12 +167,12 @@ public class TaskDataSource {
 
     private String totalTime(List<TaskStructure> tasks) {
         int summary = 0;
-        for(TaskStructure task : tasks){
+        for (TaskStructure task : tasks) {
             summary += task.getTime();
         }
-        if(summary == 0){
+        if (summary == 0) {
             return "none";
-        }else{
+        } else {
             return TaskStructure.timeToString(summary);
         }
     }
