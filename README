@@ -1,1 +1,20 @@
-Reports for your tasks
+Implemented
+
+* Register process by name and password
+* Login process name/password
+* Create anonymous task
+* Create/Update/Delete project
+* Create/Update/Delete task within one project
+* Statistics of time by activity for one day
+* Ability to monitor tasks for project within specified day
+* Date listing you can choose the day to monitor.Step by day and month.
+
+TODO list
+
+* Additional register layer as mentioned in doc.
+* There is no design.Default android shell.
+* No tests.
+* Date listing with step week and year.
+* Performance awful it takes 15mb for Galaxy S2.
+
+Those project leaks of tests it should be buggy still features seems to work well.

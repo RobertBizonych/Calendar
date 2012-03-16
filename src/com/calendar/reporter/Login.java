@@ -48,18 +48,22 @@ public class Login extends Activity {
                 String username = userName.getText().toString();
                 String password = userPassword.getText().toString();
                 try {
-                    if (username.length() > 0 && password.length() > 0) {
-                        UserDataSource dbUser = new UserDataSource(Login.this);
-                        UserStructure user = dbUser.Login(username, password);
-                        if (user == null) {
-                            messenger.alert("Invalid Username/Password");
-                        } else {
-                            messenger.alert("Successfully Logged In  " + user.getNickname());
+                    if(username.equals("") && password.equals("")){
+                        messenger.alert("Username and Password should not be empty.");
+                    }else{
+                        if (username.length() > 0 && password.length() > 0) {
+                            UserDataSource dbUser = new UserDataSource(Login.this);
+                            UserStructure user = dbUser.Login(username, password);
+                            if (user == null) {
+                                messenger.alert("Invalid Username/Password");
+                            } else {
+                                messenger.alert("Successfully Logged In  " + user.getNickname());
 
-                            session.setUserId(user.getId());
-                            Intent intent = new Intent(v.getContext(), Projects.class);
-                            intent.putExtra("session", user.getId());
-                            startActivityForResult(intent, PROJECT);
+                                session.setUserId(user.getId());
+                                Intent intent = new Intent(v.getContext(), Projects.class);
+                                intent.putExtra("session", user.getId());
+                                startActivityForResult(intent, PROJECT);
+                            }
                         }
                     }
                 } catch (Exception e) {
