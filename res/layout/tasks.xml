@@ -40,62 +40,71 @@
                 >
         </Button>
     </LinearLayout>
-
-    <LinearLayout
+    <RelativeLayout
             android:orientation="vertical"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="fill_parent">
+        <ScrollView
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:visibility="visible"
+                android:overScrollMode="always">
+            <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent">
+                <ListView
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_weight="1"
+                        android:drawSelectorOnTop="false"
+                        android:id="@android:id/list"/>
 
-        <ListView
+                <TextView
+                        android:id="@android:id/empty"
+                        android:layout_width="fill_parent"
+                        android:layout_height="wrap_content"
+                        android:textSize="25dp"
+                        android:text="No data"
+                        android:gravity="center"
+                        />
+            </LinearLayout>
+        </ScrollView>
+
+        <LinearLayout
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent"
-                android:layout_weight="1"
-                android:drawSelectorOnTop="false"
-                android:id="@android:id/list"/>
-
-        <TextView
-                android:id="@android:id/empty"
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:text="No data"
-                android:gravity="center"
-                />
-    </LinearLayout>
-
-    <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:orientation="horizontal"
-            android:gravity="bottom">
-        <Button
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:textSize="25dp"
-                android:text="@string/back"
-                android:id="@+id/lowerLeftRelevant"
-                >
-        </Button>
-        <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Data"
-                android:id="@+id/lowerTextRelevant"
-                android:gravity="center"
-                android:textSize="25dp"
-                />
-        <Button
-                android:layout_width="20dp"
-                android:layout_height="wrap_content"
-                android:textSize="25dp"
-                android:text="@string/next"
-                android:layout_weight="1"
-                android:id="@+id/lowerRightRelevant"
-                >
-        </Button>
-    </LinearLayout>
+                android:orientation="horizontal"
+                android:gravity="bottom">
+            <Button
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:textSize="25dp"
+                    android:text="@string/back"
+                    android:id="@+id/lowerLeftRelevant"
+                    >
+            </Button>
+            <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Data"
+                    android:id="@+id/lowerTextRelevant"
+                    android:gravity="center"
+                    android:textSize="25dp"
+                    />
+            <Button
+                    android:layout_width="20dp"
+                    android:layout_height="wrap_content"
+                    android:textSize="25dp"
+                    android:text="@string/next"
+                    android:layout_weight="1"
+                    android:id="@+id/lowerRightRelevant"
+                    >
+            </Button>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>
 
 

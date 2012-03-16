@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
+import android.widget.ScrollView;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
@@ -43,7 +44,9 @@ public class TasksGeneral extends Activity {
         dateListing.lowerLeftBehavior(R.id.lowerLeftGeneral);
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.tableGeneral);
-
+//        ScrollView scroll = new ScrollView(this);
+//        scroll.addView(tableLayout);
+//        setContentView(scroll);
 
         TaskDataSource taskDataSource = new TaskDataSource(this);
         HashMap<String, String> generalInfo = taskDataSource.getGeneralInfo(session.getProjectId());

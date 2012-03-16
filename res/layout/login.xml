@@ -38,7 +38,8 @@ android:textSize="23dp"            />
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/login"
-                android:id="@+id/loginButton">
+                android:id="@+id/loginButton"
+                android:textSize="23dp">
         </Button>
         <Button
                 android:layout_width="fill_parent"
@@ -46,7 +47,8 @@ android:textSize="23dp"            />
                 android:layout_weight="1"
                 android:gravity="center"
                 android:text="@string/register"
-                android:id="@+id/registerButton">
+                android:id="@+id/registerButton"
+                android:textSize="23dp">
         </Button>
     </LinearLayout>
 
