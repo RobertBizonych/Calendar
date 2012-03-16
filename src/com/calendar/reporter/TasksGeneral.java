@@ -8,10 +8,16 @@ import android.view.Gravity;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
+import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.helper.DateListing;
 import com.calendar.reporter.helper.LocalDate;
 import com.calendar.reporter.helper.Session;
+import com.calendar.reporter.helper.TableAdapter;
 import android.widget.TableRow.LayoutParams;
+
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
 
 public class TasksGeneral extends Activity {
 
@@ -38,38 +44,22 @@ public class TasksGeneral extends Activity {
 
         TableLayout tableLayout = (TableLayout) findViewById(R.id.tableGeneral);
 
-        TableAdapter tableAdapter = new TableAdapter(tableLayout, this);
-        tableAdapter.createRow("sss","100");
+
+        TaskDataSource taskDataSource = new TaskDataSource(this);
+        HashMap<String, String> generalInfo = taskDataSource.getGeneralInfo(session.getProjectId());
+        buidlTable(tableLayout, generalInfo);
 
     }
-    class TableAdapter{
-        private TableLayout tableLayout;
-        private TableRow tableRow;
-        private Activity activity;
-        
-        public TableAdapter(TableLayout tableLayout, Activity activity){
-            this.tableLayout = tableLayout;
-            this.tableRow = new TableRow(activity);
-            tableRow.setLayoutParams(new LayoutParams(LayoutParams.WRAP_CONTENT, LayoutParams.MATCH_PARENT));
-            this.activity = activity;
-        }
 
-        public void createRow(String activityName,String totalHour){
-            createColumn(activityName);
-            createColumn(totalHour);
-            tableLayout.addView(tableRow);
+    private void buidlTable(TableLayout tableLayout, HashMap<String, String> generalInfo) {
+        Iterator it = generalInfo.entrySet().iterator();
+        while (it.hasNext()) {
+            Map.Entry pairs = (Map.Entry) it.next();
+            TableAdapter tableAdapter = new TableAdapter(tableLayout, this);
+            tableAdapter.createRow((String) pairs.getKey(), (String) pairs.getValue());
+            it.remove(); // avoids a ConcurrentModificationException
         }
-        
-        private void createColumn(String text) {
-            TextView column = new TextView(activity);
-            column.setText(text);
-            column.setTextColor(Color.BLACK);
-            column.setPadding(0, 20, 0, 20);
-            column.setGravity(Gravity.CENTER);
-            column.setBackgroundColor(getResources().getColor(R.color.darkGrey));
-            tableRow.addView(column);
-        }
-
     }
+
 
 }

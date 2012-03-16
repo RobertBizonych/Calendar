@@ -72,27 +72,6 @@
                         android:padding="20dip"
                         android:gravity="center"/>
             </TableRow>
-
-            <!--<TableRow-->
-                    <!--android:id="@+id/tableRow1"-->
-                    <!--android:layout_height="wrap_content"-->
-                    <!--android:layout_width="match_parent">-->
-                <!--<TextView-->
-                        <!--android:text="Row 2 column 2"-->
-                        <!--android:layout_weight="1"-->
-                        <!--android:background="#cac9c9"-->
-                        <!--android:textColor="#000000"-->
-                        <!--android:padding="20dip"-->
-                        <!--android:gravity="center"/>-->
-                <!--<TextView-->
-                        <!--android:id="@+id/TextView04" android:text="Row 2 column 3"-->
-                        <!--android:layout_weight="1" android:background="#cac9c9"-->
-                        <!--android:textColor="#000000"-->
-                        <!--android:padding="20dip"-->
-                        <!--android:gravity="center"/>-->
-            <!--</TableRow>-->
-
-
         </TableLayout>
     </LinearLayout>
 
