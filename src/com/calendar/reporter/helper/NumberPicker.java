@@ -245,7 +245,10 @@ public class NumberPicker extends LinearLayout {
 	public int getValue(){
 		return value;
 	}
-	
+	public String getValueText(){
+		return valueText.getText().toString();
+	}
+
 	public void setValue( int value ){
 		if( value > maximum ) value = maximum;
 		if( value >= 0 ){

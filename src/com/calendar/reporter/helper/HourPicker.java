@@ -6,6 +6,6 @@ import android.util.AttributeSet;
 
 public class HourPicker extends NumberPicker {
     public HourPicker(Context context, AttributeSet attributeSet){
-        super(context, attributeSet, 0, 23);
+        super(context, attributeSet, 0, 999);
     }
 }

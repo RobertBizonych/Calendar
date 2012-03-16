@@ -11,7 +11,7 @@ import com.calendar.reporter.database.activity.ActivityStructure;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
-import com.calendar.reporter.helper.HourPicker;
+import com.calendar.reporter.helper.NumberPicker;
 import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.MinutePicker;
 import com.calendar.reporter.helper.Session;
@@ -43,12 +43,13 @@ public class Task extends Activity {
 
             public void onNothingSelected(AdapterView<?> parent) {
             }
+
         }
         );
 
         final EditText taskName = (EditText) findViewById(R.id.taskName);
         final EditText taskDescription = (EditText) findViewById(R.id.taskDescription);
-        final HourPicker hourPicker = (HourPicker) findViewById(R.id.hourPicker);
+        final NumberPicker hourPicker = (NumberPicker) findViewById(R.id.hourPicker);
         final MinutePicker minutePicker = (MinutePicker) findViewById(R.id.minutePicker);
         final Messenger messenger = new Messenger(this);
         final String type = bundle.getString("type");
@@ -72,8 +73,8 @@ public class Task extends Activity {
                     String nameTask = taskName.getText().toString();
                     String descriptionTask = taskDescription.getText().toString();
 
-                    int pickHour = hourPicker.getValue();
-                    int pickMinute = minutePicker.getValue();
+                    int pickHour = new Integer(hourPicker.getValueText());
+                    int pickMinute = new Integer(minutePicker.getValueText());
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
                             int time = pickHour * 60 + pickMinute;
@@ -97,8 +98,8 @@ public class Task extends Activity {
                     String nameTask = taskName.getText().toString();
                     String descriptionTask = taskDescription.getText().toString();
 
-                    int pickHour = hourPicker.getValue();
-                    int pickMinute = minutePicker.getValue();
+                    int pickHour = new Integer(hourPicker.getValueText());
+                    int pickMinute = new Integer(minutePicker.getValueText());
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
                         int time = pickHour * 60 + pickMinute;
