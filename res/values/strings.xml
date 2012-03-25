@@ -18,4 +18,12 @@
     <string name="next">⇒</string>
     <string name="taskName">Task name</string>
     <string name="taskDescription">Task description</string>
+    <string name="about_text">
+        This application is useful for developers and people that work with development.
+        User can create his projects per day and add tasks for them.There are 4 categories for project tasks:
+        Self development,Working time, Extra time and Team time. User can plan his projects using a calendar system in
+        the application.
+    </string>
+    <string name="aboutButton">About</string>
+    <string name="about_title">About</string>
 </resources>

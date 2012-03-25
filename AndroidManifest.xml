@@ -18,5 +18,7 @@
         <activity android:name=".Tasks"/>
         <activity android:name=".Tabs"/>
         <activity android:name=".TasksGeneral"/>
+        <activity android:name=".About"
+                android:label="@string/about_title"/>
     </application>
 </manifest> 

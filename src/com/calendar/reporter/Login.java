@@ -19,6 +19,7 @@ import com.calendar.reporter.helper.Session;
 public class Login extends Activity {
     static final private int REGISTER = 0;
     static final private int PROJECT = 0;
+    private static final int ABOUT = 0;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -31,11 +32,19 @@ public class Login extends Activity {
         
         Button registerButton = (Button) findViewById(R.id.registerButton);
         Button loginButton = (Button) findViewById(R.id.loginButton);
+        Button aboutButton = (Button) findViewById(R.id.aboutButton);
 
         final EditText userName = (EditText) findViewById(R.id.usernameField);
         final EditText userPassword = (EditText) findViewById(R.id.passwordField);
         final Messenger messenger = new Messenger(this);
 
+        aboutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent cross = new Intent(view.getContext(),About.class);
+                startActivityForResult(cross,ABOUT);
+            }
+        });
         registerButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), com.calendar.reporter.Register.class);

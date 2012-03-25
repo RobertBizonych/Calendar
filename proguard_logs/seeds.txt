@@ -7,6 +7,7 @@ com.calendar.reporter.Task
 com.calendar.reporter.Project
 com.calendar.reporter.TasksGeneral
 com.calendar.reporter.Register
+com.calendar.reporter.About
 com.calendar.reporter.Tabs
 com.calendar.reporter.Tasks
 com.calendar.reporter.Projects

@@ -1,6 +1,7 @@
 com.calendar.reporter.Login:
     private static final int REGISTER
     private static final int PROJECT
+    private static final int ABOUT
 com.calendar.reporter.Project:
     private static final int PROJECTS
 com.calendar.reporter.Projects:
@@ -9,6 +10,7 @@ com.calendar.reporter.Projects:
 com.calendar.reporter.R
 com.calendar.reporter.R$attr
 com.calendar.reporter.R$color
+com.calendar.reporter.R$drawable
 com.calendar.reporter.R$id
 com.calendar.reporter.R$layout
 com.calendar.reporter.R$string
@@ -17,7 +19,7 @@ com.calendar.reporter.Register:
     private static final int LOGIN
 com.calendar.reporter.Task:
     public static final int TABS
-    137:144:private long getProjectID()
+    138:145:private long getProjectID()
 com.calendar.reporter.Task$3:
     public static final int TABS
 com.calendar.reporter.Tasks:
@@ -64,6 +66,8 @@ com.calendar.reporter.helper.DateListing:
 com.calendar.reporter.helper.Messenger:
     28:29:public void info(java.lang.String)
     32:33:public void error(java.lang.String)
+com.calendar.reporter.helper.NumberPicker:
+    246:246:public int getValue()
 com.calendar.reporter.helper.Session:
     public static final java.lang.String PREFS_NAME
     public static final int RELEVANT

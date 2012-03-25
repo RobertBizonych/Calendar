@@ -5,7 +5,7 @@
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
         android:orientation="vertical"
-        >
+        android:background="@drawable/backrepeat">
     <LinearLayout
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
@@ -104,7 +104,7 @@
                     android:id="@+id/lowerTextGeneral"
                     android:gravity="center"
                     android:textSize="25dp"
-                    android:background="#000000"/>
+                    />
             <Button
                     android:layout_width="20dp"
                     android:layout_height="wrap_content"

@@ -1,9 +1,14 @@
+com.calendar.reporter.About -> com.calendar.reporter.About:
+    void onCreate(android.os.Bundle) -> onCreate
 com.calendar.reporter.Login -> com.calendar.reporter.Login:
     void onCreate(android.os.Bundle) -> onCreate
 com.calendar.reporter.Login$1 -> com.calendar.reporter.q:
     com.calendar.reporter.Login this$0 -> a
     void onClick(android.view.View) -> onClick
-com.calendar.reporter.Login$2 -> com.calendar.reporter.r:
+com.calendar.reporter.Login$2 -> com.calendar.reporter.s:
+    com.calendar.reporter.Login this$0 -> a
+    void onClick(android.view.View) -> onClick
+com.calendar.reporter.Login$3 -> com.calendar.reporter.r:
     android.widget.EditText val$userName -> a
     android.widget.EditText val$userPassword -> b
     com.calendar.reporter.helper.Messenger val$messenger -> c
@@ -85,7 +90,7 @@ com.calendar.reporter.Task$1 -> com.calendar.reporter.f:
 com.calendar.reporter.Task$2 -> com.calendar.reporter.g:
     android.widget.EditText val$taskName -> a
     android.widget.EditText val$taskDescription -> b
-    com.calendar.reporter.helper.HourPicker val$hourPicker -> c
+    com.calendar.reporter.helper.NumberPicker val$hourPicker -> c
     com.calendar.reporter.helper.MinutePicker val$minutePicker -> d
     com.calendar.reporter.database.task.TaskDataSource val$dataSource -> e
     long val$taskId -> f
@@ -96,7 +101,7 @@ com.calendar.reporter.Task$2 -> com.calendar.reporter.g:
 com.calendar.reporter.Task$3 -> com.calendar.reporter.h:
     android.widget.EditText val$taskName -> a
     android.widget.EditText val$taskDescription -> b
-    com.calendar.reporter.helper.HourPicker val$hourPicker -> c
+    com.calendar.reporter.helper.NumberPicker val$hourPicker -> c
     com.calendar.reporter.helper.MinutePicker val$minutePicker -> d
     com.calendar.reporter.database.task.TaskDataSource val$dataSource -> e
     com.calendar.reporter.helper.Session val$session -> f
@@ -121,10 +126,10 @@ com.calendar.reporter.Tasks$2$1 -> com.calendar.reporter.c:
     com.calendar.reporter.database.task.TaskStructure val$task -> a
     com.calendar.reporter.Tasks$2 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.calendar.reporter.Tasks$2$1$1 -> com.calendar.reporter.s:
+com.calendar.reporter.Tasks$2$1$1 -> com.calendar.reporter.t:
     com.calendar.reporter.Tasks$2$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.calendar.reporter.Tasks$2$1$2 -> com.calendar.reporter.t:
+com.calendar.reporter.Tasks$2$1$2 -> com.calendar.reporter.u:
     com.calendar.reporter.Tasks$2$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.calendar.reporter.TasksGeneral -> com.calendar.reporter.TasksGeneral:
@@ -274,6 +279,7 @@ com.calendar.reporter.helper.NumberPicker -> com.calendar.reporter.helper.Number
     boolean autoDecrement -> l
     void increment() -> a
     void decrement() -> b
+    java.lang.String getValueText() -> c
     void setValue(int) -> a
     boolean access$000(com.calendar.reporter.helper.NumberPicker) -> a
     android.os.Handler access$100(com.calendar.reporter.helper.NumberPicker) -> b
