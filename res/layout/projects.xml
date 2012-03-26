@@ -19,7 +19,7 @@
                 android:gravity="center"
                 android:text="@string/createProject"
                 android:id="@+id/createProject"
-                >
+                android:textSize="20sp">
         </Button>
         <Button
                 android:layout_width="fill_parent"
@@ -28,7 +28,7 @@
                 android:gravity="center"
                 android:text="@string/createTask"
                 android:id="@+id/createTask"
-                >
+                android:textSize="20sp">
         </Button>
     </LinearLayout>
 

@@ -2,6 +2,7 @@ com.calendar.reporter.Login:
     private static final int REGISTER
     private static final int PROJECT
     private static final int ABOUT
+    private static final int MENU_ITEM
 com.calendar.reporter.Project:
     private static final int PROJECTS
 com.calendar.reporter.Projects:
@@ -13,6 +14,7 @@ com.calendar.reporter.R$color
 com.calendar.reporter.R$drawable
 com.calendar.reporter.R$id
 com.calendar.reporter.R$layout
+com.calendar.reporter.R$raw
 com.calendar.reporter.R$string
 com.calendar.reporter.Register:
     private com.calendar.reporter.database.user.UserDataSource dataSource

@@ -4,7 +4,7 @@
     <string name="register">Register</string>
     <string name="login">Login</string>
     <string name="username">Username</string>
-    <string name="description">Password</string>
+    <string name="password">Password</string>
     <string name="createProject">Create Project</string>
     <string name="createTask">Create Task</string>
     <string name="projectName">Project name</string>
@@ -12,8 +12,8 @@
     <string name="time">Time</string>
     <string name="activities">Activities</string>
     <string name="activityPrompt">Choose an activity</string>
-    <string name="confirmPassword">Confirm Password</string>
-    <string name="enterPassword">Enter Password</string>
+    <string name="confirmPassword">Confirm password</string>
+    <string name="enterPassword">Enter the password</string>
     <string name="back">⇐</string>
     <string name="next">⇒</string>
     <string name="taskName">Task name</string>
@@ -26,4 +26,11 @@
     </string>
     <string name="aboutButton">About</string>
     <string name="about_title">About</string>
+    <string name="welcome">Welcome to Reporter!</string>
+    <string name="register_form">Registration form</string>
+    <string name="projectList">Project list</string>
+    <string name="projectCreate">Creating new project</string>
+    <string name="taskCreate">Creating new task</string>
+    <string name="taskList">Task list</string>
+    <string name="enterName">Enter the name</string>
 </resources>

@@ -14,25 +14,29 @@
                 android:layout_width="fill_parent"
                 android:layout_height="fill_parent">
 
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/taskName"
-                    android:textSize="23dp"
-                    />
+            <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/taskName"-->
+                    <!--android:textSize="23dp"-->
+                    <!--/>-->
             <EditText
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/taskName"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:id="@+id/taskName"/>
-            <TextView
-                    android:layout_width="fill_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center"
-                    android:text="@string/taskDescription"
-                    android:textSize="23dp"
-                    />
+            <!--<TextView-->
+                    <!--android:layout_width="fill_parent"-->
+                    <!--android:layout_height="wrap_content"-->
+                    <!--android:gravity="center"-->
+                    <!--android:text="@string/taskDescription"-->
+                    <!--android:textSize="23dp"-->
+                    <!--/>-->
             <EditText
+                    android:layout_marginTop="15dp"
+                    android:hint="@string/taskDescription"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:gravity="top"
@@ -86,6 +90,5 @@
                     android:id="@+id/createTask"
                     android:textSize="23dp"/>
         </LinearLayout>
-
     </ScrollView>
 </LinearLayout>

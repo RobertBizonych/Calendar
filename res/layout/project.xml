@@ -2,7 +2,7 @@
 <ScrollView
         xmlns:android="http://schemas.android.com/apk/res/android"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="fill_parent"
         android:visibility="visible"
         android:background="@drawable/backrepeat">
     <LinearLayout
@@ -11,30 +11,34 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             >
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/projectName"
-                android:textSize="23dp"/>
+        <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/projectName"-->
+                <!--android:textSize="23dp"/>-->
 
         <EditText
+                android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:id="@+id/projectName"/>
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/projectDescription"
-                android:textSize="23dp"/>
+                android:id="@+id/projectName"
+                android:hint="@string/projectName"/>
+        <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/projectDescription"-->
+                <!--android:textSize="23dp"/>-->
         <EditText
+                android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:gravity="top"
                 android:lines="10"
                 android:id="@+id/projectDescription"
-                android:singleLine="false"/>
+                android:singleLine="false"
+                android:hint="@string/projectDescription"/>
         <Button
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"

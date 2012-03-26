@@ -3,7 +3,8 @@
       package="com.calendar.reporter"
       android:versionCode="1"
       android:versionName="1.0">
-    <application android:label="@string/app_name" >
+    <application android:label="@string/app_name"
+            android:icon="@drawable/smoke">
         <activity android:name="Login"
                   android:label="@string/app_name">
             <intent-filter>
@@ -11,12 +12,17 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Projects"/>
-        <activity android:name=".Project"/>
-        <activity android:name=".Task"/>
-        <activity android:name=".Register"/>
+        <activity android:name=".Projects"
+                android:label="@string/projectList"/>
+        <activity android:name=".Project"
+                android:label="@string/projectCreate"/>
+        <activity android:name=".Task"
+                android:label="@string/taskCreate"/>
+        <activity android:name=".Register"
+                android:label="@string/register_form"/>
         <activity android:name=".Tasks"/>
-        <activity android:name=".Tabs"/>
+        <activity android:name=".Tabs"
+                  android:label="@string/taskList"/>
         <activity android:name=".TasksGeneral"/>
         <activity android:name=".About"
                 android:label="@string/about_title"/>

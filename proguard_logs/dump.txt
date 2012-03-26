@@ -12,12 +12,12 @@ Constant Pool (count = 154):
   - Integer [16908292]
   - Integer [17367043]
   - Integer [2130903048]
-  - Integer [2131099674]
-  - Integer [2131099675]
-  - Integer [2131099676]
-  - Integer [2131099677]
-  - Integer [2131099678]
-  - Integer [2131099679]
+  - Integer [2131165210]
+  - Integer [2131165211]
+  - Integer [2131165212]
+  - Integer [2131165213]
+  - Integer [2131165214]
+  - Integer [2131165215]
   - String [MyPrefsFile]
   - Class [android/app/ListActivity]
   - Class [android/content/Intent]
@@ -224,7 +224,7 @@ Methods (count = 4):
       [40] astore_2 v2
       [41] aload_0 v0
       [42] ldc #8
-        - Integer [2131099678]
+        - Integer [2131165214]
       [44] invokevirtual #37
         - Methodref [com/calendar/reporter/Tasks.findViewById (I)Landroid/view/View;]
       [47] checkcast #19
@@ -236,7 +236,7 @@ Methods (count = 4):
         - Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [57] aload_0 v0
       [58] ldc #5
-        - Integer [2131099675]
+        - Integer [2131165211]
       [60] invokevirtual #37
         - Methodref [com/calendar/reporter/Tasks.findViewById (I)Landroid/view/View;]
       [63] checkcast #19
@@ -304,22 +304,22 @@ Methods (count = 4):
       [143] dup
       [144] astore_1 v1
       [145] ldc #6
-        - Integer [2131099676]
+        - Integer [2131165212]
       [147] invokevirtual #58
         - Methodref [com/calendar/reporter/helper/k.d (I)V]
       [150] aload_1 v1
       [151] ldc #4
-        - Integer [2131099674]
+        - Integer [2131165210]
       [153] invokevirtual #57
         - Methodref [com/calendar/reporter/helper/k.c (I)V]
       [156] aload_1 v1
       [157] ldc #9
-        - Integer [2131099679]
+        - Integer [2131165215]
       [159] invokevirtual #56
         - Methodref [com/calendar/reporter/helper/k.b (I)V]
       [162] aload_1 v1
       [163] ldc #7
-        - Integer [2131099677]
+        - Integer [2131165213]
       [165] invokevirtual #55
         - Methodref [com/calendar/reporter/helper/k.a (I)V]
       [168] new #24
@@ -402,9 +402,9 @@ Interfaces (count = 1):
   - Class [android/view/View$OnClickListener]
 
 Constant Pool (count = 132):
-  - Integer [2131099665]
-  - Integer [2131099666]
-  - Integer [2131099667]
+  - Integer [2131165201]
+  - Integer [2131165202]
+  - Integer [2131165203]
   - String []
   - String [' already exist!]
   - String [, you are successfully registered!]
@@ -585,7 +585,7 @@ Methods (count = 2):
       [1] getfield #31
         - Fieldref [com/calendar/reporter/a.d Lcom/calendar/reporter/Register;]
       [4] ldc #1
-        - Integer [2131099665]
+        - Integer [2131165201]
       [6] invokevirtual #36
         - Methodref [com/calendar/reporter/Register.findViewById (I)Landroid/view/View;]
       [9] checkcast #16
@@ -595,7 +595,7 @@ Methods (count = 2):
       [14] getfield #31
         - Fieldref [com/calendar/reporter/a.d Lcom/calendar/reporter/Register;]
       [17] ldc #2
-        - Integer [2131099666]
+        - Integer [2131165202]
       [19] invokevirtual #36
         - Methodref [com/calendar/reporter/Register.findViewById (I)Landroid/view/View;]
       [22] checkcast #16
@@ -605,7 +605,7 @@ Methods (count = 2):
       [27] getfield #31
         - Fieldref [com/calendar/reporter/a.d Lcom/calendar/reporter/Register;]
       [30] ldc #3
-        - Integer [2131099667]
+        - Integer [2131165203]
       [32] invokevirtual #36
         - Methodref [com/calendar/reporter/Register.findViewById (I)Landroid/view/View;]
       [35] checkcast #16
@@ -1435,15 +1435,21 @@ _____________________________________________________________________
 
 Interfaces (count = 0):
 
-Constant Pool (count = 81):
+Constant Pool (count = 113):
   - Integer [2130903042]
-  - Integer [2131099656]
-  - Integer [2131099657]
-  - Integer [2131099658]
-  - Integer [2131099659]
-  - Integer [2131099660]
+  - Integer [2130968578]
+  - Integer [2131099676]
+  - Integer [2131165192]
+  - Integer [2131165193]
+  - Integer [2131165194]
+  - Integer [2131165195]
+  - Integer [2131165196]
   - String [MyPrefsFile]
   - Class [android/app/Activity]
+  - Class [android/media/MediaPlayer]
+  - Class [android/view/Menu]
+  - Class [android/view/MenuItem]
+  - Class [android/view/MenuItem$OnMenuItemClickListener]
   - Class [android/view/View]
   - Class [android/view/View$OnClickListener]
   - Class [android/widget/Button]
@@ -1454,8 +1460,12 @@ Constant Pool (count = 81):
   - Class [com/calendar/reporter/q]
   - Class [com/calendar/reporter/r]
   - Class [com/calendar/reporter/s]
+  - Class [com/calendar/reporter/t]
   - Methodref [android/app/Activity.<init> ()V]
   - Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
+  - Methodref [android/app/Activity.onCreateOptionsMenu (Landroid/view/Menu;)Z]
+  - Methodref [android/media/MediaPlayer.create (Landroid/content/Context;I)Landroid/media/MediaPlayer;]
+  - Methodref [android/media/MediaPlayer.start ()V]
   - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
   - Methodref [com/calendar/reporter/Login.findViewById (I)Landroid/view/View;]
   - Methodref [com/calendar/reporter/Login.getSharedPreferences (Ljava/lang/String;I)Landroid/content/SharedPreferences;]
@@ -1469,27 +1479,39 @@ Constant Pool (count = 81):
   - Methodref [com/calendar/reporter/q.<init> (Lcom/calendar/reporter/Login;)V]
   - Methodref [com/calendar/reporter/r.<init> (Lcom/calendar/reporter/Login;Landroid/widget/EditText;Landroid/widget/EditText;Lcom/calendar/reporter/helper/j;Lcom/calendar/reporter/helper/e;)V]
   - Methodref [com/calendar/reporter/s.<init> (Lcom/calendar/reporter/Login;)V]
+  - Methodref [com/calendar/reporter/t.<init> (Lcom/calendar/reporter/Login;)V]
+  - InterfaceMethodref [android/view/Menu.add (IIII)Landroid/view/MenuItem;]
+  - InterfaceMethodref [android/view/MenuItem.setOnMenuItemClickListener (Landroid/view/MenuItem$OnMenuItemClickListener;)Landroid/view/MenuItem;]
   + NameAndType [<init> ()V]
   + NameAndType [<init> (Landroid/app/Activity;)V]
   + NameAndType [<init> (Landroid/content/SharedPreferences;)V]
   + NameAndType [<init> (Lcom/calendar/reporter/Login;)V]
   + NameAndType [<init> (Lcom/calendar/reporter/Login;Landroid/widget/EditText;Landroid/widget/EditText;Lcom/calendar/reporter/helper/j;Lcom/calendar/reporter/helper/e;)V]
   + NameAndType [a (J)V]
+  + NameAndType [add (IIII)Landroid/view/MenuItem;]
   + NameAndType [b (I)V]
   + NameAndType [b (J)V]
   + NameAndType [c ()V]
+  + NameAndType [create (Landroid/content/Context;I)Landroid/media/MediaPlayer;]
   + NameAndType [findViewById (I)Landroid/view/View;]
   + NameAndType [getSharedPreferences (Ljava/lang/String;I)Landroid/content/SharedPreferences;]
   + NameAndType [onCreate (Landroid/os/Bundle;)V]
+  + NameAndType [onCreateOptionsMenu (Landroid/view/Menu;)Z]
   + NameAndType [setContentView (I)V]
   + NameAndType [setOnClickListener (Landroid/view/View$OnClickListener;)V]
+  + NameAndType [setOnMenuItemClickListener (Landroid/view/MenuItem$OnMenuItemClickListener;)Landroid/view/MenuItem;]
+  + NameAndType [start ()V]
   + Utf8 [()V]
   + Utf8 [(I)Landroid/view/View;]
   + Utf8 [(I)V]
+  + Utf8 [(IIII)Landroid/view/MenuItem;]
   + Utf8 [(J)V]
   + Utf8 [(Landroid/app/Activity;)V]
+  + Utf8 [(Landroid/content/Context;I)Landroid/media/MediaPlayer;]
   + Utf8 [(Landroid/content/SharedPreferences;)V]
   + Utf8 [(Landroid/os/Bundle;)V]
+  + Utf8 [(Landroid/view/Menu;)Z]
+  + Utf8 [(Landroid/view/MenuItem$OnMenuItemClickListener;)Landroid/view/MenuItem;]
   + Utf8 [(Landroid/view/View$OnClickListener;)V]
   + Utf8 [(Lcom/calendar/reporter/Login;)V]
   + Utf8 [(Lcom/calendar/reporter/Login;Landroid/widget/EditText;Landroid/widget/EditText;Lcom/calendar/reporter/helper/j;Lcom/calendar/reporter/helper/e;)V]
@@ -1498,7 +1520,12 @@ Constant Pool (count = 81):
   + Utf8 [Code]
   + Utf8 [MyPrefsFile]
   + Utf8 [a]
+  + Utf8 [add]
   + Utf8 [android/app/Activity]
+  + Utf8 [android/media/MediaPlayer]
+  + Utf8 [android/view/Menu]
+  + Utf8 [android/view/MenuItem]
+  + Utf8 [android/view/MenuItem$OnMenuItemClickListener]
   + Utf8 [android/view/View]
   + Utf8 [android/view/View$OnClickListener]
   + Utf8 [android/widget/Button]
@@ -1511,22 +1538,27 @@ Constant Pool (count = 81):
   + Utf8 [com/calendar/reporter/q]
   + Utf8 [com/calendar/reporter/r]
   + Utf8 [com/calendar/reporter/s]
+  + Utf8 [com/calendar/reporter/t]
+  + Utf8 [create]
   + Utf8 [findViewById]
   + Utf8 [getSharedPreferences]
   + Utf8 [onCreate]
+  + Utf8 [onCreateOptionsMenu]
   + Utf8 [setContentView]
   + Utf8 [setOnClickListener]
+  + Utf8 [setOnMenuItemClickListener]
+  + Utf8 [start]
 
 Fields (count = 0):
 
-Methods (count = 2):
+Methods (count = 3):
   - Method:       <init>()V
     Access flags: 0x1
       = public Login()
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 5, locals = 1, stack = 1):
       [0] aload_0 v0
-      [1] invokespecial #19
+      [1] invokespecial #26
         - Methodref [android/app/Activity.<init> ()V]
       [4] return
       Code attribute exceptions (count = 0):
@@ -1535,126 +1567,164 @@ Methods (count = 2):
     Access flags: 0x1
       = public void onCreate(android.os.Bundle)
     Class member attributes (count = 1):
-    + Code attribute instructions (code length = 157, locals = 8, stack = 8):
+    + Code attribute instructions (code length = 166, locals = 8, stack = 8):
       [0] aload_0 v0
       [1] aload_1 v1
-      [2] invokespecial #20
+      [2] invokespecial #27
         - Methodref [android/app/Activity.onCreate (Landroid/os/Bundle;)V]
       [5] aload_0 v0
       [6] ldc #1
         - Integer [2130903042]
-      [8] invokevirtual #24
+      [8] invokevirtual #34
         - Methodref [com/calendar/reporter/Login.setContentView (I)V]
       [11] aload_0 v0
-      [12] ldc #7
+      [12] ldc #2
+        - Integer [2130968578]
+      [14] invokestatic #29
+        - Methodref [android/media/MediaPlayer.create (Landroid/content/Context;I)Landroid/media/MediaPlayer;]
+      [17] invokevirtual #30
+        - Methodref [android/media/MediaPlayer.start ()V]
+      [20] aload_0 v0
+      [21] ldc #9
         - String [MyPrefsFile]
-      [14] iconst_0
-      [15] invokevirtual #23
+      [23] iconst_0
+      [24] invokevirtual #33
         - Methodref [com/calendar/reporter/Login.getSharedPreferences (Ljava/lang/String;I)Landroid/content/SharedPreferences;]
-      [18] astore_1 v1
-      [19] new #14
+      [27] astore_1 v1
+      [28] new #20
         - Class [com/calendar/reporter/helper/e]
-      [22] dup
-      [23] aload_1 v1
-      [24] invokespecial #25
+      [31] dup
+      [32] aload_1 v1
+      [33] invokespecial #35
         - Methodref [com/calendar/reporter/helper/e.<init> (Landroid/content/SharedPreferences;)V]
-      [27] dup
-      [28] astore_1 v1
-      [29] dup
-      [30] astore_2 v2
-      [31] lconst_0
-      [32] invokevirtual #26
+      [36] dup
+      [37] astore_1 v1
+      [38] dup
+      [39] astore_2 v2
+      [40] lconst_0
+      [41] invokevirtual #36
         - Methodref [com/calendar/reporter/helper/e.a (J)V]
-      [35] aload_2 v2
-      [36] lconst_0
-      [37] invokevirtual #28
+      [44] aload_2 v2
+      [45] lconst_0
+      [46] invokevirtual #38
         - Methodref [com/calendar/reporter/helper/e.b (J)V]
-      [40] aload_2 v2
-      [41] iconst_0
-      [42] invokevirtual #27
+      [49] aload_2 v2
+      [50] iconst_0
+      [51] invokevirtual #37
         - Methodref [com/calendar/reporter/helper/e.b (I)V]
-      [45] aload_2 v2
-      [46] invokevirtual #29
+      [54] aload_2 v2
+      [55] invokevirtual #39
         - Methodref [com/calendar/reporter/helper/e.c ()V]
-      [49] aload_0 v0
-      [50] ldc #5
-        - Integer [2131099659]
-      [52] invokevirtual #22
+      [58] aload_0 v0
+      [59] ldc #7
+        - Integer [2131165195]
+      [61] invokevirtual #32
         - Methodref [com/calendar/reporter/Login.findViewById (I)Landroid/view/View;]
-      [55] checkcast #11
+      [64] checkcast #17
         - Class [android/widget/Button]
-      [58] astore_2 v2
-      [59] aload_0 v0
-      [60] ldc #4
-        - Integer [2131099658]
-      [62] invokevirtual #22
+      [67] astore_2 v2
+      [68] aload_0 v0
+      [69] ldc #6
+        - Integer [2131165194]
+      [71] invokevirtual #32
         - Methodref [com/calendar/reporter/Login.findViewById (I)Landroid/view/View;]
-      [65] checkcast #11
+      [74] checkcast #17
         - Class [android/widget/Button]
-      [68] astore_3 v3
-      [69] aload_0 v0
-      [70] ldc #6
-        - Integer [2131099660]
-      [72] invokevirtual #22
+      [77] astore_3 v3
+      [78] aload_0 v0
+      [79] ldc #8
+        - Integer [2131165196]
+      [81] invokevirtual #32
         - Methodref [com/calendar/reporter/Login.findViewById (I)Landroid/view/View;]
-      [75] checkcast #11
+      [84] checkcast #17
         - Class [android/widget/Button]
-      [78] astore v4
-      [80] aload_0 v0
-      [81] ldc #2
-        - Integer [2131099656]
-      [83] invokevirtual #22
+      [87] astore v4
+      [89] aload_0 v0
+      [90] ldc #4
+        - Integer [2131165192]
+      [92] invokevirtual #32
         - Methodref [com/calendar/reporter/Login.findViewById (I)Landroid/view/View;]
-      [86] checkcast #12
+      [95] checkcast #18
         - Class [android/widget/EditText]
-      [89] astore v5
-      [91] aload_0 v0
-      [92] ldc #3
-        - Integer [2131099657]
-      [94] invokevirtual #22
+      [98] astore v5
+      [100] aload_0 v0
+      [101] ldc #5
+        - Integer [2131165193]
+      [103] invokevirtual #32
         - Methodref [com/calendar/reporter/Login.findViewById (I)Landroid/view/View;]
-      [97] checkcast #12
+      [106] checkcast #18
         - Class [android/widget/EditText]
-      [100] astore v6
-      [102] new #15
+      [109] astore v6
+      [111] new #21
         - Class [com/calendar/reporter/helper/j]
-      [105] dup
-      [106] aload_0 v0
-      [107] invokespecial #30
+      [114] dup
+      [115] aload_0 v0
+      [116] invokespecial #40
         - Methodref [com/calendar/reporter/helper/j.<init> (Landroid/app/Activity;)V]
-      [110] astore v7
-      [112] aload v4
-      [114] new #16
+      [119] astore v7
+      [121] aload v4
+      [123] new #22
         - Class [com/calendar/reporter/q]
-      [117] dup
-      [118] aload_0 v0
-      [119] invokespecial #31
+      [126] dup
+      [127] aload_0 v0
+      [128] invokespecial #41
         - Methodref [com/calendar/reporter/q.<init> (Lcom/calendar/reporter/Login;)V]
-      [122] invokevirtual #21
+      [131] invokevirtual #31
         - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
-      [125] aload_2 v2
-      [126] new #18
+      [134] aload_2 v2
+      [135] new #24
         - Class [com/calendar/reporter/s]
-      [129] dup
-      [130] aload_0 v0
-      [131] invokespecial #33
+      [138] dup
+      [139] aload_0 v0
+      [140] invokespecial #43
         - Methodref [com/calendar/reporter/s.<init> (Lcom/calendar/reporter/Login;)V]
-      [134] invokevirtual #21
+      [143] invokevirtual #31
         - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
-      [137] aload_3 v3
-      [138] new #17
+      [146] aload_3 v3
+      [147] new #23
         - Class [com/calendar/reporter/r]
-      [141] dup
-      [142] aload_0 v0
-      [143] aload v5
-      [145] aload v6
-      [147] aload v7
-      [149] aload_1 v1
-      [150] invokespecial #32
+      [150] dup
+      [151] aload_0 v0
+      [152] aload v5
+      [154] aload v6
+      [156] aload v7
+      [158] aload_1 v1
+      [159] invokespecial #42
         - Methodref [com/calendar/reporter/r.<init> (Lcom/calendar/reporter/Login;Landroid/widget/EditText;Landroid/widget/EditText;Lcom/calendar/reporter/helper/j;Lcom/calendar/reporter/helper/e;)V]
-      [153] invokevirtual #21
+      [162] invokevirtual #31
         - Methodref [android/widget/Button.setOnClickListener (Landroid/view/View$OnClickListener;)V]
-      [156] return
+      [165] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onCreateOptionsMenu(Landroid/view/Menu;)Z
+    Access flags: 0x1
+      = public boolean onCreateOptionsMenu(android.view.Menu)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 33, locals = 2, stack = 5):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] invokespecial #28
+        - Methodref [android/app/Activity.onCreateOptionsMenu (Landroid/view/Menu;)Z]
+      [5] pop
+      [6] aload_1 v1
+      [7] iconst_0
+      [8] iconst_1
+      [9] iconst_0
+      [10] ldc #3
+        - Integer [2131099676]
+      [12] invokeinterface #45
+        - InterfaceMethodref [android/view/Menu.add (IIII)Landroid/view/MenuItem;]
+      [17] new #25
+        - Class [com/calendar/reporter/t]
+      [20] dup
+      [21] aload_0 v0
+      [22] invokespecial #44
+        - Methodref [com/calendar/reporter/t.<init> (Lcom/calendar/reporter/Login;)V]
+      [25] invokeinterface #46
+        - InterfaceMethodref [android/view/MenuItem.setOnMenuItemClickListener (Landroid/view/MenuItem$OnMenuItemClickListener;)Landroid/view/MenuItem;]
+      [30] pop
+      [31] iconst_1
+      [32] ireturn
       Code attribute exceptions (count = 0):
       Code attribute attributes (attribute count = 0):
 
@@ -1674,12 +1744,12 @@ Constant Pool (count = 178):
   - Integer [17367048]
   - Integer [17367049]
   - Integer [2130903047]
-  - Integer [2131099664]
-  - Integer [2131099669]
-  - Integer [2131099670]
-  - Integer [2131099671]
-  - Integer [2131099672]
-  - Integer [2131099673]
+  - Integer [2131165200]
+  - Integer [2131165205]
+  - Integer [2131165206]
+  - Integer [2131165207]
+  - Integer [2131165208]
+  - Integer [2131165209]
   - String [MyPrefsFile]
   - String [Update]
   - String [edit]
@@ -1909,7 +1979,7 @@ Methods (count = 4):
       [44] astore_3 v3
       [45] aload_0 v0
       [46] ldc #7
-        - Integer [2131099671]
+        - Integer [2131165207]
       [48] invokevirtual #52
         - Methodref [com/calendar/reporter/Task.findViewById (I)Landroid/view/View;]
       [51] checkcast #26
@@ -1958,7 +2028,7 @@ Methods (count = 4):
         - Methodref [android/widget/Spinner.setOnItemSelectedListener (Landroid/widget/AdapterView$OnItemSelectedListener;)V]
       [118] aload_0 v0
       [119] ldc #5
-        - Integer [2131099669]
+        - Integer [2131165205]
       [121] invokevirtual #52
         - Methodref [com/calendar/reporter/Task.findViewById (I)Landroid/view/View;]
       [124] checkcast #25
@@ -1966,7 +2036,7 @@ Methods (count = 4):
       [127] astore v4
       [129] aload_0 v0
       [130] ldc #6
-        - Integer [2131099670]
+        - Integer [2131165206]
       [132] invokevirtual #52
         - Methodref [com/calendar/reporter/Task.findViewById (I)Landroid/view/View;]
       [135] checkcast #25
@@ -1974,7 +2044,7 @@ Methods (count = 4):
       [138] astore v5
       [140] aload_0 v0
       [141] ldc #8
-        - Integer [2131099672]
+        - Integer [2131165208]
       [143] invokevirtual #52
         - Methodref [com/calendar/reporter/Task.findViewById (I)Landroid/view/View;]
       [146] checkcast #35
@@ -1982,7 +2052,7 @@ Methods (count = 4):
       [149] astore v6
       [151] aload_0 v0
       [152] ldc #9
-        - Integer [2131099673]
+        - Integer [2131165209]
       [154] invokevirtual #52
         - Methodref [com/calendar/reporter/Task.findViewById (I)Landroid/view/View;]
       [157] checkcast #34
@@ -2009,7 +2079,7 @@ Methods (count = 4):
       [186] lstore v10
       [188] aload_0 v0
       [189] ldc #4
-        - Integer [2131099664]
+        - Integer [2131165200]
       [191] invokevirtual #52
         - Methodref [com/calendar/reporter/Task.findViewById (I)Landroid/view/View;]
       [194] checkcast #24
@@ -2315,8 +2385,8 @@ Constant Pool (count = 128):
   - Class [com/calendar/reporter/a/d/a]
   - Class [com/calendar/reporter/c]
   - Class [com/calendar/reporter/e]
-  - Class [com/calendar/reporter/t]
   - Class [com/calendar/reporter/u]
+  - Class [com/calendar/reporter/v]
   - Class [java/lang/Object]
   - Class [java/lang/StringBuilder]
   - Fieldref [com/calendar/reporter/c.a Lcom/calendar/reporter/a/d/a;]
@@ -2336,8 +2406,8 @@ Constant Pool (count = 128):
   - Methodref [com/calendar/reporter/Tasks.startActivityForResult (Landroid/content/Intent;I)V]
   - Methodref [com/calendar/reporter/a/d/a.a ()J]
   - Methodref [com/calendar/reporter/a/d/a.b ()Ljava/lang/String;]
-  - Methodref [com/calendar/reporter/t.<init> (Lcom/calendar/reporter/c;)V]
   - Methodref [com/calendar/reporter/u.<init> (Lcom/calendar/reporter/c;)V]
+  - Methodref [com/calendar/reporter/v.<init> (Lcom/calendar/reporter/c;)V]
   - Methodref [java/lang/Object.<init> ()V]
   - Methodref [java/lang/StringBuilder.<init> ()V]
   - Methodref [java/lang/StringBuilder.append (Ljava/lang/String;)Ljava/lang/StringBuilder;]
@@ -2406,8 +2476,8 @@ Constant Pool (count = 128):
   + Utf8 [com/calendar/reporter/a/d/a]
   + Utf8 [com/calendar/reporter/c]
   + Utf8 [com/calendar/reporter/e]
-  + Utf8 [com/calendar/reporter/t]
   + Utf8 [com/calendar/reporter/u]
+  + Utf8 [com/calendar/reporter/v]
   + Utf8 [create new task]
   + Utf8 [edit]
   + Utf8 [getContext]
@@ -2586,11 +2656,11 @@ Methods (count = 2):
       [174] ldc #4
         - String [Yes]
       [176] new #20
-        - Class [com/calendar/reporter/t]
+        - Class [com/calendar/reporter/u]
       [179] dup
       [180] aload_0 v0
       [181] invokespecial #41
-        - Methodref [com/calendar/reporter/t.<init> (Lcom/calendar/reporter/c;)V]
+        - Methodref [com/calendar/reporter/u.<init> (Lcom/calendar/reporter/c;)V]
       [184] invokevirtual #31
         - Methodref [android/app/AlertDialog$Builder.setPositiveButton (Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
       [187] pop
@@ -2598,11 +2668,11 @@ Methods (count = 2):
       [189] ldc #3
         - String [No]
       [191] new #21
-        - Class [com/calendar/reporter/u]
+        - Class [com/calendar/reporter/v]
       [194] dup
       [195] aload_0 v0
       [196] invokespecial #42
-        - Methodref [com/calendar/reporter/u.<init> (Lcom/calendar/reporter/c;)V]
+        - Methodref [com/calendar/reporter/v.<init> (Lcom/calendar/reporter/c;)V]
       [199] invokevirtual #30
         - Methodref [android/app/AlertDialog$Builder.setNegativeButton (Ljava/lang/CharSequence;Landroid/content/DialogInterface$OnClickListener;)Landroid/app/AlertDialog$Builder;]
       [202] pop
@@ -6547,7 +6617,7 @@ Interfaces (count = 0):
 
 Constant Pool (count = 87):
   - Integer [-16777216]
-  - Integer [2130968576]
+  - Integer [2131034112]
   - Class [android/app/Activity]
   - Class [android/content/res/Resources]
   - Class [android/view/ViewGroup]
@@ -6750,7 +6820,7 @@ Methods (count = 3):
       [44] invokevirtual #16
         - Methodref [android/app/Activity.getResources ()Landroid/content/res/Resources;]
       [47] ldc #2
-        - Integer [2130968576]
+        - Integer [2131034112]
       [49] invokevirtual #17
         - Methodref [android/content/res/Resources.getColor (I)I]
       [52] invokevirtual #24
@@ -9048,6 +9118,109 @@ Methods (count = 2):
 Class file attributes (count = 0):
 
 _____________________________________________________________________
++ Program class: com/calendar/reporter/t
+  Superclass:    java/lang/Object
+  Major version: 0x32
+  Minor version: 0x0
+  Access flags:  0x30
+    = final class com.calendar.reporter.t extends java.lang.Object
+
+Interfaces (count = 1):
+  - Class [android/view/MenuItem$OnMenuItemClickListener]
+
+Constant Pool (count = 38):
+  - Class [android/content/Intent]
+  - Class [android/view/MenuItem]
+  - Class [android/view/MenuItem$OnMenuItemClickListener]
+  - Class [com/calendar/reporter/About]
+  - Class [com/calendar/reporter/Login]
+  - Class [com/calendar/reporter/t]
+  - Class [java/lang/Object]
+  - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/Login;]
+  - Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  - Methodref [com/calendar/reporter/Login.getApplicationContext ()Landroid/content/Context;]
+  - Methodref [com/calendar/reporter/Login.startActivityForResult (Landroid/content/Intent;I)V]
+  - Methodref [java/lang/Object.<init> ()V]
+  + NameAndType [<init> ()V]
+  + NameAndType [<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+  + NameAndType [a Lcom/calendar/reporter/Login;]
+  + NameAndType [getApplicationContext ()Landroid/content/Context;]
+  + NameAndType [startActivityForResult (Landroid/content/Intent;I)V]
+  + Utf8 [()Landroid/content/Context;]
+  + Utf8 [()V]
+  + Utf8 [(Landroid/content/Context;Ljava/lang/Class;)V]
+  + Utf8 [(Landroid/content/Intent;I)V]
+  + Utf8 [(Landroid/view/MenuItem;)Z]
+  + Utf8 [(Lcom/calendar/reporter/Login;)V]
+  + Utf8 [<init>]
+  + Utf8 [Code]
+  + Utf8 [Lcom/calendar/reporter/Login;]
+  + Utf8 [a]
+  + Utf8 [android/content/Intent]
+  + Utf8 [android/view/MenuItem]
+  + Utf8 [android/view/MenuItem$OnMenuItemClickListener]
+  + Utf8 [com/calendar/reporter/About]
+  + Utf8 [com/calendar/reporter/Login]
+  + Utf8 [com/calendar/reporter/t]
+  + Utf8 [getApplicationContext]
+  + Utf8 [java/lang/Object]
+  + Utf8 [onMenuItemClick]
+  + Utf8 [startActivityForResult]
+
+Fields (count = 1):
+  + Field:        a Lcom/calendar/reporter/Login;
+    Access flags: 0x1002
+      = private com.calendar.reporter.Login a
+
+Methods (count = 2):
+  - Method:       <init>(Lcom/calendar/reporter/Login;)V
+    Access flags: 0x0
+      = t(com.calendar.reporter.Login)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 10, locals = 2, stack = 2):
+      [0] aload_0 v0
+      [1] aload_1 v1
+      [2] putfield #8
+        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/Login;]
+      [5] aload_0 v0
+      [6] invokespecial #12
+        - Methodref [java/lang/Object.<init> ()V]
+      [9] return
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+  + Method:       onMenuItemClick(Landroid/view/MenuItem;)Z
+    Access flags: 0x11
+      = public final boolean onMenuItemClick(android.view.MenuItem)
+    Class member attributes (count = 1):
+    + Code attribute instructions (code length = 28, locals = 2, stack = 4):
+      [0] new #1
+        - Class [android/content/Intent]
+      [3] dup
+      [4] aload_0 v0
+      [5] getfield #8
+        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/Login;]
+      [8] invokevirtual #10
+        - Methodref [com/calendar/reporter/Login.getApplicationContext ()Landroid/content/Context;]
+      [11] ldc #4
+        - Class [com/calendar/reporter/About]
+      [13] invokespecial #9
+        - Methodref [android/content/Intent.<init> (Landroid/content/Context;Ljava/lang/Class;)V]
+      [16] astore_1 v1
+      [17] aload_0 v0
+      [18] getfield #8
+        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/Login;]
+      [21] aload_1 v1
+      [22] iconst_0
+      [23] invokevirtual #11
+        - Methodref [com/calendar/reporter/Login.startActivityForResult (Landroid/content/Intent;I)V]
+      [26] iconst_1
+      [27] ireturn
+      Code attribute exceptions (count = 0):
+      Code attribute attributes (attribute count = 0):
+
+Class file attributes (count = 0):
+
+_____________________________________________________________________
 + Program class: com/calendar/reporter/helper/j
   Superclass:    java/lang/Object
   Major version: 0x32
@@ -9228,9 +9401,9 @@ Interfaces (count = 0):
 
 Constant Pool (count = 159):
   - Integer [2130903043]
-  - Integer [2131099661]
-  - Integer [2131099662]
-  - Integer [2131099663]
+  - Integer [2131165197]
+  - Integer [2131165198]
+  - Integer [2131165199]
   - String [MyPrefsFile]
   - String [Update]
   - String [edit]
@@ -9448,7 +9621,7 @@ Methods (count = 5):
         - Fieldref [com/calendar/reporter/Project.a Lcom/calendar/reporter/a/b/a;]
       [48] aload_0 v0
       [49] ldc #2
-        - Integer [2131099661]
+        - Integer [2131165197]
       [51] invokevirtual #41
         - Methodref [com/calendar/reporter/Project.findViewById (I)Landroid/view/View;]
       [54] checkcast #17
@@ -9456,7 +9629,7 @@ Methods (count = 5):
       [57] astore_3 v3
       [58] aload_0 v0
       [59] ldc #3
-        - Integer [2131099662]
+        - Integer [2131165198]
       [61] invokevirtual #41
         - Methodref [com/calendar/reporter/Project.findViewById (I)Landroid/view/View;]
       [64] checkcast #17
@@ -9481,7 +9654,7 @@ Methods (count = 5):
       [90] astore_1 v1
       [91] aload_0 v0
       [92] ldc #4
-        - Integer [2131099663]
+        - Integer [2131165199]
       [94] invokevirtual #41
         - Methodref [com/calendar/reporter/Project.findViewById (I)Landroid/view/View;]
       [97] checkcast #16
@@ -9652,13 +9825,13 @@ Interfaces (count = 0):
 
 Constant Pool (count = 135):
   - Integer [2130903041]
-  - Integer [2131099649]
-  - Integer [2131099650]
-  - Integer [2131099651]
-  - Integer [2131099652]
-  - Integer [2131099653]
-  - Integer [2131099654]
-  - Integer [2131099655]
+  - Integer [2131165185]
+  - Integer [2131165186]
+  - Integer [2131165187]
+  - Integer [2131165188]
+  - Integer [2131165189]
+  - Integer [2131165190]
+  - Integer [2131165191]
   - String [MyPrefsFile]
   - Class [android/app/Activity]
   - Class [android/widget/TableLayout]
@@ -9840,7 +10013,7 @@ Methods (count = 2):
       [40] astore_2 v2
       [41] aload_0 v0
       [42] ldc #7
-        - Integer [2131099654]
+        - Integer [2131165190]
       [44] invokevirtual #28
         - Methodref [com/calendar/reporter/TasksGeneral.findViewById (I)Landroid/view/View;]
       [47] checkcast #12
@@ -9852,7 +10025,7 @@ Methods (count = 2):
         - Methodref [android/widget/TextView.setText (Ljava/lang/CharSequence;)V]
       [57] aload_0 v0
       [58] ldc #3
-        - Integer [2131099650]
+        - Integer [2131165186]
       [60] invokevirtual #28
         - Methodref [com/calendar/reporter/TasksGeneral.findViewById (I)Landroid/view/View;]
       [63] checkcast #12
@@ -9873,27 +10046,27 @@ Methods (count = 2):
       [83] dup
       [84] astore_2 v2
       [85] ldc #4
-        - Integer [2131099651]
+        - Integer [2131165187]
       [87] invokevirtual #45
         - Methodref [com/calendar/reporter/helper/k.d (I)V]
       [90] aload_2 v2
       [91] ldc #2
-        - Integer [2131099649]
+        - Integer [2131165185]
       [93] invokevirtual #44
         - Methodref [com/calendar/reporter/helper/k.c (I)V]
       [96] aload_2 v2
       [97] ldc #8
-        - Integer [2131099655]
+        - Integer [2131165191]
       [99] invokevirtual #43
         - Methodref [com/calendar/reporter/helper/k.b (I)V]
       [102] aload_2 v2
       [103] ldc #6
-        - Integer [2131099653]
+        - Integer [2131165189]
       [105] invokevirtual #42
         - Methodref [com/calendar/reporter/helper/k.a (I)V]
       [108] aload_0 v0
       [109] ldc #5
-        - Integer [2131099652]
+        - Integer [2131165188]
       [111] invokevirtual #28
         - Methodref [com/calendar/reporter/TasksGeneral.findViewById (I)Landroid/view/View;]
       [114] checkcast #11
@@ -10194,7 +10367,7 @@ Interfaces (count = 0):
 
 Constant Pool (count = 58):
   - Integer [2130903045]
-  - Integer [2131099668]
+  - Integer [2131165204]
   - Class [android/app/Activity]
   - Class [android/view/View]
   - Class [android/view/View$OnClickListener]
@@ -10295,7 +10468,7 @@ Methods (count = 2):
       [28] astore_2 v2
       [29] aload_0 v0
       [30] ldc #2
-        - Integer [2131099668]
+        - Integer [2131165204]
       [32] invokevirtual #16
         - Methodref [com/calendar/reporter/Register.findViewById (I)Landroid/view/View;]
       [35] checkcast #6
@@ -11367,8 +11540,8 @@ Constant Pool (count = 137):
   - Integer [17367043]
   - Integer [67108864]
   - Integer [2130903044]
-  - Integer [2131099663]
-  - Integer [2131099664]
+  - Integer [2131165199]
+  - Integer [2131165200]
   - String [MyPrefsFile]
   - Class [android/app/ListActivity]
   - Class [android/content/Intent]
@@ -11581,7 +11754,7 @@ Methods (count = 5):
       [60] astore v4
       [62] aload_0 v0
       [63] ldc #4
-        - Integer [2131099663]
+        - Integer [2131165199]
       [65] invokevirtual #36
         - Methodref [com/calendar/reporter/Projects.findViewById (I)Landroid/view/View;]
       [68] checkcast #15
@@ -11589,7 +11762,7 @@ Methods (count = 5):
       [71] astore v5
       [73] aload_0 v0
       [74] ldc #5
-        - Integer [2131099664]
+        - Integer [2131165200]
       [76] invokevirtual #36
         - Methodref [com/calendar/reporter/Projects.findViewById (I)Landroid/view/View;]
       [79] checkcast #15
@@ -12420,12 +12593,12 @@ Methods (count = 2):
 Class file attributes (count = 0):
 
 _____________________________________________________________________
-+ Program class: com/calendar/reporter/t
++ Program class: com/calendar/reporter/u
   Superclass:    java/lang/Object
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x30
-    = final class com.calendar.reporter.t extends java.lang.Object
+    = final class com.calendar.reporter.u extends java.lang.Object
 
 Interfaces (count = 1):
   - Class [android/content/DialogInterface$OnClickListener]
@@ -12441,7 +12614,7 @@ Constant Pool (count = 91):
   - Class [com/calendar/reporter/a/d/b]
   - Class [com/calendar/reporter/c]
   - Class [com/calendar/reporter/e]
-  - Class [com/calendar/reporter/t]
+  - Class [com/calendar/reporter/u]
   - Class [java/lang/Object]
   - Class [java/lang/StringBuilder]
   - Fieldref [com/calendar/reporter/c.a Lcom/calendar/reporter/a/d/a;]
@@ -12449,7 +12622,7 @@ Constant Pool (count = 91):
   - Fieldref [com/calendar/reporter/e.a Landroid/widget/ArrayAdapter;]
   - Fieldref [com/calendar/reporter/e.b Lcom/calendar/reporter/a/d/b;]
   - Fieldref [com/calendar/reporter/e.c Lcom/calendar/reporter/Tasks;]
-  - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+  - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
   - Methodref [android/widget/ArrayAdapter.notifyDataSetChanged ()V]
   - Methodref [android/widget/ArrayAdapter.remove (Ljava/lang/Object;)V]
   - Methodref [android/widget/Toast.makeText (Landroid/content/Context;Ljava/lang/CharSequence;I)Landroid/widget/Toast;]
@@ -12511,7 +12684,7 @@ Constant Pool (count = 91):
   + Utf8 [com/calendar/reporter/a/d/b]
   + Utf8 [com/calendar/reporter/c]
   + Utf8 [com/calendar/reporter/e]
-  + Utf8 [com/calendar/reporter/t]
+  + Utf8 [com/calendar/reporter/u]
   + Utf8 [getApplicationContext]
   + Utf8 [java/lang/Object]
   + Utf8 [java/lang/StringBuilder]
@@ -12530,13 +12703,13 @@ Fields (count = 1):
 Methods (count = 2):
   - Method:       <init>(Lcom/calendar/reporter/c;)V
     Access flags: 0x0
-      = t(com.calendar.reporter.c)
+      = u(com.calendar.reporter.c)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
       [2] putfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [5] aload_0 v0
       [6] invokespecial #28
         - Methodref [java/lang/Object.<init> ()V]
@@ -12550,28 +12723,28 @@ Methods (count = 2):
     + Code attribute instructions (code length = 105, locals = 3, stack = 3):
       [0] aload_0 v0
       [1] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [4] getfield #15
         - Fieldref [com/calendar/reporter/c.b Lcom/calendar/reporter/e;]
       [7] getfield #16
         - Fieldref [com/calendar/reporter/e.a Landroid/widget/ArrayAdapter;]
       [10] aload_0 v0
       [11] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [14] getfield #14
         - Fieldref [com/calendar/reporter/c.a Lcom/calendar/reporter/a/d/a;]
       [17] invokevirtual #21
         - Methodref [android/widget/ArrayAdapter.remove (Ljava/lang/Object;)V]
       [20] aload_0 v0
       [21] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [24] getfield #15
         - Fieldref [com/calendar/reporter/c.b Lcom/calendar/reporter/e;]
       [27] getfield #17
         - Fieldref [com/calendar/reporter/e.b Lcom/calendar/reporter/a/d/b;]
       [30] aload_0 v0
       [31] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [34] getfield #14
         - Fieldref [com/calendar/reporter/c.a Lcom/calendar/reporter/a/d/a;]
       [37] invokevirtual #25
@@ -12580,7 +12753,7 @@ Methods (count = 2):
         - Methodref [com/calendar/reporter/a/d/b.b (J)V]
       [43] aload_0 v0
       [44] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [47] getfield #15
         - Fieldref [com/calendar/reporter/c.b Lcom/calendar/reporter/e;]
       [50] getfield #16
@@ -12589,7 +12762,7 @@ Methods (count = 2):
         - Methodref [android/widget/ArrayAdapter.notifyDataSetChanged ()V]
       [56] aload_0 v0
       [57] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [60] getfield #15
         - Fieldref [com/calendar/reporter/c.b Lcom/calendar/reporter/e;]
       [63] getfield #18
@@ -12603,7 +12776,7 @@ Methods (count = 2):
         - Methodref [java/lang/StringBuilder.<init> ()V]
       [76] aload_0 v0
       [77] getfield #19
-        - Fieldref [com/calendar/reporter/t.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
       [80] getfield #14
         - Fieldref [com/calendar/reporter/c.a Lcom/calendar/reporter/a/d/a;]
       [83] invokevirtual #26
@@ -12785,12 +12958,12 @@ Methods (count = 2):
 Class file attributes (count = 0):
 
 _____________________________________________________________________
-+ Program class: com/calendar/reporter/u
++ Program class: com/calendar/reporter/v
   Superclass:    java/lang/Object
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x30
-    = final class com.calendar.reporter.u extends java.lang.Object
+    = final class com.calendar.reporter.v extends java.lang.Object
 
 Interfaces (count = 1):
   - Class [android/content/DialogInterface$OnClickListener]
@@ -12799,9 +12972,9 @@ Constant Pool (count = 26):
   - Class [android/content/DialogInterface]
   - Class [android/content/DialogInterface$OnClickListener]
   - Class [com/calendar/reporter/c]
-  - Class [com/calendar/reporter/u]
+  - Class [com/calendar/reporter/v]
   - Class [java/lang/Object]
-  - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
+  - Fieldref [com/calendar/reporter/v.a Lcom/calendar/reporter/c;]
   - Methodref [java/lang/Object.<init> ()V]
   - InterfaceMethodref [android/content/DialogInterface.cancel ()V]
   + NameAndType [<init> ()V]
@@ -12818,7 +12991,7 @@ Constant Pool (count = 26):
   + Utf8 [android/content/DialogInterface$OnClickListener]
   + Utf8 [cancel]
   + Utf8 [com/calendar/reporter/c]
-  + Utf8 [com/calendar/reporter/u]
+  + Utf8 [com/calendar/reporter/v]
   + Utf8 [java/lang/Object]
   + Utf8 [onClick]
 
@@ -12830,13 +13003,13 @@ Fields (count = 1):
 Methods (count = 2):
   - Method:       <init>(Lcom/calendar/reporter/c;)V
     Access flags: 0x0
-      = u(com.calendar.reporter.c)
+      = v(com.calendar.reporter.c)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
       [1] aload_1 v1
       [2] putfield #6
-        - Fieldref [com/calendar/reporter/u.a Lcom/calendar/reporter/c;]
+        - Fieldref [com/calendar/reporter/v.a Lcom/calendar/reporter/c;]
       [5] aload_0 v0
       [6] invokespecial #7
         - Methodref [java/lang/Object.<init> ()V]

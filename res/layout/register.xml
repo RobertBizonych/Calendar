@@ -10,38 +10,44 @@
             android:layout_width="fill_parent"
             android:layout_height="fill_parent"
             >
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="Enter the name"
-                android:textSize="23dp"/>
+        <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="Enter the name"-->
+                <!--android:textSize="23dp"/>-->
         <EditText
+                android:layout_marginTop="15dp"
                 android:id="@+id/name"
                 android:layout_width="fill_parent"
-                android:layout_height="wrap_content"/>
-        <TextView
-                android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/enterPassword"
-                android:textSize="23dp"/>
+                android:hint="@string/enterName"/>
+        <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/enterPassword"-->
+                <!--android:textSize="23dp"/>-->
         <EditText
+                android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/pass"
-                android:inputType="textPassword"/>
-        <TextView
-                android:layout_width="fill_parent"
-                android:layout_height="wrap_content"
-                android:gravity="center"
-                android:text="@string/confirmPassword"
-                android:textSize="23dp"/>
+                android:inputType="textPassword"
+                android:hint="@string/enterPassword"/>
+        <!--<TextView-->
+                <!--android:layout_width="fill_parent"-->
+                <!--android:layout_height="wrap_content"-->
+                <!--android:gravity="center"-->
+                <!--android:text="@string/confirmPassword"-->
+                <!--android:textSize="23dp"/>-->
         <EditText
+                android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/confirm"
-                android:inputType="textPassword"/>
+                android:inputType="textPassword"
+                android:hint="@string/confirmPassword"/>
         <LinearLayout
                 android:orientation="vertical"
                 android:layout_width="fill_parent"

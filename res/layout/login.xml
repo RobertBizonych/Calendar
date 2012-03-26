@@ -7,26 +7,24 @@
         android:layout_height="fill_parent"
         android:background="@drawable/backrepeat">
     <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/username"
-            android:textSize="23dp"/>
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/welcome"
+        android:textSize="23dp"/>
     <EditText
+            android:layout_marginTop="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/usernameField"/>
-    <TextView
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:text="@string/description"
-            android:textSize="23dp"/>
+            android:id="@+id/usernameField"
+            android:hint="@string/username"/>
     <EditText
+            android:layout_marginTop="15dp"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
             android:inputType="textPassword"
-            android:id="@+id/passwordField"/>
+            android:id="@+id/passwordField"
+            android:hint="@string/password"/>
     <LinearLayout
             android:orientation="horizontal"
             android:layout_width="fill_parent"
@@ -51,18 +49,4 @@
                 android:textSize="23dp">
         </Button>
     </LinearLayout>
-    <LinearLayout
-            android:orientation="vertical"
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:gravity="bottom|center">
-        <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/aboutButton"
-                android:id="@+id/aboutButton"
-                android:textSize="23dp">
-        </Button>
-    </LinearLayout>
-
 </LinearLayout>
