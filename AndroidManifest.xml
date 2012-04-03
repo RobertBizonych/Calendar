@@ -26,5 +26,9 @@
         <activity android:name=".TasksGeneral"/>
         <activity android:name=".About"
                 android:label="@string/about_title"/>
+        <activity android:name=".ProjectView"
+                android:label="@string/project_details"/>
+        <activity android:name=".TaskView"
+                android:label="@string/task_details"/>
     </application>
 </manifest> 

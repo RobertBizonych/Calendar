@@ -11,25 +11,12 @@
             android:layout_height="fill_parent"
             android:orientation="vertical"
             >
-        <!--<TextView-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/projectName"-->
-                <!--android:textSize="23dp"/>-->
-
         <EditText
                 android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/projectName"
                 android:hint="@string/projectName"/>
-        <!--<TextView-->
-                <!--android:layout_width="fill_parent"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:gravity="center"-->
-                <!--android:text="@string/projectDescription"-->
-                <!--android:textSize="23dp"/>-->
         <EditText
                 android:layout_marginTop="15dp"
                 android:layout_width="fill_parent"

@@ -7,7 +7,6 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import com.calendar.reporter.database.DataBaseHelper;
 import com.calendar.reporter.database.task.TaskDataSource;
-import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;
 
 import java.util.ArrayList;

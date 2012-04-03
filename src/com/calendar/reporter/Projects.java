@@ -6,17 +6,17 @@ import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.LightingColorFilter;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.KeyEvent;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Toast;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.project.ProjectStructure;
 import com.calendar.reporter.database.task.TaskStructure;
 import com.calendar.reporter.helper.Session;
-import com.calendar.reporter.helper.LocalDate;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -25,6 +25,7 @@ import java.util.List;
 public class Projects extends ListActivity {
     private static final int PROJECT = 0;
     private static final int TABS = 0;
+    private static final int PROJECT_VIEW = 0;
     private final Context context = this;
     private ArrayAdapter<ProjectStructure> adapter;
 
@@ -37,6 +38,8 @@ public class Projects extends ListActivity {
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
         final Session session = new Session(settings);
         session.resetDate();
+        ProjectStructure anonProject = dataSource.getNAProject(session.getUserId());
+        session.setProjectId(anonProject.getId());
 
         AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
             @Override
@@ -51,8 +54,7 @@ public class Projects extends ListActivity {
                 SimpleDateFormat sdf = new SimpleDateFormat(TaskStructure.DATE_FORMAT);
 
 
-                Intent cross = new Intent(view.getContext(
-                ), Tabs.class);
+                Intent cross = new Intent(view.getContext(), Tabs.class);
                 cross.putExtra("date", sdf.format(cal.getTime()));
                 startActivityForResult(cross, TABS);
             }
@@ -63,7 +65,7 @@ public class Projects extends ListActivity {
                 final ProjectStructure project = (ProjectStructure) adapterView.getItemAtPosition(i);
 
                 if (!project.getName().equals("N/A")) {
-                    final CharSequence[] items = {"Edit", "Delete"};
+                    final CharSequence[] items = {"Edit", "Delete", "View"};
                     final AlertDialog.Builder builder = new AlertDialog.Builder(context);
                     builder.setTitle("Choose the action:");
 
@@ -98,6 +100,11 @@ public class Projects extends ListActivity {
                                         }
                                     });
                                     alertBuilder.show();
+                                    break;
+                                case 2:
+                                    Intent go = new Intent(view.getContext(), ProjectView.class);
+                                    session.setProjectId(project.getId());
+                                    startActivityForResult(go, PROJECT_VIEW);
                                     break;
                             }
                         }

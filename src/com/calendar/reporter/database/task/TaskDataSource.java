@@ -1,6 +1,5 @@
 package com.calendar.reporter.database.task;
 
-import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,8 +9,6 @@ import com.calendar.reporter.database.DataBaseHelper;
 import com.calendar.reporter.database.activity.ActivityDataSource;
 import com.calendar.reporter.database.activity.ActivityStructure;
 import com.calendar.reporter.database.project.ProjectStructure;
-import com.calendar.reporter.database.user.UserStructure;
-import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.Session;
 
 import java.sql.Date;

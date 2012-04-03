@@ -33,4 +33,6 @@
     <string name="taskCreate">Creating new task</string>
     <string name="taskList">Task list</string>
     <string name="enterName">Enter the name</string>
+    <string name="project_details">Project details</string>
+    <string name="task_details">Task details</string>
 </resources>

@@ -1,7 +1,5 @@
 package com.calendar.reporter.helper;
 
-import android.util.Log;
-
 import java.text.DateFormatSymbols;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;

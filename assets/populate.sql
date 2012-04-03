@@ -6,7 +6,7 @@ INSERT INTO `activities` (`name`) VALUES ('Self development');
 INSERT INTO `activities` (`name`) VALUES ('Working time');
 INSERT INTO `activities` (`name`) VALUES ('Extra time');
 INSERT INTO `activities` (`name`) VALUES ('Team time');
-INSERT INTO `users` (`name`,`password`) VALUES ('1','1');
+INSERT INTO `users` (`name`,`password`) VALUES ('q','q');
 INSERT INTO `projects` (`name`,`description`,`user_id`) VALUES ('1 project','description','1');
 INSERT INTO `projects` (`name`,`description`,`user_id`) VALUES ('2 project','description','1');
 INSERT INTO `projects` (`name`,`description`,`user_id`) VALUES ('3 project','description','1');

@@ -1,7 +1,6 @@
 package com.calendar.reporter.database.task;
 
 import java.sql.Date;
-import java.text.SimpleDateFormat;
 
 public class TaskStructure {
     public static final String DATE_FORMAT = "yyyy-MM-dd";

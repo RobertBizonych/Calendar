@@ -27,11 +27,11 @@ public final class R {
         public static final int hourPicker=0x7f070017;
         public static final int loginButton=0x7f07000a;
         public static final int lowerLeftGeneral=0x7f070005;
-        public static final int lowerLeftRelevant=0x7f07001c;
+        public static final int lowerLeftRelevant=0x7f07001d;
         public static final int lowerRightGeneral=0x7f070007;
-        public static final int lowerRightRelevant=0x7f07001e;
+        public static final int lowerRightRelevant=0x7f07001f;
         public static final int lowerTextGeneral=0x7f070006;
-        public static final int lowerTextRelevant=0x7f07001d;
+        public static final int lowerTextRelevant=0x7f07001e;
         public static final int minutePicker=0x7f070018;
         public static final int name=0x7f070010;
         public static final int pass=0x7f070011;
@@ -43,12 +43,13 @@ public final class R {
         public static final int tableGeneral=0x7f070004;
         public static final int taskDescription=0x7f070015;
         public static final int taskName=0x7f070014;
+        public static final int taskTime=0x7f070019;
         public static final int upperLeftGeneral=0x7f070001;
-        public static final int upperLeftRelevant=0x7f070019;
+        public static final int upperLeftRelevant=0x7f07001a;
         public static final int upperRightGeneral=0x7f070003;
-        public static final int upperRightRelevant=0x7f07001b;
+        public static final int upperRightRelevant=0x7f07001c;
         public static final int upperTextGeneral=0x7f070002;
-        public static final int upperTextRelevant=0x7f07001a;
+        public static final int upperTextRelevant=0x7f07001b;
         public static final int usernameField=0x7f070008;
     }
     public static final class layout {
@@ -56,11 +57,13 @@ public final class R {
         public static final int general=0x7f030001;
         public static final int login=0x7f030002;
         public static final int project=0x7f030003;
-        public static final int projects=0x7f030004;
-        public static final int register=0x7f030005;
-        public static final int tabs=0x7f030006;
-        public static final int task=0x7f030007;
-        public static final int tasks=0x7f030008;
+        public static final int project_view=0x7f030004;
+        public static final int projects=0x7f030005;
+        public static final int register=0x7f030006;
+        public static final int tabs=0x7f030007;
+        public static final int task=0x7f030008;
+        public static final int task_view=0x7f030009;
+        public static final int tasks=0x7f03000a;
     }
     public static final class raw {
         public static final int curve=0x7f040000;
@@ -88,12 +91,14 @@ public final class R {
         public static final int projectDescription=0x7f060008;
         public static final int projectList=0x7f060017;
         public static final int projectName=0x7f060007;
+        public static final int project_details=0x7f06001c;
         public static final int register=0x7f060001;
         public static final int register_form=0x7f060016;
         public static final int taskCreate=0x7f060019;
         public static final int taskDescription=0x7f060011;
         public static final int taskList=0x7f06001a;
         public static final int taskName=0x7f060010;
+        public static final int task_details=0x7f06001d;
         public static final int time=0x7f060009;
         public static final int username=0x7f060003;
         public static final int welcome=0x7f060015;

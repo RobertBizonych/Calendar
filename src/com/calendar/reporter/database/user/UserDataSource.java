@@ -6,7 +6,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import com.calendar.reporter.database.DataBaseHelper;
-import com.calendar.reporter.database.task.TaskStructure;
 
 
 public class UserDataSource{

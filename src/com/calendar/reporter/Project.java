@@ -3,7 +3,6 @@ package com.calendar.reporter;
 import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.graphics.LightingColorFilter;
 import android.os.Bundle;
 import android.view.KeyEvent;
 import android.view.View;
@@ -58,7 +57,6 @@ public class Project extends Activity {
                 }
             });
         } else {
-
             createButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
@@ -75,7 +73,6 @@ public class Project extends Activity {
                             } else {
                                 message = "Failed while create";
                             }
-
                             crossProject(view, session.getUserId());
                         } else {
                             message = "Fields can not be empty";

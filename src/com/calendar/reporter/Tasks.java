@@ -7,33 +7,35 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.Message;
-import android.util.Log;
 import android.view.KeyEvent;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.*;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.TextView;
+import android.widget.Toast;
 import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
 import com.calendar.reporter.helper.DateListing;
 import com.calendar.reporter.helper.LocalDate;
-import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.Session;
 
-import java.util.Calendar;
 import java.util.List;
 
 public class Tasks extends ListActivity {
     private static final int TASK = 0;
     private static final int PROJECTS = 0;
-    private static final int TABS = 0;
+    static final private int MENU_ITEM = Menu.FIRST;
     private final Context context = this;
+    private static final int TASK_VIEW = 0;
 
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.tasks);
 
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
-        Session session = new Session(settings);
+        final Session session = new Session(settings);
 
         LocalDate localDate = new LocalDate(session.getDate(Session.RELEVANT));
 
@@ -44,19 +46,10 @@ public class Tasks extends ListActivity {
         upperText.setText(localDate.getMonthName());
 
         TextView launchText = (TextView) findViewById(android.R.id.empty);
-        launchText.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent cross = new Intent(view.getContext(), Task.class);
-                cross.putExtra("type", "create new task");
-                startActivityForResult(cross,TASK);
-            }
-        });
 
         final TaskDataSource dataSource = new TaskDataSource(this);
         List<TaskStructure> tasks = dataSource.getAllTasks(session.getProjectId(), session.getDate(Session.RELEVANT));
-        final ArrayAdapter<TaskStructure> adapter = new ArrayAdapter<TaskStructure>(this,
-                android.R.layout.simple_list_item_1, tasks);
+        final ArrayAdapter<TaskStructure> adapter = new ArrayAdapter<TaskStructure>(this,android.R.layout.simple_list_item_1, tasks);
         setListAdapter(adapter);
 
         DateListing dateListing = new DateListing(this, session, Session.RELEVANT);
@@ -64,6 +57,16 @@ public class Tasks extends ListActivity {
         dateListing.upperLeftBehavior(R.id.upperLeftRelevant);
         dateListing.lowerRightBehavior(R.id.lowerRightRelevant);
         dateListing.lowerLeftBehavior(R.id.lowerLeftRelevant);
+
+        AdapterView.OnItemClickListener onItemClickListener = new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                final TaskStructure task = (TaskStructure) adapterView.getItemAtPosition(i);
+                Intent go = new Intent(view.getContext(), TaskView.class);
+                go.putExtra("taskId", task.getId());
+                startActivityForResult(go, TASK_VIEW);
+            }
+        };
 
         AdapterView.OnItemLongClickListener onItemLongClickListener = new AdapterView.OnItemLongClickListener() {
             @Override
@@ -118,6 +121,7 @@ public class Tasks extends ListActivity {
             }
         };
         getListView().setOnItemLongClickListener(onItemLongClickListener);
+        getListView().setOnItemClickListener(onItemClickListener);
     }
 
     @Override
@@ -129,6 +133,28 @@ public class Tasks extends ListActivity {
         }
         return super.onKeyDown(keyCode, event);
     }
-
-
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        super.onCreateOptionsMenu(menu);
+// Group ID
+        int groupId = 0;
+// Unique menu item identifier. Used for event handling.
+        int menuItemId = MENU_ITEM;
+// The order position of the item
+        int menuItemOrder = Menu.NONE;
+// Text to be displayed for this menu item.
+        int menuItemText = R.string.createTask;
+// Create the menu item and keep a reference to it.
+        MenuItem menuItem = menu.add(groupId, menuItemId, menuItemOrder, menuItemText);
+        menuItem.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Intent cross = new Intent(getApplicationContext(), Task.class);
+                cross.putExtra("type", "create new task");
+                startActivityForResult(cross, TASK);
+                return true;
+            }
+        });
+        return true;
+    }
 }

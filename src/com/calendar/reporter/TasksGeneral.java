@@ -2,19 +2,14 @@ package com.calendar.reporter;
 
 import android.app.Activity;
 import android.content.SharedPreferences;
-import android.graphics.Color;
 import android.os.Bundle;
-import android.view.Gravity;
-import android.widget.ScrollView;
 import android.widget.TableLayout;
-import android.widget.TableRow;
 import android.widget.TextView;
 import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.helper.DateListing;
 import com.calendar.reporter.helper.LocalDate;
 import com.calendar.reporter.helper.Session;
 import com.calendar.reporter.helper.TableAdapter;
-import android.widget.TableRow.LayoutParams;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -63,6 +58,4 @@ public class TasksGeneral extends Activity {
             it.remove(); // avoids a ConcurrentModificationException
         }
     }
-
-
 }

@@ -11,9 +11,9 @@ import com.calendar.reporter.database.activity.ActivityStructure;
 import com.calendar.reporter.database.project.ProjectDataSource;
 import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
-import com.calendar.reporter.helper.NumberPicker;
 import com.calendar.reporter.helper.Messenger;
 import com.calendar.reporter.helper.MinutePicker;
+import com.calendar.reporter.helper.NumberPicker;
 import com.calendar.reporter.helper.Session;
 
 import java.util.List;
@@ -43,10 +43,8 @@ public class Task extends Activity {
 
             public void onNothingSelected(AdapterView<?> parent) {
             }
-
         }
         );
-
         final EditText taskName = (EditText) findViewById(R.id.taskName);
         final EditText taskDescription = (EditText) findViewById(R.id.taskDescription);
         final NumberPicker hourPicker = (NumberPicker) findViewById(R.id.hourPicker);
@@ -67,25 +65,25 @@ public class Task extends Activity {
 
             hourPicker.setValue(time / 60);
             minutePicker.setValue(time % 60);
+
             createTask.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
                     String nameTask = taskName.getText().toString();
                     String descriptionTask = taskDescription.getText().toString();
-
                     int pickHour = new Integer(hourPicker.getValueText());
                     int pickMinute = new Integer(minutePicker.getValueText());
 
                     if (!nameTask.equals("") && !descriptionTask.equals("") && activity != null && !(pickHour == 0 && pickMinute == 0)) {
-                            int time = pickHour * 60 + pickMinute;
-                            int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
-                            if (status == 1) {
-                                messenger.alert("Task " + task.getName() + " was updated");
-                                Intent cross = new Intent(view.getContext(), Tabs.class);
-                                startActivityForResult(cross, TABS);
-                            } else {
-                                messenger.alert("Failed to update!");
-                            }
+                        int time = pickHour * 60 + pickMinute;
+                        int status = dataSource.updateTask(nameTask, descriptionTask, time, taskId);
+                        if (status == 1) {
+                            messenger.alert("Task " + task.getName() + " was updated");
+                            Intent cross = new Intent(view.getContext(), Tabs.class);
+                            startActivityForResult(cross, TABS);
+                        } else {
+                            messenger.alert("Failed to update!");
+                        }
                     }
                 }
             });
@@ -106,7 +104,7 @@ public class Task extends Activity {
                         if (dataSource.taskExists(nameTask, session)) {
                             messenger.alert("The task with name '" + nameTask + "' is reserved!");
                         } else {
-                           TaskStructure task = dataSource.createTask(nameTask, descriptionTask, session.getDate(Session.RELEVANT), time,
+                            TaskStructure task = dataSource.createTask(nameTask, descriptionTask, session.getDate(Session.RELEVANT), time,
                                     activity.getId(), session.getProjectId());
                             if (task != null) {
                                 messenger.alert("Task " + task.getName() + " is successfully created");
@@ -128,8 +126,7 @@ public class Task extends Activity {
     private ArrayAdapter<ActivityStructure> activityListAdapter() {
         ActivityDataSource activityDataSource = new ActivityDataSource(this);
         List<ActivityStructure> activities = activityDataSource.getAllActivities();
-        ArrayAdapter<ActivityStructure> adapter = new ArrayAdapter<ActivityStructure>(this,
-                android.R.layout.simple_spinner_item, activities);
+        ArrayAdapter<ActivityStructure> adapter = new ArrayAdapter<ActivityStructure>(this, android.R.layout.simple_spinner_item, activities);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         return adapter;
     }

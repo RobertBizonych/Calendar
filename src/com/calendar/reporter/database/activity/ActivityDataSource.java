@@ -4,8 +4,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import com.calendar.reporter.database.DataBaseHelper;
-import com.calendar.reporter.database.project.ProjectStructure;
-import com.calendar.reporter.database.task.TaskStructure;
 
 import java.util.ArrayList;
 import java.util.List;

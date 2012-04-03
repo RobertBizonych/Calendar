@@ -1,10 +1,8 @@
 package com.calendar.reporter.helper;
 
 import android.content.SharedPreferences;
-import com.calendar.reporter.database.task.TaskDataSource;
 import com.calendar.reporter.database.task.TaskStructure;
 
-import java.text.DateFormatSymbols;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
