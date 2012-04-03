@@ -90,6 +90,7 @@ public class Projects extends ListActivity {
                                                     " has been removed.", Toast.LENGTH_LONG).show();
                                         }
                                     });
+
                                     alertBuilder.setNegativeButton("No", new DialogInterface.OnClickListener() {
                                         @Override
                                         public void onClick(DialogInterface dialog, int which) {

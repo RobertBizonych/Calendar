@@ -32,7 +32,7 @@ public class Login extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        MediaPlayer mediaPlayer = MediaPlayer.create(Login.this, R.raw.type);
+        final MediaPlayer mediaPlayer = MediaPlayer.create(Login.this, R.raw.curve);
         mediaPlayer.start();
 
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
@@ -50,6 +50,7 @@ public class Login extends Activity {
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), com.calendar.reporter.Register.class);
                 startActivityForResult(cross, REGISTER);
+                mediaPlayer.stop();
             }
         });
 
@@ -72,6 +73,7 @@ public class Login extends Activity {
                                 Intent intent = new Intent(v.getContext(), Projects.class);
                                 intent.putExtra("session", user.getId());
                                 startActivityForResult(intent, PROJECT);
+                                mediaPlayer.stop();
                             }
                         }
                     }
@@ -81,8 +83,16 @@ public class Login extends Activity {
             }
         });
     }
-
-
+    @Override
+    public void onPause () {
+        super.onPause();
+        finish();
+    }
+    @Override
+    public void onResume () {
+        super.onResume();
+        startActivity(getIntent());
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);

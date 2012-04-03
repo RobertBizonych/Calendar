@@ -15,7 +15,8 @@ public final class R {
     }
     public static final class drawable {
         public static final int backrepeat=0x7f020000;
-        public static final int smoke=0x7f020001;
+        public static final int reporter=0x7f020001;
+        public static final int smoke=0x7f020002;
     }
     public static final class id {
         public static final int about_content=0x7f070000;
@@ -62,9 +63,10 @@ public final class R {
         public static final int tasks=0x7f030008;
     }
     public static final class raw {
-        public static final int enter=0x7f040000;
-        public static final int intro=0x7f040001;
-        public static final int type=0x7f040002;
+        public static final int curve=0x7f040000;
+        public static final int enter=0x7f040001;
+        public static final int intro=0x7f040002;
+        public static final int type=0x7f040003;
     }
     public static final class string {
         public static final int aboutButton=0x7f060013;

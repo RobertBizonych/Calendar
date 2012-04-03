@@ -4,19 +4,18 @@ com.calendar.reporter.Login -> com.calendar.reporter.Login:
     void onCreate(android.os.Bundle) -> onCreate
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
 com.calendar.reporter.Login$1 -> com.calendar.reporter.q:
-    com.calendar.reporter.Login this$0 -> a
+    android.media.MediaPlayer val$mediaPlayer -> a
+    com.calendar.reporter.Login this$0 -> b
     void onClick(android.view.View) -> onClick
 com.calendar.reporter.Login$2 -> com.calendar.reporter.s:
-    com.calendar.reporter.Login this$0 -> a
-    void onClick(android.view.View) -> onClick
-com.calendar.reporter.Login$3 -> com.calendar.reporter.r:
     android.widget.EditText val$userName -> a
     android.widget.EditText val$userPassword -> b
     com.calendar.reporter.helper.Messenger val$messenger -> c
     com.calendar.reporter.helper.Session val$session -> d
-    com.calendar.reporter.Login this$0 -> e
+    android.media.MediaPlayer val$mediaPlayer -> e
+    com.calendar.reporter.Login this$0 -> f
     void onClick(android.view.View) -> onClick
-com.calendar.reporter.Login$4 -> com.calendar.reporter.t:
+com.calendar.reporter.Login$3 -> com.calendar.reporter.r:
     com.calendar.reporter.Login this$0 -> a
     boolean onMenuItemClick(android.view.MenuItem) -> onMenuItemClick
 com.calendar.reporter.Project -> com.calendar.reporter.Project:
@@ -130,10 +129,10 @@ com.calendar.reporter.Tasks$2$1 -> com.calendar.reporter.c:
     com.calendar.reporter.database.task.TaskStructure val$task -> a
     com.calendar.reporter.Tasks$2 this$1 -> b
     void onClick(android.content.DialogInterface,int) -> onClick
-com.calendar.reporter.Tasks$2$1$1 -> com.calendar.reporter.u:
+com.calendar.reporter.Tasks$2$1$1 -> com.calendar.reporter.t:
     com.calendar.reporter.Tasks$2$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
-com.calendar.reporter.Tasks$2$1$2 -> com.calendar.reporter.v:
+com.calendar.reporter.Tasks$2$1$2 -> com.calendar.reporter.u:
     com.calendar.reporter.Tasks$2$1 this$2 -> a
     void onClick(android.content.DialogInterface,int) -> onClick
 com.calendar.reporter.TasksGeneral -> com.calendar.reporter.TasksGeneral:
