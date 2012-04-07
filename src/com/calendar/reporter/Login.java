@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -20,15 +21,25 @@ public class Login extends Activity {
     static final private int PROJECT = 0;
     private static final int ABOUT = 0;
     static final private int MENU_ITEM = Menu.FIRST;
+    private TextToSpeech talker;
 
+    class MyOnInitListener implements TextToSpeech.OnInitListener{
+        @Override
+        public void onInit(int status) {
+            talker.speak("Welcome to the reporter!", TextToSpeech.QUEUE_FLUSH, null);
+        }
+    }
     @Override
     public void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
+        talker = new TextToSpeech(getApplicationContext(), new MyOnInitListener());
+
         final MediaPlayer mediaPlayer = MediaPlayer.create(Login.this, R.raw.curve);
         mediaPlayer.start();
-
+        mediaPlayer.setVolume(2,2);
         SharedPreferences settings = getSharedPreferences(Session.PREFS_NAME, 0);
         final Session session = new Session(settings);
         session.reset();
@@ -44,7 +55,7 @@ public class Login extends Activity {
             public void onClick(View view) {
                 Intent cross = new Intent(view.getContext(), com.calendar.reporter.Register.class);
                 startActivityForResult(cross, REGISTER);
-               mediaPlayer.stop();
+                mediaPlayer.stop();
             }
         });
 
@@ -77,6 +88,7 @@ public class Login extends Activity {
             }
         });
     }
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         super.onCreateOptionsMenu(menu);
@@ -96,4 +108,7 @@ public class Login extends Activity {
         });
         return true;
     }
+
+
+
 }
