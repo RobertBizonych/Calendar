@@ -1,4 +1,4 @@
-package com.calendar.reporter;
+package com.calendar;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,9 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import com.calendar.reporter.About;
+import com.calendar.reporter.Projects;
+import com.calendar.reporter.R;
 import com.calendar.reporter.database.user.UserDataSource;
 import com.calendar.reporter.database.user.UserStructure;
 import com.calendar.reporter.helper.Messenger;

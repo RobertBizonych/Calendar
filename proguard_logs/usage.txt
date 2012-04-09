@@ -1,4 +1,4 @@
-com.calendar.reporter.Login:
+com.calendar.Login:
     private static final int REGISTER
     private static final int PROJECT
     private static final int ABOUT

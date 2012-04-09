@@ -2,7 +2,7 @@ com.calendar.reporter.helper.MinutePicker
 com.calendar.reporter.helper.MinutePicker: MinutePicker(android.content.Context,android.util.AttributeSet)
 com.calendar.reporter.helper.HourPicker
 com.calendar.reporter.helper.HourPicker: HourPicker(android.content.Context,android.util.AttributeSet)
-com.calendar.reporter.Login
+com.calendar.Login
 com.calendar.reporter.Task
 com.calendar.reporter.Project
 com.calendar.reporter.TasksGeneral

@@ -1,22 +1,22 @@
 com.calendar.reporter.About -> com.calendar.reporter.About:
     void onCreate(android.os.Bundle) -> onCreate
-com.calendar.reporter.Login -> com.calendar.reporter.Login:
+com.calendar.Login -> com.calendar.Login:
     void onCreate(android.os.Bundle) -> onCreate
     boolean onCreateOptionsMenu(android.view.Menu) -> onCreateOptionsMenu
-com.calendar.reporter.Login$1 -> com.calendar.reporter.q:
+com.calendar.Login$1 -> com.calendar.reporter.q:
     android.media.MediaPlayer val$mediaPlayer -> a
-    com.calendar.reporter.Login this$0 -> b
+    com.calendar.Login this$0 -> b
     void onClick(android.view.View) -> onClick
-com.calendar.reporter.Login$2 -> com.calendar.reporter.s:
+com.calendar.Login$2 -> com.calendar.reporter.s:
     android.widget.EditText val$userName -> a
     android.widget.EditText val$userPassword -> b
     com.calendar.reporter.helper.Messenger val$messenger -> c
     com.calendar.reporter.helper.Session val$session -> d
     android.media.MediaPlayer val$mediaPlayer -> e
-    com.calendar.reporter.Login this$0 -> f
+    com.calendar.Login this$0 -> f
     void onClick(android.view.View) -> onClick
-com.calendar.reporter.Login$3 -> com.calendar.reporter.r:
-    com.calendar.reporter.Login this$0 -> a
+com.calendar.Login$3 -> com.calendar.reporter.r:
+    com.calendar.Login this$0 -> a
     boolean onMenuItemClick(android.view.MenuItem) -> onMenuItemClick
 com.calendar.reporter.Project -> com.calendar.reporter.Project:
     com.calendar.reporter.database.project.ProjectDataSource dataSource -> a

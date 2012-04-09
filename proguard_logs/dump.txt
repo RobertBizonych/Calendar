@@ -1431,7 +1431,7 @@ _____________________________________________________________________
   Major version: 0x32
   Minor version: 0x0
   Access flags:  0x21
-    = public class com.calendar.reporter.Login extends android.app.Activity
+    = public class com.calendar.Login extends android.app.Activity
 
 Interfaces (count = 0):
 
@@ -8628,12 +8628,12 @@ Fields (count = 2):
       = private android.media.MediaPlayer a
   + Field:        b Lcom/calendar/reporter/Login;
     Access flags: 0x1002
-      = private com.calendar.reporter.Login b
+      = private com.calendar.Login b
 
 Methods (count = 2):
   - Method:       <init>(Lcom/calendar/reporter/Login;Landroid/media/MediaPlayer;)V
     Access flags: 0x0
-      = q(com.calendar.reporter.Login,android.media.MediaPlayer)
+      = q(com.calendar.Login,android.media.MediaPlayer)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 15, locals = 3, stack = 2):
       [0] aload_0 v0
@@ -8737,12 +8737,12 @@ Constant Pool (count = 38):
 Fields (count = 1):
   + Field:        a Lcom/calendar/reporter/Login;
     Access flags: 0x1002
-      = private com.calendar.reporter.Login a
+      = private com.calendar.Login a
 
 Methods (count = 2):
   - Method:       <init>(Lcom/calendar/reporter/Login;)V
     Access flags: 0x0
-      = r(com.calendar.reporter.Login)
+      = r(com.calendar.Login)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 10, locals = 2, stack = 2):
       [0] aload_0 v0
@@ -8952,12 +8952,12 @@ Fields (count = 6):
       = private android.media.MediaPlayer e
   + Field:        f Lcom/calendar/reporter/Login;
     Access flags: 0x1002
-      = private com.calendar.reporter.Login f
+      = private com.calendar.Login f
 
 Methods (count = 2):
   - Method:       <init>(Lcom/calendar/reporter/Login;Landroid/widget/EditText;Landroid/widget/EditText;Lcom/calendar/reporter/helper/j;Lcom/calendar/reporter/helper/e;Landroid/media/MediaPlayer;)V
     Access flags: 0x0
-      = s(com.calendar.reporter.Login,android.widget.EditText,android.widget.EditText,com.calendar.reporter.helper.j,com.calendar.reporter.helper.e,android.media.MediaPlayer)
+      = s(com.calendar.Login,android.widget.EditText,android.widget.EditText,com.calendar.reporter.helper.j,com.calendar.reporter.helper.e,android.media.MediaPlayer)
     Class member attributes (count = 1):
     + Code attribute instructions (code length = 38, locals = 7, stack = 2):
       [0] aload_0 v0

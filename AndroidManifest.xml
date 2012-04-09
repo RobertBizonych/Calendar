@@ -5,7 +5,7 @@
       android:versionName="1.0">
     <application android:label="@string/app_name"
             android:icon="@drawable/reporter">
-        <activity android:name="Login"
+        <activity android:name="com.calendar.Login"
                   android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -30,5 +30,6 @@
                 android:label="@string/project_details"/>
         <activity android:name=".TaskView"
                 android:label="@string/task_details"/>
+        <activity android:name="com.calendar.ToolChoise"/>
     </application>
 </manifest> 
